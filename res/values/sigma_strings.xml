@@ -6,7 +6,7 @@
     <string name="homepage_widget_battery_discharge">Discharging</string>
     <string name="homepage_widget_battery_title">Battery</string>
     <string name="homepage_widget_storage_title">Storage</string>
-    
+
     <!--  Sigma settings -->
     <string name="sigma_settings_title">Sigma Toolbox</string>
     <string name="sigma_settings_summary">Everything, including the kitchen sink!</string>
@@ -65,4 +65,6 @@
     <string name="ambient_swipe_title">Swipe to wake</string>
     <string name="ambient_swipe_summary">Allow waking the device by swiping up or down when the device is dozing</string>
 
+    <!-- USB configuration -->
+    <string name="usb_default_config_title">USB configuration</string>
 </resources>
