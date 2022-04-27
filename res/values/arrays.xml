@@ -151,6 +151,7 @@
         <item msgid="3579015730662088893">Default</item>
         <item msgid="1678068858001018666">Large</item>
         <item msgid="490158884605093126">Largest</item>
+	<item msgid="490158884605093126">Huge</item>
     </string-array>
 
     <string-array name="entries_font_size_percent">
@@ -165,6 +166,7 @@
         <item>120%</item>
         <item>125%</item>
         <item>130%</item>
+        <item>150%</item>
     </string-array>
 
     <string-array name="entryvalues_font_size" translatable="false">
@@ -179,6 +181,7 @@
         <item>1.20</item>
         <item>1.25</item>
         <item>1.30</item>
+        <item>1.50</item>
     </string-array>
 
     <!-- Wi-Fi settings -->
