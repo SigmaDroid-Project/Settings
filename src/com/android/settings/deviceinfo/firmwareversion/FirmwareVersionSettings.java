@@ -43,4 +43,5 @@ public class FirmwareVersionSettings extends DashboardFragment {
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.firmware_version);
+            new BaseSearchIndexProvider(R.xml.firmware_version);
 }

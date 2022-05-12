@@ -69,6 +69,7 @@ android_library {
 
     resource_dirs: [
         "res",
+        "res-ui",
         "res-export", // for external usage
         "res-product",
         "crDroidSettings/res",
