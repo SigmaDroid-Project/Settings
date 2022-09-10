@@ -33,7 +33,13 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settings.deviceinfo.firmwareversion.sparkInfoPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.InfoPrefsController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -155,9 +161,14 @@ public class FirmwareVersionSettings extends DashboardFragment {
         return SettingsEnums.DIALOG_FIRMWARE_VERSION;
     }
 
-    /**
-     * For Search.
-     */
+    @Override
+    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+        final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new sparkInfoPreferenceController(context));
+        controllers.add(new InfoPrefsController(context));
+        return controllers;
+    }
+
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.firmware_version) {
 
