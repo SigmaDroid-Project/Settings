@@ -807,7 +807,7 @@
     <!-- Introduction title shown in face enrollment education screen to show the face unlock feature, when face unlock is disabled by device admin [CHAR LIMIT=60] -->
     <string name="security_settings_face_enroll_education_title_unlock_disabled">Use your face to authenticate</string>
     <!-- Introduction detail message shown in face education [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_education_message"></string>
+    <!-- <!string name="security_settings_face_enroll_education_message"></string> -->
     <!-- Introduction detail message shown in face education for accessibility [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_education_message_accessibility" product="default"></string>
     <!-- Introduction detail message shown in face education for accessibility [CHAR LIMIT=NONE] -->
@@ -870,79 +870,13 @@
     <string name="security_settings_face_enroll_introduction_message_unlock_disabled">Use your face to unlock your phone or approve purchases.\n\nNote: You can\u2019t use your face to unlock this device. For more information, contact your organization\u2019s admin.</string>
     <!-- Introduction detail message shown in face enrollment screen in setup wizard. [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_introduction_message_setup">Use your face to unlock your phone, authorize purchases, or sign in to apps</string>
-    <!-- Title of a section on the face enrollment introduction page that provides additional information. [CHAR LIMIT=40] -->
-    <string name="security_settings_face_enroll_introduction_info_title"></string>
-    <!-- Message on the face enrollment introduction page that provides information about glasses. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_glasses"></string>
-    <!-- Message on the face enrollment introduction page that provides information about glasses when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_consent_glasses"></string>
-    <!-- Message on the face enrollment introduction page that provides information about what could cause the phone to unlock. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_looking" product="default"></string>
-    <!-- Message on the face enrollment introduction page that provides information about what could cause the phone to unlock. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_looking" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that provides information about what could cause the phone to unlock. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_looking" product="device"></string>
-    <!-- Message on the face enrollment introduction page that provides information about what could cause the phone to unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_consent_looking" product="default"></string>
-    <!-- Message on the face enrollment introduction page that provides information about what could cause the phone to unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_consent_looking" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that provides information about what could cause the phone to unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_consent_looking" product="device"></string>
     <!-- Message on the face enrollment introduction page that provides information about the relative security of face for unlocking the phone. [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_introduction_info_consent_less_secure" product="default"></string>
     <!-- Message on the face enrollment introduction page that provides information about the relative security of face for unlocking the phone. [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_introduction_info_consent_less_secure" product="tablet"></string>
     <!-- Message on the face enrollment introduction page that provides information about the relative security of face for unlocking the phone. [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_enroll_introduction_info_consent_less_secure" product="device"></string>
-    <!-- Message on the face enrollment introduction page that provides information about the relative security of face for unlocking the phone for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_less_secure" product="default"></string>
-    <!-- Message on the face enrollment introduction page that provides information about the relative security of face for unlocking the phone for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_less_secure" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that provides information about the relative security of face for unlocking the phone for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_less_secure" product="device"></string>
-    <!-- Message on the face enrollment introduction page that provides information about how to require eyes to be open for Face Unlock. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_gaze" product="default"></string>
-    <!-- Message on the face enrollment introduction page that provides information about how to require eyes to be open for Face Unlock. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_gaze" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that provides information about how to require eyes to be open for Face Unlock. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_gaze" product="device"></string>
-    <!-- Message on the face enrollment introduction page that provides information about how to require eyes to be open for Face Unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_consent_gaze" product="default"></string>
-    <!-- Message on the face enrollment introduction page that provides information about how to require eyes to be open for Face Unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_consent_gaze" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that provides information about how to require eyes to be open for Face Unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_info_consent_gaze" product="device"></string>
-
-    <!-- Title of a section on the face enrollment introduction page that explains how face unlock works. [CHAR LIMIT=40] -->
-    <string name="security_settings_face_enroll_introduction_how_title"></string>
-    <!-- Message on the face enrollment introduction page that explains how face unlock works. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_how_message" product="default"></string>
-    <!-- Message on the face enrollment introduction page that explains how face unlock works. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_how_message" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that explains how face unlock works. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_how_message" product="device"></string>
-    <!-- Message on the face enrollment introduction page that explains how Face Unlock works when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_how_consent_message" product="default"></string>
-    <!-- Message on the face enrollment introduction page that explains how Face Unlock works when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_how_consent_message" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that explains how Face Unlock works when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_how_consent_message" product="device"></string>
-    <!-- Title of a section on the face enrollment introduction page that explains privacy controls for face unlock. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_control_title"></string>
-    <!-- Title of a section on the face enrollment introduction page that explains privacy controls for face unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_control_consent_title"></string>
-    <!-- Message on the face enrollment introduction page that explains privacy controls for face unlock [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_control_message" product="default"></string>
-    <!-- Message on the face enrollment introduction page that explains privacy controls for face unlock [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_control_message" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that explains privacy controls for face unlock [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_control_message" product="device"></string>
-    <!-- Message on the face enrollment introduction page that explains privacy controls for face unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_control_consent_message" product="default"></string>
-    <!-- Message on the face enrollment introduction page that explains privacy controls for face unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_control_consent_message" product="tablet"></string>
-    <!-- Message on the face enrollment introduction page that explains privacy controls for face unlock when asking for parental consent. [CHAR LIMIT=NONE] -->
-    <string name="security_settings_face_enroll_introduction_control_consent_message" product="device"></string>
+     
     <!-- Title shown in face enrollment dialog [CHAR LIMIT=40] -->
     <string name="security_settings_face_enroll_repeat_title">Center your face in the circle</string>
     <!-- Button text to skip enrollment of face [CHAR LIMIT=40] -->
