@@ -521,6 +521,8 @@
     <string name="security_settings_face_enroll_education_accessibility_dialog_positive">Continue setup</string>
     <string name="security_settings_face_enroll_education_message">On the next screen, rotate your head to capture all angles of your face</string>
     <string name="security_settings_face_enroll_education_message_accessibility" product="default">On the next screen, hold your phone at eye level</string>
+    <string name="security_settings_face_enroll_education_message_accessibility" product="tablet">On the next screen, hold your tablet at eye level</string>
+    <string name="security_settings_face_enroll_education_message_accessibility" product="device">On the next screen, hold your device at eye level</string>
     <string name="security_settings_face_enroll_education_start">Start</string>
     <string name="security_settings_face_enroll_education_title">How to set up Face Unlock</string>
     <string name="security_settings_face_enroll_education_title_accessibility">Set up Face Unlock</string>
@@ -535,8 +537,9 @@
     <string name="security_settings_face_enroll_improve_face_alert_body_fingerprint">Delete your current face model to set up Face Unlock again.\n\nYour face model will be permanently and securely deleted.\n\nAfter deletion, you will need your fingerprint, PIN, pattern, or password to unlock your phone or for authentication in apps.</string>
     <string name="security_settings_face_enroll_improve_face_alert_title">Set up Face Unlock</string>
     <string name="security_settings_face_enroll_introduction_accessibility">Setup for limited vision or head motion</string>
-    <string name="security_settings_face_enroll_introduction_accessibility_diversity" />
     <string name="security_settings_face_enroll_introduction_accessibility_expanded" product="default">When using Face Unlock, your head may need to be more directly in front of your phone.</string>
+    <string name="security_settings_face_enroll_introduction_accessibility_expanded" product="tablet">When using Face Unlock, your head may need to be more directly in front of your tablet.</string>
+    <string name="security_settings_face_enroll_introduction_accessibility_expanded" product="device">When using Face Unlock, your head may need to be more directly in front of your device.</string>
     <string name="security_settings_face_enroll_introduction_accessibility_vision">Require eyes open</string>
     <string name="security_settings_face_enroll_introduction_agree">I agree</string>
     <string name="security_settings_face_enroll_introduction_cancel">Cancel</string>
