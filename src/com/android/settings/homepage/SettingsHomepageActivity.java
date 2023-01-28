@@ -384,9 +384,9 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     private void showSuggestionFragment(boolean scrollNeeded) {
         final Class<? extends Fragment> fragmentClass = FeatureFactory.getFactory(this)
                 .getSuggestionFeatureProvider(this).getContextualSuggestionFragment();
-        if (fragmentClass == null) {
-            return;
-        }
+     //   if (fragmentClass == null) {
+       //     return;
+    //    }
 
         mSuggestionView = findViewById(R.id.suggestion_content);
         mTwoPaneSuggestionView = findViewById(R.id.two_pane_suggestion_content);
