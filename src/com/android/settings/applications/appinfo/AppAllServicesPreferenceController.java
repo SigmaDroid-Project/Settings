@@ -47,10 +47,19 @@ public class AppAllServicesPreferenceController extends AppInfoPreferenceControl
 
     private String mPackageName;
 
+    private boolean mCanPackageHandleAllServicesIntent;
+    private boolean mIsLocationProvider;
+
+
     public AppAllServicesPreferenceController(Context context,
             String preferenceKey) {
         super(context, preferenceKey);
         mPackageManager = context.getPackageManager();
+
+        // Set to false till we can confirm that the package can handle the intent.
+        mCanPackageHandleAllServicesIntent = false;
+        // Set to false till we can confirm that the package is a location provider.
+        mIsLocationProvider = false;
     }
 
     @Override
@@ -62,8 +71,9 @@ public class AppAllServicesPreferenceController extends AppInfoPreferenceControl
         }
     }
 
+    @VisibleForTesting
     @Nullable
-    private CharSequence getStorageSummary() {
+    CharSequence getStorageSummary() {
         ResolveInfo resolveInfo = getResolveInfo(PackageManager.GET_META_DATA);
         if (resolveInfo == null) {
             Log.d(TAG, "mResolveInfo is null.");
@@ -86,20 +96,18 @@ public class AppAllServicesPreferenceController extends AppInfoPreferenceControl
 
     @Override
     public int getAvailabilityStatus() {
-        if (canPackageHandleIntent() && isLocationProvider()) {
+        if (mCanPackageHandleAllServicesIntent && mIsLocationProvider) {
             return AVAILABLE;
         }
         return CONDITIONALLY_UNAVAILABLE;
     }
 
-    @VisibleForTesting
-    boolean isLocationProvider() {
+    private boolean isLocationProvider() {
         return Objects.requireNonNull(
                 mContext.getSystemService(LocationManager.class)).isProviderPackage(mPackageName);
     }
 
-    @VisibleForTesting
-    boolean canPackageHandleIntent() {
+    private boolean canPackageHandleIntent() {
         return getResolveInfo(0) != null;
     }
 
@@ -119,6 +127,14 @@ public class AppAllServicesPreferenceController extends AppInfoPreferenceControl
      */
     public void setPackageName(String packageName) {
         mPackageName = packageName;
+
+        //Once we have package name. Update conditions for availability.
+        updateAvailabilityConditions();
+    }
+
+    private void updateAvailabilityConditions() {
+        mCanPackageHandleAllServicesIntent = canPackageHandleIntent();
+        mIsLocationProvider = isLocationProvider();
     }
 
     private void startAllServicesActivity() {
