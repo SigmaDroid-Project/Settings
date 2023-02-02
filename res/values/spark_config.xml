@@ -26,9 +26,6 @@
     <!-- Whether the given language capitalizes nouns -->
     <bool name="language_capitalizes_nouns">false</bool>
 
-    <!-- Smart Charging -->
-    <bool name="config_supportSmartCharging">false</bool>
-
     <!-- Battery Health -->
     <string name="config_batCurCap"></string>
     <string name="config_batDesCap"></string>
