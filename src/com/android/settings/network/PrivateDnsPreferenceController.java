@@ -65,6 +65,10 @@ public class PrivateDnsPreferenceController extends BasePreferenceController
         Settings.Global.getUriFor(PRIVATE_DNS_SPECIFIER),
     };
 
+    // Must match ConnectivitySettingsUtils
+    private static final int PRIVATE_DNS_MODE_CLOUDFLARE = 4;
+    private static final int PRIVATE_DNS_MODE_ADGUARD = 5;
+
     private final Handler mHandler;
     private final ContentObserver mSettingsObserver;
     private final ConnectivityManager mConnectivityManager;
@@ -85,9 +89,12 @@ public class PrivateDnsPreferenceController extends BasePreferenceController
 
     @Override
     public int getAvailabilityStatus() {
-        return mContext.getResources().getBoolean(R.bool.config_show_private_dns_settings)
-                ? AVAILABLE
-                : UNSUPPORTED_ON_DEVICE;
+        if (!mContext.getResources().getBoolean(R.bool.config_show_private_dns_settings)) {
+            return UNSUPPORTED_ON_DEVICE;
+        }
+        final UserManager userManager = mContext.getSystemService(UserManager.class);
+        if (userManager.isGuestUser()) return DISABLED_FOR_USER;
+        return AVAILABLE;
     }
 
     @Override
@@ -126,6 +133,14 @@ public class PrivateDnsPreferenceController extends BasePreferenceController
         switch (mode) {
             case PRIVATE_DNS_MODE_OFF:
                 return res.getString(R.string.private_dns_mode_off);
+            case PRIVATE_DNS_MODE_CLOUDFLARE:
+                return dnsesResolved
+                        ? res.getString(R.string.private_dns_mode_cloudflare)
+                        : res.getString(R.string.private_dns_mode_provider_failure);
+            case PRIVATE_DNS_MODE_ADGUARD:
+                return dnsesResolved
+                        ? res.getString(R.string.private_dns_mode_adguard)
+                        : res.getString(R.string.private_dns_mode_provider_failure);
             case PRIVATE_DNS_MODE_OPPORTUNISTIC:
                 return dnsesResolved ? res.getString(R.string.private_dns_mode_on)
                         : res.getString(R.string.private_dns_mode_opportunistic);

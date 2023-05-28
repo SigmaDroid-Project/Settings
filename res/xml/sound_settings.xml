@@ -225,6 +225,19 @@
         android:title="@string/touch_sounds_title"
         android:order="-30"/>
 
+    <!-- Show vibrate icon in status bar -->
+    <SwitchPreference
+        android:key="vibrate_icon"
+        android:title="@string/vibrate_icon_title"
+        android:order="-27"/>
+
+    <!-- Show Alarm icon in status bar -->
+    <SwitchPreference
+        android:key="alarm_icon"
+        android:title="@string/alarm_icon_title"
+        android:order="-26"/>
+
+
     <!-- Vibrate on touch -->
     <SwitchPreference
         android:key="vibrate_on_touch"
@@ -252,6 +265,12 @@
         android:title="@string/emergency_tone_title"
         android:summary="%s"
         android:order="-10"/>
+
+    <com.spark.support.preferences.SecureSettingSwitchPreference
+        android:key="volume_panel_on_left"
+        android:title="@string/volume_panel_on_left_title"
+        android:summary="@string/volume_panel_on_left_summary"
+        android:defaultValue="false" />
 
     <com.spark.support.preferences.SystemSettingSwitchPreference
         android:key="show_app_volume"

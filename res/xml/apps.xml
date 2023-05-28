@@ -64,10 +64,13 @@
 
     <Preference
         android:key="game_settings"
-        android:title="@string/game_settings_title"
-        android:summary="@string/game_settings_summary"
-        android:order="-995"
-        settings:controller="com.android.settings.applications.GameSettingsPreferenceController">
+        android:title="@string/game_space_title"
+        android:summary="@string/game_space_summary"
+        android:order="-995">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="io.chaldeaprjkt.gamespace"
+            android:targetClass="io.chaldeaprjkt.gamespace.settings.SettingsActivity" />
     </Preference>
 
     <PreferenceCategory
@@ -90,5 +93,18 @@
         android:title="@string/special_access"
         android:order="20"
         settings:controller="com.android.settings.applications.SpecialAppAccessPreferenceController"/>
+
+    <Preference
+        android:key="sandboxed_google_play"
+        android:title="@string/sandboxed_google_play"
+        android:order="-980"
+        settings:controller="com.android.settings.applications.GmsCompatAppController"/>
+
+    <Preference
+        android:key="sandboxed_google_play_work_profile"
+        android:title="@string/sandboxed_google_play_work_profile"
+        android:order="-979"
+        settings:forWork="true"
+        settings:controller="com.android.settings.applications.GmsCompatAppController"/>
 
 </PreferenceScreen>

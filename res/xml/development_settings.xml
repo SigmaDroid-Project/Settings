@@ -127,6 +127,18 @@
             android:key="quick_settings_tiles"
             android:title="@string/quick_settings_developer_tiles"
             android:fragment="com.android.settings.development.qstile.DevelopmentTileConfigFragment" />
+
+        <Preference
+            android:key="alarm_blocker"
+            android:title="@string/alarm_blocker"
+            android:summary="@string/alarm_blocker_summary"
+            android:fragment="com.android.settings.development.AlarmBlocker" />
+
+        <Preference
+            android:key="wakelock_blocker"
+            android:title="@string/wakelock_blocker_title"
+            android:summary="@string/wakelock_blocker_summary"
+            android:fragment="com.android.settings.development.WakeLockBlocker" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -293,7 +305,7 @@
             android:title="@string/tethering_hardware_offload"
             android:summary="@string/tethering_hardware_offload_summary" />
 
-        <com.android.settingslib.RestrictedSwitchPreference
+        <com.android.settingslib.RestrictedPreference
             android:key="default_usb_configuration"
             android:fragment="com.android.settings.connecteddevice.usb.UsbDefaultFragment"
             android:title="@string/usb_default_label"/>
@@ -487,10 +499,6 @@
             android:key="hwui_force_dark"
             android:title="@string/hwui_force_dark_title"
             android:summary="@string/hwui_force_dark_summary" />
-
-        <SwitchPreference
-            android:key="enable_blurs_on_windows"
-            android:title="@string/window_blurs"/>
 
         <SwitchPreference
             android:key="force_msaa"
