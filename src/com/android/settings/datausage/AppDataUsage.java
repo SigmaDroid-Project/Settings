@@ -350,6 +350,7 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
 
     @VisibleForTesting
     void updatePrefs() {
+        if (mPackageName == null) return;
         updatePrefs(getAppRestrictBackground(), getUnrestrictData(), getAppRestrictAll(),
                 getAppRestrictCellular(), getAppRestrictVpn(), getAppRestrictWifi(),
                 hasInternetPermission());
@@ -498,6 +499,10 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
     }
 
     private boolean hasInternetPermission() {
+        if (mPackageName == null) return false;
+        if (mPackageManager == null) {
+            mPackageManager = getPackageManager();
+        }
         return mPackageManager.checkPermission(Manifest.permission.INTERNET, mPackageName)
                 == PackageManager.PERMISSION_GRANTED;
     }
@@ -533,7 +538,15 @@ public class AppDataUsage extends DataUsageBaseFragment implements OnPreferenceC
                         UserHandle.getUserId(mAppItem.key));
             } catch (PackageManager.NameNotFoundException e) {
                 Log.w(TAG, "Skipping UID because cannot find package " + pkg);
+                //return;
             }
+
+           /*mPackageName = pkg;
+            final UidDetail uidDetail = getUidDetailProvider().getUidDetail(uid, true);
+            if (uidDetail != null) {
+                mIcon = uidDetail.icon;
+                mLabel = uidDetail.label;
+            }*/
         }
 
         final boolean showInfoButton = mAppItem.key > 0;
