@@ -29,42 +29,42 @@ import androidx.preference.PreferenceViewHolder;
 import com.android.settings.preferences.ExpandablePreference;
 import com.android.settings.R;
 
-public class AlphaVersionPreference extends ExpandablePreference {
+public class BetaVersionPreference extends ExpandablePreference {
 
-    private static final String ALPHA_BUILD_VERSION = "ro.alpha.modversion";
-    private static final String ALPHA_PACKAGE_TYPE = "ro.alpha.build.package";
-    private static final String ALPHA_VERSION = "ro.alpha.display.version";
+    private static final String BETA_BUILD_VERSION = "ro.beta.modversion";
+    private static final String BETA_PACKAGE_TYPE = "ro.beta.build.package";
+    private static final String BETA_VERSION = "ro.beta.display.version";
 
-    public AlphaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr,
+    public BetaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        setCollapsedSummary(getShortAlphaVersion(context));
-        setExpandedSummary(getFullAlphaVersion(context));
+        setCollapsedSummary(getShortBetaVersion(context));
+        setExpandedSummary(getFullBetaVersion(context));
     }
 
-    public AlphaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BetaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         this(context, attrs, defStyleAttr, 0);
     }
 
-    public AlphaVersionPreference(Context context, AttributeSet attrs) {
+    public BetaVersionPreference(Context context, AttributeSet attrs) {
         this(context, attrs, TypedArrayUtils.getAttr(context,
                 androidx.preference.R.attr.preferenceStyle,
                 android.R.attr.preferenceStyle));
     }
 
-    public AlphaVersionPreference(Context context) {
+    public BetaVersionPreference(Context context) {
         this(context, null);
     }
 
-    private String getFullAlphaVersion(Context context) {
-        return SystemProperties.get(ALPHA_VERSION,
+    private String getFullBetaVersion(Context context) {
+        return SystemProperties.get(BETA_VERSION,
                 context.getString(R.string.unknown));
     }
 
-    private String getShortAlphaVersion(Context context) {
-        String romVersion = SystemProperties.get(ALPHA_BUILD_VERSION,
+    private String getShortBetaVersion(Context context) {
+        String romVersion = SystemProperties.get(BETA_BUILD_VERSION,
                 context.getString(R.string.device_info_default));
-        String romPackagetype = SystemProperties.get(ALPHA_PACKAGE_TYPE,
+        String romPackagetype = SystemProperties.get(BETA_PACKAGE_TYPE,
                 context.getString(R.string.device_info_default));
         String shortVersion = romVersion + " (" + romPackagetype + ")";
         return shortVersion;

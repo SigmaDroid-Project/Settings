@@ -70,7 +70,7 @@ public class ConnectivityCheckPreferenceController
     private static final String KEY_CONNECTIVITY_CHECK_SETTINGS =
             "connectivity_check_settings";
 
-    private static final String GAPPS_CONFIG = "ro.alpha.build.package";
+    private static final String GAPPS_CONFIG = "ro.beta.build.package";
 
     private ListPreference mConnectivityPreference;
 

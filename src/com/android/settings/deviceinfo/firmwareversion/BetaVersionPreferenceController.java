@@ -26,12 +26,12 @@ import androidx.preference.Preference;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class AlphaVersionPreferenceController extends BasePreferenceController {
+public class BetaVersionPreferenceController extends BasePreferenceController {
 
-    private static final String ALPHA_BUILD_VERSION = "ro.alpha.modversion";
-    private static final String KEY_ALPHA_VERSION = "alpha_version";
+    private static final String BETA_BUILD_VERSION = "ro.beta.modversion";
+    private static final String KEY_BETA_VERSION = "beta_version";
 
-    public AlphaVersionPreferenceController(Context context, String preferenceKey) {
+    public BetaVersionPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
     }
 
@@ -42,12 +42,12 @@ public class AlphaVersionPreferenceController extends BasePreferenceController {
 
     @Override
     public String getPreferenceKey() {
-        return KEY_ALPHA_VERSION;
+        return KEY_BETA_VERSION;
     }
 
     @Override
     public CharSequence getSummary() {
-        return SystemProperties.get(ALPHA_BUILD_VERSION,
+        return SystemProperties.get(BETA_BUILD_VERSION,
                 mContext.getString(R.string.device_info_default));
     }
 }
