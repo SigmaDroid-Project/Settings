@@ -70,7 +70,7 @@
         android:title="@string/category_alpha_info"
         android:selectable="false"/>
 
-        <!-- AlphaDroid version -->
+        <!-- BetaDroid version -->
         <com.android.settings.deviceinfo.firmwareversion.BetaVersionPreference
             android:key="beta_version"
             android:title="@*lineageos.platform:string/lineage_version"
