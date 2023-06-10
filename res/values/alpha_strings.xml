@@ -19,7 +19,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!--  Alpha settings -->
-    <string name="alpha_settings_title">BetaDroid Toolbox</string>
+    <string name="alpha_settings_title">SigmaDroid Toolbox</string>
     <string name="alpha_settings_summary">Everything but the kitchen sink!</string>
 
     <!-- UiBench -->
