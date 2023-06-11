@@ -83,7 +83,7 @@
         settings:controller="com.android.settings.security.ShowPasswordPreferenceController"/>
 
     <!-- Ignore secure window -->
-   <com.spark.settings.preferences.SecureSettingSwitchPreference
+   <com.sigma.settings.preferences.SecureSettingSwitchPreference
         android:key="window_ignore_secure"
         android:title="@string/ignore_window_secure_title"
         android:summary="@string/ignore_window_secure_summary"
@@ -147,7 +147,7 @@
         android:summary="@string/content_capture_summary"
         settings:controller="com.android.settings.privacy.EnableContentCaptureWithServiceSettingsPreferenceController"/>
 
-    <com.spark.settings.preferences.SecureSettingSwitchPreference
+    <com.sigma.settings.preferences.SecureSettingSwitchPreference
         android:key="show_clipboard_overlay"
         android:title="@string/show_clipboard_overlay_title"
         android:summary="@string/show_clipboard_overlay_summary"

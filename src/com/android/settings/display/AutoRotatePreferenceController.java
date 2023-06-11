@@ -30,7 +30,7 @@ import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
 
-import com.spark.settings.preferences.SystemSettingSwitchPreference;
+import com.sigma.settings.preferences.SystemSettingSwitchPreference;
 
 public class AutoRotatePreferenceController extends TogglePreferenceController implements
         PreferenceControllerMixin, Preference.OnPreferenceChangeListener, LifecycleObserver,

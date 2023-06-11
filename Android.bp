@@ -56,15 +56,15 @@ android_library {
     srcs: [
         "src/**/*.java",
         "src/**/*.kt",
-        "Fireworks/src/**/*.java",
-        "Fireworks/src/**/*.kt",
+        "SigmaSettings/src/**/*.java",
+        "SigmaSettings/src/**/*.kt",
     ],
 
-    aaptflags: ["--extra-packages com.spark.settings"],
+    aaptflags: ["--extra-packages com.sigma.settings"],
 
     resource_dirs: [
         "res",
-        "Fireworks/res",
+        "SigmaSettings/res",
     ],
 
     static_libs: [

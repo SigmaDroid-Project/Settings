@@ -241,7 +241,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 
             final Preference preference = screen.getPreference(i);
  	    String key = preference.getKey();
- 	    
+
  	    boolean isLarge = mAboutPhoneStyle == 2;
  	    boolean isDefault = mAboutPhoneStyle == 0;
 
@@ -250,7 +250,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 	    if (key.equals("top_level_usercard")){
 	        preference.setLayoutResource(R.layout.usercard);
             } else if (key.equals("top_level_network")
-            	|| key.equals("top_level_fireworks")
+            	|| key.equals("top_level_toolbox")
             	|| key.equals("top_level_apps")
             	|| key.equals("top_level_accessibility")
             	|| key.equals("top_level_emergency")){
@@ -288,7 +288,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 	    } else if (key.equals("top_level_divider_one")){
                 // nothing to do here
             } else if (key.equals("top_level_network")
-            	|| key.equals("top_level_fireworks")
+            	|| key.equals("top_level_toolbox")
             	|| key.equals("top_level_apps")
             	|| key.equals("top_level_accessibility")
             	|| key.equals("top_level_emergency")){
@@ -353,7 +353,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 	    if (key.equals("top_level_usercard")){
 	        preference.setLayoutResource(R.layout.usercard_round);
             } else if (key.equals("top_level_network")
-            	|| key.equals("top_level_fireworks")
+            	|| key.equals("top_level_toolbox")
             	|| key.equals("top_level_apps")
             	|| key.equals("top_level_accessibility")
             	|| key.equals("top_level_emergency")){
@@ -391,7 +391,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 	    if (key.equals("top_level_usercard")){
 	        preference.setLayoutResource(R.layout.usercard_round_circle);
             } else if (key.equals("top_level_network")
-            	|| key.equals("top_level_fireworks")
+            	|| key.equals("top_level_toolbox")
             	|| key.equals("top_level_apps")
             	|| key.equals("top_level_accessibility")
             	|| key.equals("top_level_emergency")){
@@ -413,7 +413,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 gAppsExists = true;
             } else if (key.equals("top_level_about_device")){
                 preference.setLayoutResource(isDefault ? R.layout.top_level_preference_bottom_card : (isLarge ? R.layout.top_level_preference_about_high : R.layout.top_level_preference_about));
-                preference.setOrder(isDefault ? 20 : -180);   
+                preference.setOrder(isDefault ? 20 : -180);
             } else if (key.equals("top_level_system")){
                 preference.setLayoutResource(isDefault ? R.layout.top_level_preference_top_card : R.layout.top_level_preference_middle_card );
                 preference.setOrder(isDefault ? 10 : -45);
@@ -640,12 +640,12 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     return false;
                 }
             };
-            
+
     private void setDashboardStyle(Context context) {
         mDashBoardStyle = Settings.System.getIntForUser(context.getContentResolver(),
                     Settings.System.SETTINGS_DASHBOARD_STYLE, 0, UserHandle.USER_CURRENT);
     }
-    
+
     private void getAboutPhoneStyle(Context context) {
         mAboutPhoneStyle = Settings.System.getIntForUser(context.getContentResolver(),
                     "about_card_style", 0, UserHandle.USER_CURRENT);

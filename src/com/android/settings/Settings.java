@@ -450,9 +450,9 @@ public class Settings extends SettingsActivity {
     public static class OneHandedSettingsActivity extends SettingsActivity { /* empty */ }
 
     /**
-     * Activity for The Fireworks
+     * Activity for The Toolbox
      */
-    public static class SparkSettingsActivity extends SettingsActivity {}
+    public static class SigmaSettingsActivity extends SettingsActivity {}
     public static class SmartPixelsActivity extends SettingsActivity {}
 
     /**

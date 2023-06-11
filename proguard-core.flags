@@ -1,2 +1,2 @@
-# Fireworks
--keep class com.spark.settings.**
+# Toolbox
+-keep class com.sigma.settings.**

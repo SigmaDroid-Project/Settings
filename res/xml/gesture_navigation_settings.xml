@@ -56,19 +56,19 @@
         settings:textStart="@string/back_height_low_label"
         settings:textEnd="@string/back_height_high_label"/>
 
-    <com.spark.settings.preferences.SecureSettingSwitchPreference
+    <com.sigma.settings.preferences.SecureSettingSwitchPreference
         android:key="back_gesture_arrow"
         android:title="@string/back_gesture_arrow_title"
         android:summary="@string/back_gesture_arrow_summary"
         android:defaultValue="true" />
 
-    <com.spark.settings.preferences.SystemSettingSwitchPreference
+    <com.sigma.settings.preferences.SystemSettingSwitchPreference
         android:key="hide_ime_space_enable"
         android:title="@string/navigation_bar_ime_space_title"
         android:summary="@string/navigation_bar_ime_space_summary"
         android:defaultValue="false" />
 
-    <com.spark.settings.preferences.SecureSettingSwitchPreference
+    <com.sigma.settings.preferences.SecureSettingSwitchPreference
         android:key="back_gesture_haptic"
         android:title="@string/back_gesture_haptic_title"
         android:summary="@string/back_gesture_haptic_summary"
@@ -114,4 +114,3 @@
         android:selectable="false"
         settings:searchable="false"/>
 </PreferenceScreen>
-

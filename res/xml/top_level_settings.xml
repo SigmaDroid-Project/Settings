@@ -36,7 +36,7 @@
         android:fragment="com.android.settings.users.UserSettings"
         android:key="top_level_usercard"
         android:order="-170" />
-        
+
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.network.NetworkDashboardFragment"
         android:icon="@drawable/op_ic_homepage_network_settings"
@@ -68,14 +68,14 @@
         settings:controller="com.android.settings.connecteddevice.TopLevelConnectedDevicesPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
-        android:fragment="com.spark.settings.SparkSettings"
+        android:fragment="com.sigma.settings.SigmaSettings"
         android:icon="@drawable/op_ic_homepage_personalizations"
-        android:key="top_level_fireworks"
+        android:key="top_level_toolbox"
         android:order="-130"
-        android:title="@string/fireworks_title"
+        android:title="@string/toolbox_title"
         android:summary="@string/build_tweaks_summary_title"
-        settings:controller="com.spark.settings.TopLevelFireworksEntryPreferenceController" />
-        
+        settings:controller="com.sigma.settings.TopLevelToolboxEntryPreferenceController" />
+
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.DisplaySettings"
         android:icon="@drawable/op_ic_homepage_display_settings"
@@ -94,7 +94,7 @@
         android:summary="@string/wallpaper_dashboard_summary"
         settings:highlightableMenuKey="@string/menu_key_wallpaper"
         settings:controller="com.android.settings.display.TopLevelWallpaperPreferenceController"/>
-        
+
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.applications.AppDashboardFragment"
         android:icon="@drawable/op_ic_homepage_apps_settings"

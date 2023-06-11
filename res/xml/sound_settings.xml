@@ -211,7 +211,7 @@
         android:ringtoneType="alarm"
         android:order="-60"/>
 
-    <com.spark.settings.preferences.SystemSettingSwitchPreference
+    <com.sigma.settings.preferences.SystemSettingSwitchPreference
         android:key="show_app_volume"
         android:title="@string/app_volume_title"
         android:summary="@string/app_volume_summary"
@@ -231,7 +231,7 @@
         android:order="-45"/>
 
     <!-- Screenshot sound -->
-    <com.spark.settings.preferences.SystemSettingSwitchPreference
+    <com.sigma.settings.preferences.SystemSettingSwitchPreference
         android:key="screenshot_shutter_sound"
         android:title="@string/screenshot_shutter_sound_title"
         android:order="-43"/>
@@ -285,7 +285,7 @@
         android:summary="%s"
         android:order="-10"/>
 
-    <com.spark.settings.preferences.SystemSettingSwitchPreference
+    <com.sigma.settings.preferences.SystemSettingSwitchPreference
         android:key="notification_sound_vib_screen_on"
         android:title="@string/notification_sound_vib_screen_on_title"
         android:summary="@string/notification_sound_vib_screen_on_summary"
@@ -295,17 +295,17 @@
         android:key="incall_vib_options"
         android:title="@string/incall_vibration_category" >
 
-    <com.spark.settings.preferences.SystemSettingSwitchPreference
+    <com.sigma.settings.preferences.SystemSettingSwitchPreference
         android:key="vibrate_on_connect"
         android:title="@string/incall_vibrate_connect_title"
         android:defaultValue="false" />
 
-    <com.spark.settings.preferences.SystemSettingSwitchPreference
+    <com.sigma.settings.preferences.SystemSettingSwitchPreference
         android:key="vibrate_on_callwaiting"
         android:title="@string/incall_vibrate_call_wait_title"
         android:defaultValue="false" />
 
-    <com.spark.settings.preferences.SystemSettingSwitchPreference
+    <com.sigma.settings.preferences.SystemSettingSwitchPreference
         android:key="vibrate_on_disconnect"
         android:title="@string/incall_vibrate_disconnect_title"
         android:defaultValue="false" />

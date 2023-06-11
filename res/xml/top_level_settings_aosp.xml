@@ -190,13 +190,13 @@
         settings:controller="com.android.settings.accounts.TopLevelAccountEntryPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
-        android:fragment="com.spark.settings.SparkSettings"
+        android:fragment="com.sigma.settings.SigmaSettings"
         android:icon="@drawable/ic_homepage_personalizations"
-        android:key="top_level_fireworks"
+        android:key="top_level_toolbox"
         android:order="9"
-        android:title="@string/fireworks_title"
+        android:title="@string/toolbox_title"
         android:summary="@string/build_tweaks_summary_title"
-        settings:controller="com.spark.settings.TopLevelFireworksEntryPreferenceController" />
+        settings:controller="com.sigma.settings.TopLevelToolboxEntryPreferenceController" />
 
     <com.android.settings.widget.HomepagePreference
         android:icon="@drawable/ic_help_aosp"
@@ -208,4 +208,3 @@
         settings:controller="com.android.settings.support.SupportPreferenceController"/>
 
 </PreferenceScreen>
-
