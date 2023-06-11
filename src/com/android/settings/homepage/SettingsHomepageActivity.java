@@ -42,6 +42,7 @@ import android.util.ArraySet;
 import android.util.FeatureFlagUtils;
 import android.provider.Settings;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -65,6 +66,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.window.embedding.SplitController;
 import androidx.window.embedding.SplitRule;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.android.internal.util.UserIcons;
 
 import com.android.settings.R;
 import android.provider.Settings;
@@ -185,6 +189,8 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         return mCategoryMixin;
     }
 
+    ImageView avatarView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -298,7 +304,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         initSearchBarView();
         // Only allow features on high ram devices.
         if (!getSystemService(ActivityManager.class).isLowRamDevice()) {
-            initAvatarView();
             final boolean scrollNeeded = mIsEmbeddingActivityEnabled
                     && !TextUtils.equals(getString(DEFAULT_HIGHLIGHT_MENU_KEY), highlightMenuKey);
             showSuggestionFragment(scrollNeeded);
