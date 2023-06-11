@@ -87,7 +87,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
                 mPreference.setLayoutResource(R.layout.alpha_preference_category);
             } else if (mDashBoardStyle == 1) { // 0=stock aosp, 1=dot, 2=nad
                 switch (mKey) {
-                    case "beta_version":
+                    case "sigma_version":
                         mPreference.setLayoutResource(R.layout.dot_dashboard_preference_top);
                         break;
                     case "os_firmware_version":
@@ -112,7 +112,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
                         break;
                 }
             } else if (mDashBoardStyle == 2) {
-                if (mKey.equals("beta_version") || mKey.equals("security_key") || mKey.equals("kernel_version")) {
+                if (mKey.equals("sigma_version") || mKey.equals("security_key") || mKey.equals("kernel_version")) {
                     mPreference.setLayoutResource(R.layout.nad_dashboard_preference_full);
                 }
                 else {

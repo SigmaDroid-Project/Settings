@@ -30,21 +30,21 @@ public class BuildStatusPreferenceController extends AbstractPreferenceControlle
 
     private static final String TAG = "BuildStatusPreferenceController";
     private static final String KEY_BUILD_STATUS = "rom_build_status";
-    private static final String BETA_MAINTAINER = "ro.beta.maintainer";
-    private static final String BETA_RELEASE_TYPE = "ro.beta.release.type";
+    private static final String SIGMA_MAINTAINER = "ro.sigma.maintainer";
+    private static final String SIGMA_RELEASE_TYPE = "ro.sigma.release.type";
 
     public BuildStatusPreferenceController(Context context) {
         super(context);
     }
 
     private boolean isOfficial() {
-        final String releaseType = SystemProperties.get(BETA_RELEASE_TYPE, "");
+        final String releaseType = SystemProperties.get(SIGMA_RELEASE_TYPE, "");
         return releaseType.length() > 0 &&
                 "official".equals(releaseType.toLowerCase());
     }
 
     private String getMaintainer() {
-        String mMaintainer = SystemProperties.get(BETA_MAINTAINER, "");
+        String mMaintainer = SystemProperties.get(SIGMA_MAINTAINER, "");
         if (mMaintainer.isEmpty()) {
             return mContext.getString(R.string.build_status_oopsie);
         }
