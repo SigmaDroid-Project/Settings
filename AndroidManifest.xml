@@ -4640,14 +4640,14 @@
         <!-- This is the longest AndroidManifest.xml ever. -->
 
         <!-- Begin Alpha Settings -->
-        <activity android:name="Settings$AlphaSettingsActivity"
+        <activity android:name="Settings$SigmaSettingsActivity"
                 android:label="@string/alpha_settings_title"
                 android:icon="@drawable/ic_settings_alpha"
                 android:exported="true"
                 android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings">
             <intent-filter android:priority="1">
-                <action android:name="com.alpha.settings.AlphaSettings" />
+                <action android:name="com.sigma.settings.SigmaSettings" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
@@ -4657,11 +4657,11 @@
             <meta-data android:name="com.android.settings.summary"
                        android:resource="@string/alpha_settings_summary"/>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                       android:value="com.alpha.settings.AlphaSettings" />
+                       android:value="com.sigma.settings.SigmaSettings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                        android:value="true" />
         </activity>
-        <activity android:name="com.alpha.settings.fragments.about.ChangelogActivity"
+        <activity android:name="com.sigma.settings.fragments.about.ChangelogActivity"
                 android:label="@string/changelog_crdroid_title"
                 android:theme="@style/Theme.SubSettingsBase"
                 android:enabled="true"
@@ -4683,9 +4683,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.alpha.settings.fragments.ui.SmartPixels" />
+                android:value="com.sigma.settings.fragments.ui.SmartPixels" />
         </activity>
-        <activity android:name="com.alpha.settings.fragments.ui.DisplayCutoutForceFullscreenActivity"
+        <activity android:name="com.sigma.settings.fragments.ui.DisplayCutoutForceFullscreenActivity"
                 android:label="@string/display_cutout_force_fullscreen_title"
                 android:theme="@style/Theme.SubSettingsBase"
                 android:enabled="true"
@@ -4697,14 +4697,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <receiver android:name="com.alpha.settings.fragments.ui.doze.DozeReceiver"
+        <receiver android:name="com.sigma.settings.fragments.ui.doze.DozeReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-        <service android:name="com.alpha.settings.fragments.ui.doze.DozeService"
+        <service android:name="com.sigma.settings.fragments.ui.doze.DozeService"
                 android:exported="true"
                 android:permission="AlphaDozeService">
         </service>

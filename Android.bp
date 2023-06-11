@@ -59,15 +59,15 @@ android_library {
     srcs: [
            "src/**/*.java",
            "src/**/*.kt",
-           "AlphaSettings/src/**/*.java",
-           "AlphaSettings/src/**/*.kt",
+           "SigmaSettings/src/**/*.java",
+           "SigmaSettings/src/**/*.kt",
     ],
 
-    aaptflags: ["--extra-packages com.alpha.settings"],
+    aaptflags: ["--extra-packages com.sigma.settings"],
 
     resource_dirs: ["res",
                     "res-ui",
-                    "AlphaSettings/res"
+                    "SigmaSettings/res"
     ],
 
     static_libs: [

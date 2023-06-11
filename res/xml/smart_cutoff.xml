@@ -21,12 +21,12 @@
     android:key="smart_cutoff_screen"
     android:title="@string/smart_cutoff_title">
 
-    <com.alpha.settings.preferences.SystemSettingSwitchPreference
+    <com.sigma.settings.preferences.SystemSettingSwitchPreference
         android:key="smart_cutoff"
         android:title="@string/smart_cutoff_switch_title"
         android:defaultValue="false" />
 
-    <com.alpha.settings.preferences.CustomSeekBarPreference
+    <com.sigma.settings.preferences.CustomSeekBarPreference
         android:key="smart_cutoff_level"
         android:title="@string/smart_cutoff_level_title"
         android:max="45"
@@ -35,7 +35,7 @@
         android:defaultValue="30"
         android:dependency="smart_cutoff" />
 
-    <com.alpha.settings.preferences.CustomSeekBarPreference
+    <com.sigma.settings.preferences.CustomSeekBarPreference
         android:key="smart_cutoff_resume_level"
         android:title="@string/smart_cutoff_resume_level_title"
         android:max="35"

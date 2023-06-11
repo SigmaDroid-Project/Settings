@@ -35,8 +35,8 @@
         android:summary="@string/alpha_settings_summary"
         android:order="-204"
         android:icon="@drawable/ic_settings_alpha"
-        android:fragment="com.alpha.settings.AlphaSettings"
-        settings:controller="com.alpha.settings.TopLevelAlphaEntryPreferenceController" />
+        android:fragment="com.sigma.settings.SigmaSettings"
+        settings:controller="com.sigma.settings.TopLevelAlphaEntryPreferenceController" />
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.network.NetworkDashboardFragment"
