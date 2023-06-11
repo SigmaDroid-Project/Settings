@@ -133,10 +133,10 @@ public class FirmwareVersionSettings extends DashboardFragment {
                 Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
     }
 
-    @Override
-    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, this /* fragment */, getSettingsLifecycle());
-    }
+    // @Override
+    // protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+    //     return buildPreferenceControllers(context, this /* fragment */, getSettingsLifecycle());
+    // }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, FirmwareVersionSettings fragment, Lifecycle lifecycle) {

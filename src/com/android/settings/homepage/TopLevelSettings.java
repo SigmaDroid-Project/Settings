@@ -54,6 +54,7 @@ import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.support.SupportPreferenceController;
 import com.android.settings.widget.HomepagePreference;
 import com.android.settings.widget.HomepagePreferenceLayoutHelper.HomepagePreferenceLayout;
 import com.android.settingslib.core.instrumentation.Instrumentable;
@@ -224,25 +225,25 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     }
 
 
-    private void onSetPrefCard() {
-        final PreferenceScreen screen = getPreferenceScreen();
-        int tintColor = Utils.getHomepageIconColor(getContext());
+    // private void onSetPrefCard() {
+    //     final PreferenceScreen screen = getPreferenceScreen();
+    //     int tintColor = Utils.getHomepageIconColor(getContext());
 
-        final int count = screen.getPreferenceCount();
-        for (int i = 0; i < count; i++) {
-            final Preference preference = screen.getPreference(i);
+    //     final int count = screen.getPreferenceCount();
+    //     for (int i = 0; i < count; i++) {
+    //         final Preference preference = screen.getPreference(i);
 
-            if (preference == null) continue;
+    //         if (preference == null) continue;
 
-            Drawable icon = preference.getIcon();
-            if (mDashBoardStyle == 3 || mDashBoardStyle == 5) {
-              if (icon != null) {
-                  icon.setTint(tintColor);
-              }
-            }
-            onSetPrefCard();
-        }
-    }
+    //         Drawable icon = preference.getIcon();
+    //         if (mDashBoardStyle == 3 || mDashBoardStyle == 5) {
+    //           if (icon != null) {
+    //               icon.setTint(tintColor);
+    //           }
+    //         }
+    //         onSetPrefCard();
+    //     }
+    // }
 
 
     private void onSetPrefCard() {
@@ -261,7 +262,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 	    if (key.equals("top_level_usercard")){
 	        preference.setLayoutResource(R.layout.usercard);
             } else if (key.equals("top_level_network")
-            	|| key.equals("top_level_fireworks")
+            	|| key.equals("top_level_alphabet")
             	|| key.equals("top_level_apps")
             	|| key.equals("top_level_accessibility")
             	|| key.equals("top_level_emergency")){
@@ -299,7 +300,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 	    } else if (key.equals("top_level_divider_one")){
                 // nothing to do here
             } else if (key.equals("top_level_network")
-            	|| key.equals("top_level_fireworks")
+            	|| key.equals("top_level_alphabet")
             	|| key.equals("top_level_apps")
             	|| key.equals("top_level_accessibility")
             	|| key.equals("top_level_emergency")){
@@ -364,7 +365,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 	    if (key.equals("top_level_usercard")){
 	        preference.setLayoutResource(R.layout.usercard_round);
             } else if (key.equals("top_level_network")
-            	|| key.equals("top_level_fireworks")
+            	|| key.equals("top_level_alphabet")
             	|| key.equals("top_level_apps")
             	|| key.equals("top_level_accessibility")
             	|| key.equals("top_level_emergency")){
@@ -402,7 +403,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 	    if (key.equals("top_level_usercard")){
 	        preference.setLayoutResource(R.layout.usercard_round_circle);
             } else if (key.equals("top_level_network")
-            	|| key.equals("top_level_fireworks")
+            	|| key.equals("top_level_alphabet")
             	|| key.equals("top_level_apps")
             	|| key.equals("top_level_accessibility")
             	|| key.equals("top_level_emergency")){
@@ -656,10 +657,10 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         void doForEach(Preference preference);
     }
 
-    private void setDashboardStyle(Context context) {
-        mDashBoardStyle = Settings.System.getIntForUser(context.getContentResolver(),
-                Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
-    }
+    // private void setDashboardStyle(Context context) {
+    //     mDashBoardStyle = Settings.System.getIntForUser(context.getContentResolver(),
+    //             Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
+    // }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.top_level_settings) {

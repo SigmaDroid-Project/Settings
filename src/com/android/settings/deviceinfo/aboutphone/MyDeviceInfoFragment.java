@@ -49,6 +49,10 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.widget.ActionBarShadowController;
 import com.android.settingslib.widget.LayoutPreference;
+import com.android.settings.deviceinfo.WifiMacAddressPreferenceController;
+import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
+import com.android.settings.deviceinfo.BluetoothAddressPreferenceController;
+
 
 import java.util.ArrayList;
 import java.util.List;
