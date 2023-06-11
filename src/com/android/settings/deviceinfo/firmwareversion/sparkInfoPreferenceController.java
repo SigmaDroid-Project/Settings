@@ -30,61 +30,61 @@ import com.android.settings.R;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.widget.LayoutPreference;
 
-public class sparkInfoPreferenceController extends AbstractPreferenceController {
+public class sigmaInfoPreferenceController extends AbstractPreferenceController {
 
-    private static final String KEY_SPARK_INFO = "spark_info";
-    private static final String KEY_SPARK_DEVICE = "spark_device";
-    private static final String KEY_SPARK_VERSION = "spark_version";
+    private static final String KEY_SIGMA_INFO = "sigma_info";
+    private static final String KEY_SIGMA_DEVICE = "sigma_device";
+    private static final String KEY_SIGMA_VERSION = "sigma_version";
     private static final String KEY_BUILD_STATUS = "rom_build_status";
-    private static final String KEY_BUILD_VERSION = "spark_build_version";
-    
-    private static final String PROP_SPARK_VERSION = "ro.spark.version";
-    private static final String PROP_SPARK_RELEASETYPE = "ro.spark.buildtype";
-    private static final String PROP_SPARK_MAINTAINER = "ro.spark.maintainer";
-    private static final String PROP_SPARK_DEVICE = "ro.spark.device";
-    private static final String PROP_SPARK_BUILD_VERSION = "ro.spark.build.version";
+    private static final String KEY_BUILD_VERSION = "sigma_build_version";
+
+    private static final String PROP_SIGMA_VERSION = "ro.sigma.version";
+    private static final String PROP_SIGMA_RELEASETYPE = "ro.sigma.buildtype";
+    private static final String PROP_SIGMA_MAINTAINER = "ro.sigma.maintainer";
+    private static final String PROP_SIGMA_DEVICE = "ro.sigma.device";
+    private static final String PROP_SIGMA_BUILD_VERSION = "ro.sigma.build.version";
 
 
-    public sparkInfoPreferenceController(Context context) {
+    public sigmaInfoPreferenceController(Context context) {
         super(context);
     }
 
     private String getDeviceName() {
-        String device = SystemProperties.get(PROP_SPARK_DEVICE, "");
+        String device = SystemProperties.get(PROP_SIGMA_DEVICE, "");
         if (device.equals("")) {
             device = Build.MANUFACTURER + " " + Build.MODEL;
         }
         return device;
     }
 
-    private String getSparkBuildVersion() {
-        final String buildVer = SystemProperties.get(PROP_SPARK_BUILD_VERSION,
+    private String getSigmaBuildVersion() {
+        final String buildVer = SystemProperties.get(PROP_SIGMA_BUILD_VERSION,
                 this.mContext.getString(R.string.device_info_default));;
 
         return buildVer;
     }
-    
-    private String getSparkVersion() {
-        final String version = SystemProperties.get(PROP_SPARK_VERSION,
+
+    private String getSigmaVersion() {
+        final String version = SystemProperties.get(PROP_SIGMA_VERSION,
                 this.mContext.getString(R.string.device_info_default));
 
         return version;
     }
 
-    private String getSparkReleaseType() {
-        final String releaseType = SystemProperties.get(PROP_SPARK_RELEASETYPE,
+    private String getSigmaReleaseType() {
+        final String releaseType = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
                 this.mContext.getString(R.string.device_info_default));
-	
+
         return releaseType.substring(0, 1).toUpperCase() +
                  releaseType.substring(1).toLowerCase();
     }
-    
-    private String getSparkbuildStatus() {
-	final String buildType = SystemProperties.get(PROP_SPARK_RELEASETYPE,
+
+    private String getSigmabuildStatus() {
+	final String buildType = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
                 this.mContext.getString(R.string.device_info_default));
         final String isOfficial = this.mContext.getString(R.string.build_is_official_title);
 	final String isCommunity = this.mContext.getString(R.string.build_is_community_title);
-	
+
 	if (buildType.toLowerCase().equals("official")) {
 		return isOfficial;
 	} else {
@@ -92,21 +92,21 @@ public class sparkInfoPreferenceController extends AbstractPreferenceController 
 	}
     }
 
-    private String getSparkMaintainer() {
-	final String SparkMaintainer = SystemProperties.get(PROP_SPARK_MAINTAINER,
+    private String getSigmaMaintainer() {
+	final String SigmaMaintainer = SystemProperties.get(PROP_SIGMA_MAINTAINER,
                 this.mContext.getString(R.string.device_info_default));
-	final String buildType = SystemProperties.get(PROP_SPARK_RELEASETYPE,
+	final String buildType = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
                 this.mContext.getString(R.string.device_info_default));
-        final String isOffFine = this.mContext.getString(R.string.build_is_official_summary, SparkMaintainer);
+        final String isOffFine = this.mContext.getString(R.string.build_is_official_summary, SigmaMaintainer);
 	final String isOffMiss = this.mContext.getString(R.string.build_is_official_summary_oopsie);
 	final String isCommMiss = this.mContext.getString(R.string.build_is_community_summary_oopsie);
-	final String isCommFine = this.mContext.getString(R.string.build_is_community_summary, SparkMaintainer);
-	
-	if (buildType.toLowerCase().equals("official") && !SparkMaintainer.equalsIgnoreCase("Unknown")) {
+	final String isCommFine = this.mContext.getString(R.string.build_is_community_summary, SigmaMaintainer);
+
+	if (buildType.toLowerCase().equals("official") && !SigmaMaintainer.equalsIgnoreCase("Unknown")) {
 	    return isOffFine;
-	} else if (buildType.toLowerCase().equals("official") && SparkMaintainer.equalsIgnoreCase("Unknown")) {
+	} else if (buildType.toLowerCase().equals("official") && SigmaMaintainer.equalsIgnoreCase("Unknown")) {
 	     return isOffMiss;
-	} else if (buildType.equalsIgnoreCase("Community") && SparkMaintainer.equalsIgnoreCase("Unknown")) {
+	} else if (buildType.equalsIgnoreCase("Community") && SigmaMaintainer.equalsIgnoreCase("Unknown")) {
 	     return isCommMiss;
 	} else {
 	    return isCommFine;
@@ -116,23 +116,23 @@ public class sparkInfoPreferenceController extends AbstractPreferenceController 
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
-        final Preference arcVerPref = screen.findPreference(KEY_SPARK_VERSION);
-        final Preference arcDevPref = screen.findPreference(KEY_SPARK_DEVICE);
+        final Preference arcVerPref = screen.findPreference(KEY_SIGMA_VERSION);
+        final Preference arcDevPref = screen.findPreference(KEY_SIGMA_DEVICE);
         final Preference buildStatusPref = screen.findPreference(KEY_BUILD_STATUS);
         final Preference buildVerPref = screen.findPreference(KEY_BUILD_VERSION);
-        final String SparkVersion = getSparkVersion();
-        final String SparkDevice = getDeviceName();
-        final String SparkReleaseType = getSparkReleaseType();
-        final String SparkMaintainer = getSparkMaintainer();
-	final String buildStatus = getSparkbuildStatus();
-	final String buildVer = getSparkBuildVersion();
-	final String isOfficial = SystemProperties.get(PROP_SPARK_RELEASETYPE,
+        final String SigmaVersion = getSigmaVersion();
+        final String SigmaDevice = getDeviceName();
+        final String SigmaReleaseType = getSigmaReleaseType();
+        final String SigmaMaintainer = getSigmaMaintainer();
+	final String buildStatus = getSigmabuildStatus();
+	final String buildVer = getSigmaBuildVersion();
+	final String isOfficial = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
                 this.mContext.getString(R.string.device_info_default));
 	buildStatusPref.setTitle(buildStatus);
-	buildStatusPref.setSummary(SparkMaintainer);
+	buildStatusPref.setSummary(SigmaMaintainer);
 	buildVerPref.setSummary(buildVer);
-        arcVerPref.setSummary(SparkVersion);
-        arcDevPref.setSummary(SparkDevice);
+        arcVerPref.setSummary(SigmaVersion);
+        arcDevPref.setSummary(SigmaDevice);
 	if (isOfficial.toLowerCase().contains("official")) {
 		 buildStatusPref.setIcon(R.drawable.verified);
 	} else {
@@ -147,6 +147,6 @@ public class sparkInfoPreferenceController extends AbstractPreferenceController 
 
     @Override
     public String getPreferenceKey() {
-        return KEY_SPARK_INFO;
+        return KEY_SIGMA_INFO;
     }
 }

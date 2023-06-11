@@ -87,7 +87,7 @@
         <Preference
             android:key="device_model"
             android:order="28"
-            android:title="@string/spark_model_info"
+            android:title="@string/sigma_model_info"
             android:icon="@drawable/ic_model_hardware"
             android:summary="@string/summary_placeholder"
             settings:layout="@layout/arc_card_about_top"

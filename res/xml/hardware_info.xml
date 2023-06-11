@@ -18,14 +18,14 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
-    android:title="@string/spark_model_info"
+    android:title="@string/sigma_model_info"
     settings:keywords="@string/keywords_model_and_hardware">
-    
+
     <PreferenceCategory
         android:key="device_detail_category"
         android:selectable="false"
         android:title="@string/my_device_info_device_details_category_title">
-        
+
         <!-- IMEI -->
         <com.android.settings.deviceinfo.PhoneNumberSummaryPreference
             android:key="imei_info"
@@ -34,7 +34,7 @@
             android:summary="@string/summary_placeholder"
             settings:keywords="@string/keywords_imei_info"
             settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController"/>    
+            settings:controller="com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController"/>
 
         <!-- SIM status -->
         <Preference
@@ -98,7 +98,7 @@
         settings:enableCopying="true"/>
 
     </PreferenceCategory>
-    
+
     <PreferenceCategory
     	android:key="device_identifiers"
         android:title="@string/my_device_info_device_identifiers_category_title">
@@ -110,7 +110,7 @@
         android:selectable="false"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.BasebandVersionPreferenceController"/>
-            
+
         <!-- Bluetooth address -->
         <Preference
             android:key="bt_address"
@@ -126,7 +126,7 @@
             android:summary="@string/summary_placeholder"
             android:selectable="false"
             settings:enableCopying="true"/>
-            
+
         <!--IP address -->
         <Preference
             android:key="wifi_ip_address"
@@ -134,7 +134,7 @@
             android:summary="@string/summary_placeholder"
             android:selectable="false"
             settings:enableCopying="true"/>
-            
+
         <!-- Wi-Fi MAC address -->
         <Preference
             android:key="saved_accesspoints_wifi_mac_address"
@@ -142,7 +142,7 @@
             android:summary="@string/view_saved_network"
             android:fragment="com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSettings2"
             settings:enableCopying="false"/>
-    
+
         <!-- Manual -->
         <Preference
             android:key="manual"

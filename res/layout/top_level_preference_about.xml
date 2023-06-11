@@ -15,8 +15,8 @@
         app:strokeWidth="4dp"
         app:cardElevation="0dp"
         app:cardCornerRadius="32dp">
-      
-        <com.spark.utils.bannerHeaderView
+
+        <com.sigma.utils.bannerHeaderView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -26,7 +26,7 @@
             android:background="@drawable/wallpaper_scrim"
             android:contentDescription="@null"
             android:orientation="horizontal" />
-  
+
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"

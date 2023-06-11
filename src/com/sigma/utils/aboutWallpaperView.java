@@ -14,37 +14,32 @@
  * limitations under the License.
  */
 
-package com.spark.utils;
+package com.sigma.utils;
 
 import android.app.WallpaperManager;
 import android.content.Context;
-import android.graphics.RenderEffect;
-import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
 
-public class WallpaperBlurView extends ImageView {
+public class aboutWallpaperView extends ImageView {
 
     Context contextM;
 
-    public WallpaperBlurView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public aboutWallpaperView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         contextM = context;
-        setRenderEffect(RenderEffect.createBlurEffect(100, 100, Shader.TileMode.MIRROR));
     }
 
-    public WallpaperBlurView(Context context, AttributeSet attrs) {
+    public aboutWallpaperView(Context context, AttributeSet attrs) {
         super(context, attrs);
         contextM = context;
-        setRenderEffect(RenderEffect.createBlurEffect(100, 100, Shader.TileMode.MIRROR));
     }
 
 
-    public WallpaperBlurView(Context context) {
+    public aboutWallpaperView(Context context) {
         super(context);
         contextM = context;
-        setRenderEffect(RenderEffect.createBlurEffect(100, 100, Shader.TileMode.MIRROR));
     }
 
     @Override

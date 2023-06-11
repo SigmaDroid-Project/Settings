@@ -35,7 +35,7 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
-import com.android.settings.deviceinfo.firmwareversion.sparkInfoPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.sigmaInfoPreferenceController;
 import com.android.settings.deviceinfo.firmwareversion.InfoPrefsController;
 
 import java.util.ArrayList;
@@ -164,7 +164,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new sparkInfoPreferenceController(context));
+        controllers.add(new sigmaInfoPreferenceController(context));
         controllers.add(new InfoPrefsController(context));
         return controllers;
     }

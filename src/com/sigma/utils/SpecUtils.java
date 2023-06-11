@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.spark.utils;
+package com.sigma.utils;
 
 import android.os.SystemProperties;
 import android.content.Context;
@@ -35,7 +35,7 @@ import java.io.File;
 import com.android.settings.R;
 
 public class SpecUtils {
-    private static final String CPU_MODEL_PROPERTY = "ro.spark.chipset";
+    private static final String CPU_MODEL_PROPERTY = "ro.sigma.chipset";
     private static final String FALLBACK_CPU_MODEL_PROPERTY = "ro.board.platform";
 
     public static String getTotalInternalMemorySize() {

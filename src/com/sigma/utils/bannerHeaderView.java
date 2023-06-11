@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.spark.utils;
+package com.sigma.utils;
 
 import android.os.UserHandle;
 import android.provider.Settings;

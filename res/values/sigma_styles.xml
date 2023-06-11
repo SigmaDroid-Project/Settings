@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    
+
     <style name="op_control_text_style_base">
         <item name="android:breakStrategy">simple</item>
     </style>
@@ -9,7 +9,7 @@
         <item name="android:textSize">13.0sp</item>
         <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
     </style>
-    
+
     <style name="op_control_text_style_h6" parent="@style/op_control_text_style_base">
         <item name="android:textSize">18.0sp</item>
         <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
@@ -36,20 +36,20 @@
         <item name="android:lineSpacingMultiplier">1.1</item>
     </style>
 
-    <style name="TextAppearance.sparkInfoReleaseSummary">
+    <style name="TextAppearance.sigmaInfoReleaseSummary">
         <item name="android:textColor">@color/op_control_text_color_primary</item>
         <item name="android:textSize">12.5sp</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
         <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
     </style>
-    
-    <style name="TextAppearance.sparkInfoTitle">
+
+    <style name="TextAppearance.sigmaInfoTitle">
         <item name="android:textColor">@color/op_control_text_color_secondary</item>
         <item name="android:textSize">13sp</item>
         <item name="android:textAllCaps">true</item>
     </style>
 
-    <style name="TextAppearance.sparkInfoSummary">
+    <style name="TextAppearance.sigmaInfoSummary">
         <item name="android:textColor">@color/op_control_text_color_primary</item>
         <item name="android:textSize">12.5sp</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
@@ -72,5 +72,5 @@
         <item name="android:fontFamily">@string/settingslib_config_headlineFontFamily</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/settingslib_text_color_primary_device_default</item>
-    </style>     
+    </style>
 </resources>

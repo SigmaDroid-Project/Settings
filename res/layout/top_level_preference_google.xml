@@ -6,7 +6,7 @@
     android:layout_marginStart="@dimen/card_margin_start"
     android:layout_marginEnd="@dimen/card_margin_end"
     android:layout_marginBottom="20dp"
-    android:background="@drawable/spark_preference_bottom_background"
+    android:background="@drawable/sigma_preference_bottom_background"
     android:paddingStart="18dp">
 
     <ImageView
@@ -16,10 +16,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-        
+
     <androidx.preference.internal.PreferenceImageView
         android:id="@+id/google_pref_icon"
-        android:padding="1.5dp" 
+        android:padding="1.5dp"
         android:layout_width="@dimen/dashboard_icon_size"
         android:layout_height="@dimen/dashboard_icon_size"
         android:src="@drawable/op_ic_homepage_google_settings"
@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-        
+
     <LinearLayout
 	android:layout_height="match_parent"
         android:layout_width="match_parent"

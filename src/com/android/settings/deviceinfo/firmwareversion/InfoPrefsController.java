@@ -18,7 +18,7 @@ import android.content.Context;
 import android.os.SystemProperties;
 import android.widget.TextView;
 import android.text.TextUtils;
-import com.spark.utils.SpecUtils;
+import com.sigma.utils.SpecUtils;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
@@ -31,7 +31,7 @@ import com.android.settingslib.widget.LayoutPreference;
 public class InfoPrefsController extends AbstractPreferenceController implements
         PreferenceControllerMixin {
 
-    private static final String KEY_SPARK_INFO = "spark_info";
+    private static final String KEY_SIGMA_INFO = "sigma_info";
     private static final String KEY_STORAGE = "storage";
     private static final String KEY_CHIPSET = "chipset";
     private static final String KEY_BATTERY = "battery";
@@ -49,20 +49,20 @@ public class InfoPrefsController extends AbstractPreferenceController implements
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
-        final LayoutPreference sparkInfoPreference = screen.findPreference(KEY_SPARK_INFO);
-        final TextView chipText = (TextView) sparkInfoPreference.findViewById(R.id.chipset_summary);
-        final TextView storText = (TextView) sparkInfoPreference.findViewById(R.id.cust_storage_summary);
-        final TextView battText = (TextView) sparkInfoPreference.findViewById(R.id.cust_battery_summary);
-        final TextView dispText = (TextView) sparkInfoPreference.findViewById(R.id.cust_display_summary);
+        final LayoutPreference sigmaInfoPreference = screen.findPreference(KEY_SIGMA_INFO);
+        final TextView chipText = (TextView) sigmaInfoPreference.findViewById(R.id.chipset_summary);
+        final TextView storText = (TextView) sigmaInfoPreference.findViewById(R.id.cust_storage_summary);
+        final TextView battText = (TextView) sigmaInfoPreference.findViewById(R.id.cust_battery_summary);
+        final TextView dispText = (TextView) sigmaInfoPreference.findViewById(R.id.cust_display_summary);
 
         chipText.setText(SpecUtils.getProcessorModel());
         storText.setText(String.valueOf(SpecUtils.getTotalInternalMemorySize()) + "GB ROM + " + String.valueOf(SpecUtils.getTotalRAM()) + "GB RAM");
         battText.setText(SpecUtils.getBatteryCapacity(mContext) + " mAh");
-        dispText.setText(SpecUtils.getScreenRes(mContext)); 
+        dispText.setText(SpecUtils.getScreenRes(mContext));
     }
 
     @Override
     public String getPreferenceKey() {
         return KEY_STORAGE;
     }
-} 
+}

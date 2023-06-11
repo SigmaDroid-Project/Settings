@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@drawable/spark_preference_about_middle"
+    android:background="@drawable/sigma_preference_about_middle"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"

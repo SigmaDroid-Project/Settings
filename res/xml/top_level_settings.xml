@@ -78,13 +78,13 @@
         settings:controller="com.android.settings.connecteddevice.TopLevelConnectedDevicesPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
-        android:fragment="com.spark.settings.SparkSettings"
+        android:fragment="com.sigma.settings.SigmaSettings"
         android:icon="@drawable/op_ic_homepage_personalizations"
         android:key="top_level_fireworks"
         android:order="-130"
         android:title="@string/fireworks_title"
         android:summary="@string/build_tweaks_summary_title"
-        settings:controller="com.spark.settings.TopLevelFireworksEntryPreferenceController" />
+        settings:controller="com.sigma.settings.TopLevelAlphaEntryPreferenceController" />
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.DisplaySettings"

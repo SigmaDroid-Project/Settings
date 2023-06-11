@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@drawable/spark_preference_top_background_card"
+    android:background="@drawable/sigma_preference_top_background_card"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/card_margin_start_aqua"
@@ -79,7 +79,7 @@
                     android:layout_height="32dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_arrow"
-                    android:tint="@color/op_control_text_color_secondary" />   
+                    android:tint="@color/op_control_text_color_secondary" />
 
         </androidx.cardview.widget.CardView>
     </LinearLayout>

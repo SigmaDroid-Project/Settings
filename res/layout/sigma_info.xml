@@ -15,7 +15,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center_vertical"
-    android:id="@+id/spark_info"
+    android:id="@+id/sigma_info"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -32,7 +32,7 @@
         app:strokeColor="?android:attr/textColorPrimary"
         app:strokeWidth="3dp">
 
-        <com.spark.utils.aboutWallpaperView
+        <com.sigma.utils.aboutWallpaperView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -61,14 +61,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
             android:text="@string/chipset"
-            style="@style/TextAppearance.sparkInfoTitle" />
+            style="@style/TextAppearance.sigmaInfoTitle" />
 
         <TextView
             android:id="@+id/chipset_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="13dp"
-            style="@style/TextAppearance.sparkInfoSummary" />
+            style="@style/TextAppearance.sigmaInfoSummary" />
 
         <TextView
             android:id="@+id/storage"
@@ -76,14 +76,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
             android:text="@string/storage"
-            style="@style/TextAppearance.sparkInfoTitle" />
+            style="@style/TextAppearance.sigmaInfoTitle" />
 
         <TextView
             android:id="@+id/cust_storage_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="13dp"
-            style="@style/TextAppearance.sparkInfoReleaseSummary" />
+            style="@style/TextAppearance.sigmaInfoReleaseSummary" />
 
         <TextView
             android:id="@+id/battery"
@@ -91,28 +91,28 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
             android:text="@string/battery"
-            style="@style/TextAppearance.sparkInfoTitle" />
+            style="@style/TextAppearance.sigmaInfoTitle" />
 
         <TextView
             android:id="@+id/cust_battery_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="13dp"
-            style="@style/TextAppearance.sparkInfoReleaseSummary" />
-            
+            style="@style/TextAppearance.sigmaInfoReleaseSummary" />
+
         <TextView
             android:id="@+id/display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="3dp"
             android:text="@string/display"
-            style="@style/TextAppearance.sparkInfoTitle" />
+            style="@style/TextAppearance.sigmaInfoTitle" />
 
         <TextView
             android:id="@+id/cust_display_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextAppearance.sparkInfoSummary" />
+            style="@style/TextAppearance.sigmaInfoSummary" />
 
     </LinearLayout>
 </RelativeLayout>

@@ -21,31 +21,31 @@
     android:title="@string/about_device_info"
     settings:keywords="@string/keywords_android_version">
 
-    <!-- Spark info -->
+    <!-- Sigma info -->
     <com.android.settingslib.widget.LayoutPreference
-        android:key="spark_info"
-        android:layout="@layout/spark_info"
+        android:key="sigma_info"
+        android:layout="@layout/sigma_info"
         android:selectable="false" />
 
     <Preference
         android:key="rom_build_status"
-        settings:layout="@layout/spark_card_build_status"
+        settings:layout="@layout/sigma_card_build_status"
         android:title="@string/build_status"
         android:summary="@string/build_status_summary_placeholder"
-        android:icon="@drawable/ic_spark_build_status"
+        android:icon="@drawable/ic_sigma_build_status"
         settings:enableCopying="true"
         android:selectable="true"/>
 
     <!-- device_title -->
     <Preference
-        android:key="spark_device"
+        android:key="sigma_device"
         settings:layout="@layout/arc_card_about_middle"
-        android:title="@string/spark_device_title"
+        android:title="@string/sigma_device_title"
         android:icon="@drawable/ic_build_number"
         settings:enableCopying="true"
         android:selectable="true"/>
 
-    <!-- Spark Codename -->
+    <!-- Sigma Codename -->
     <Preference
         android:key="os_firmware_version"
         android:title="@string/firmware_version"
@@ -58,10 +58,10 @@
 
     <!-- version_title -->
     <Preference
-        android:key="spark_version"
+        android:key="sigma_version"
         settings:layout="@layout/arc_card_about_middle"
-        android:title="@string/spark_version_title"
-        android:icon="@drawable/ic_spark"
+        android:title="@string/sigma_version_title"
+        android:icon="@drawable/ic_sigma"
         settings:enableCopying="true"
         android:selectable="true" />
 
@@ -76,9 +76,9 @@
 
     <!-- Build date -->
     <Preference
-        android:key="spark_build_version"
+        android:key="sigma_build_version"
         settings:layout="@layout/arc_card_about_middle"
-        android:title="@string/spark_build_version_title"
+        android:title="@string/sigma_build_version_title"
         android:icon="@drawable/ic_legal"
         settings:enableCopying="true"
         android:selectable="true"/>

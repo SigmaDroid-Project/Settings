@@ -29,7 +29,7 @@ Copyright (C) The 2022 RiceDroid Project
         app:strokeWidth="4dp"
         app:cardElevation="0dp">
 
-        <com.spark.utils.WallpaperBlurView
+        <com.sigma.utils.WallpaperBlurView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -39,7 +39,7 @@ Copyright (C) The 2022 RiceDroid Project
             android:foreground="@drawable/wallpaper_scrim"
             android:background="@drawable/wallpaper_scrim"
             android:orientation="vertical" />
-                
+
                 <LinearLayout
                     android:id="@+id/banner_layout"
                     android:layout_width="wrap_content"
@@ -75,7 +75,7 @@ Copyright (C) The 2022 RiceDroid Project
                         android:textColor="@*android:color/white"
                         android:textSize="24sp"
                          />
-                        
+
                 </LinearLayout>
 
     </androidx.cardview.widget.CardView>
