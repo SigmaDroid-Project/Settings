@@ -17,8 +17,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Fireworks -->
-    <string name="fireworks_title">Fireworks</string>
-    <string name="build_tweaks_summary_title">Customizations and more !</string>
+    <string name="fireworks_title">SigmaDroid Toolbox</string>
+    <string name="build_tweaks_summary_title">Everything including the kitchen sink!</string>
 
     <!-- SigmaDroid versioning -->
     <string name="sigma_version_title">SigmaDroid Version</string>
