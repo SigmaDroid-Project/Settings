@@ -31,9 +31,9 @@ import com.android.settings.R;
 
 public class AlphaVersionPreference extends ExpandablePreference {
 
-    private static final String ALPHA_BUILD_VERSION = "ro.alpha.modversion";
-    private static final String ALPHA_PACKAGE_TYPE = "ro.alpha.build.package";
-    private static final String ALPHA_VERSION = "ro.alpha.display.version";
+    private static final String ALPHA_BUILD_VERSION = "ro.sigma.modversion";
+    private static final String ALPHA_PACKAGE_TYPE = "ro.sigma.build.package";
+    private static final String ALPHA_VERSION = "ro.sigma.display.version";
 
     public AlphaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
