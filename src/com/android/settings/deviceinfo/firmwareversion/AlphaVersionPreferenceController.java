@@ -28,7 +28,7 @@ import com.android.settings.core.BasePreferenceController;
 
 public class AlphaVersionPreferenceController extends BasePreferenceController {
 
-    private static final String ALPHA_BUILD_VERSION = "ro.alpha.modversion";
+    private static final String ALPHA_BUILD_VERSION = "ro.sigma.modversion";
     private static final String KEY_ALPHA_VERSION = "alpha_version";
 
     public AlphaVersionPreferenceController(Context context, String preferenceKey) {
