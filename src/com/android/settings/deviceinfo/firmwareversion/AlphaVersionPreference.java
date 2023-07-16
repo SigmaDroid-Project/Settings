@@ -31,9 +31,9 @@ import com.android.settings.R;
 
 public class AlphaVersionPreference extends ExpandablePreference {
 
-    private static final String ALPHA_BUILD_VERSION = "ro.sigma.modversion";
-    private static final String ALPHA_PACKAGE_TYPE = "ro.sigma.build.package";
-    private static final String ALPHA_VERSION = "ro.sigma.display.version";
+    private static final String SIGMA_BUILD_VERSION = "ro.sigma.modversion";
+    private static final String SIGMA_PACKAGE_TYPE = "ro.sigma.build.package";
+    private static final String SIGMA_VERSION = "ro.sigma.display.version";
 
     public AlphaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
@@ -57,14 +57,14 @@ public class AlphaVersionPreference extends ExpandablePreference {
     }
 
     private String getFullAlphaVersion(Context context) {
-        return SystemProperties.get(ALPHA_VERSION,
+        return SystemProperties.get(SIGMA_VERSION,
                 context.getString(R.string.unknown));
     }
 
     private String getShortAlphaVersion(Context context) {
-        String romVersion = SystemProperties.get(ALPHA_BUILD_VERSION,
+        String romVersion = SystemProperties.get(SIGMA_BUILD_VERSION,
                 context.getString(R.string.device_info_default));
-        String romPackagetype = SystemProperties.get(ALPHA_PACKAGE_TYPE,
+        String romPackagetype = SystemProperties.get(SIGMA_PACKAGE_TYPE,
                 context.getString(R.string.device_info_default));
         String shortVersion = romVersion + " (" + romPackagetype + ")";
         return shortVersion;
