@@ -28,8 +28,8 @@ import com.android.settings.core.BasePreferenceController;
 
 public class AlphaVersionPreferenceController extends BasePreferenceController {
 
-    private static final String ALPHA_BUILD_VERSION = "ro.sigma.modversion";
-    private static final String KEY_ALPHA_VERSION = "alpha_version";
+    private static final String SIGMA_BUILD_VERSION = "ro.sigma.modversion";
+    private static final String KEY_SIGMA_VERSION = "sigma_version";
 
     public AlphaVersionPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
@@ -42,12 +42,12 @@ public class AlphaVersionPreferenceController extends BasePreferenceController {
 
     @Override
     public String getPreferenceKey() {
-        return KEY_ALPHA_VERSION;
+        return KEY_SIGMA_VERSION;
     }
 
     @Override
     public CharSequence getSummary() {
-        return SystemProperties.get(ALPHA_BUILD_VERSION,
+        return SystemProperties.get(SIGMA_BUILD_VERSION,
                 mContext.getString(R.string.device_info_default));
     }
 }
