@@ -30,8 +30,8 @@ public class BuildStatusPreferenceController extends AbstractPreferenceControlle
 
     private static final String TAG = "BuildStatusPreferenceController";
     private static final String KEY_BUILD_STATUS = "rom_build_status";
-    private static final String ALPHA_MAINTAINER = "ro.alpha.maintainer";
-    private static final String ALPHA_RELEASE_TYPE = "ro.alpha.release.type";
+    private static final String ALPHA_MAINTAINER = "ro.sigma.maintainer";
+    private static final String ALPHA_RELEASE_TYPE = "ro.sigma.release.type";
 
     public BuildStatusPreferenceController(Context context) {
         super(context);
