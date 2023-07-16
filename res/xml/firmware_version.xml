@@ -72,7 +72,7 @@
 
         <!-- AlphaDroid version -->
         <com.android.settings.deviceinfo.firmwareversion.AlphaVersionPreference
-            android:key="alpha_version"
+            android:key="sigma_version"
             android:title="@*lineageos.platform:string/lineage_version"
             android:summary="@string/summary_placeholder"
             android:icon="@drawable/ic_alpha"
