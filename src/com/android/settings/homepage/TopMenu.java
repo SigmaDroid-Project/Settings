@@ -149,7 +149,7 @@ public class TopMenu extends Preference {
         mBattery.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$PowerUsageSummary"));
+                intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$PowerUsageSummaryActivity"));
                 context.startActivity(intent);
             }
         });
