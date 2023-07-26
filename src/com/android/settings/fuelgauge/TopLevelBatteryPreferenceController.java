@@ -55,7 +55,7 @@ public class TopLevelBatteryPreferenceController extends BasePreferenceControlle
                 updateState(mPreference);
             }, true /* shortString */);
             // mIsBatteryPresent could change
-            mPreference.setVisible(getAvailabilityStatus() == AVAILABLE);
+            //mPreference.setVisible(getAvailabilityStatus() == AVAILABLE);
         });
 
         mBatteryStatusFeatureProvider = FeatureFactory.getFactory(context)
