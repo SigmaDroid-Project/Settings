@@ -181,7 +181,7 @@ public class FingerprintSettings extends SubSettings {
                 mRequireScreenOnToAuthPreferenceController;
         private RestrictedSwitchPreference mRequireScreenOnToAuthPreference;
         private PreferenceCategory mFingerprintUnlockCategory;
-        private boolean mFingerprintWakeAndUnlock;
+        private boolean mRequireScreenOnToAuth;
 
         private FingerprintManager mFingerprintManager;
         private FingerprintUpdater mFingerprintUpdater;
@@ -248,7 +248,7 @@ public class FingerprintSettings extends SubSettings {
                     }
 
                     private void updateDialog() {
-                        if (!isUdfps() && mFingerprintWakeAndUnlock) {
+                        if (isSfps() && !mRequireScreenOnToAuth) {
                             setRequireScreenOnToAuthVisibility();
                         }
                         RenameDialog renameDialog = (RenameDialog) getFragmentManager().
@@ -348,8 +348,8 @@ public class FingerprintSettings extends SubSettings {
             mFingerprintManager = Utils.getFingerprintManagerOrNull(activity);
             mFingerprintUpdater = new FingerprintUpdater(activity, mFingerprintManager);
             mSensorProperties = mFingerprintManager.getSensorPropertiesInternal();
-            mFingerprintWakeAndUnlock = getContext().getResources().getBoolean(
-                    org.lineageos.platform.internal.R.bool.config_fingerprintWakeAndUnlock);
+            mRequireScreenOnToAuth = getContext().getResources().getBoolean(
+                    com.android.internal.R.bool.config_performantAuthDefault);
 
             mToken = getIntent().getByteArrayExtra(
                     ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE_TOKEN);
@@ -519,7 +519,7 @@ public class FingerprintSettings extends SubSettings {
                         return true;
                     });
             mFingerprintUnlockCategory.setVisible(false);
-            if (!isUdfps() && mFingerprintWakeAndUnlock) {
+            if (isSfps() && !mRequireScreenOnToAuth) {
                 setRequireScreenOnToAuthVisibility();
             }
             setPreferenceScreen(root);
