@@ -21,11 +21,11 @@
     android:key="my_device_info_pref_screen"
     android:title="@string/about_settings">
 
-    <com.android.settingslib.widget.LayoutPreference
-        android:key="my_device_info_header"
-        android:order="-1"
-        android:layout="@layout/settings_entity_header"
-        android:selectable="false"/>
+            <!-- Sigma logo -->
+    <PreferenceScreen
+        android:layout="@layout/sigma_logo"
+        android:key="sigma_logo"
+        android:selectable="false" />
 
     <PreferenceCategory
         android:key="basic_info_category"
@@ -55,7 +55,7 @@
             settings:enableCopying="true"
             settings:keywords="@string/keywords_model_and_hardware"
             settings:controller="com.android.settings.deviceinfo.HardwareInfoPreferenceController"/>
-            
+
         <!-- Device name -->
         <com.android.settings.widget.ValidatedEditTextPreference
             android:key="device_name"
@@ -111,7 +111,7 @@
             settings:isPreferenceVisible="@bool/config_show_sim_info"
             settings:controller="com.android.settings.deviceinfo.PhoneNumberPreferenceController"
             settings:enableCopying="true"/>
-        
+
         <!-- SIM status -->
         <Preference
             android:key="sim_status"
