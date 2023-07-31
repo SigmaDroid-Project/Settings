@@ -21,9 +21,9 @@
     android:title=" "
     settings:keywords="@string/keywords_android_version">
 
-    <!-- Alpha logo -->
+    <!-- SigmaDroid logo -->
     <PreferenceScreen
-        android:key="alpha_logo"
+        android:key="sigma_logo"
         android:selectable="false" />
 
     <Preference
