@@ -79,8 +79,8 @@ public class FirmwareVersionSettings extends DashboardFragment {
             String mKey = mPreference.getKey();
             if (mKey == null) continue;
 
-            if (mKey.equals("alpha_logo")) {
-                mPreference.setLayoutResource(R.layout.alpha_logo);
+            if (mKey.equals("sigma_logo")) {
+                mPreference.setLayoutResource(R.layout.sigma_logo);
             } else if (mKey.equals("rom_build_status")) {
                 mPreference.setLayoutResource(R.layout.card_build_status);
             } else if (mKey.startsWith("category")) {
