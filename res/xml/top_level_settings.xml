@@ -25,7 +25,7 @@
         android:title="@string/alpha_settings_title"
         android:summary="@string/alpha_settings_summary"
         android:order="-204"
-        android:icon="@drawable/ic_settings_alpha"
+        android:icon="@drawable/ic_settings_wallpaper_white"
         android:fragment="com.alpha.settings.AlphaSettings"
         settings:controller="com.alpha.settings.TopLevelAlphaEntryPreferenceController" />
 
