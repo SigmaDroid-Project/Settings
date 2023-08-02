@@ -26,12 +26,12 @@ import androidx.preference.Preference;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class AlphaVersionPreferenceController extends BasePreferenceController {
+public class SigmaVersionPreferenceController extends BasePreferenceController {
 
     private static final String SIGMA_BUILD_VERSION = "ro.sigma.modversion";
     private static final String KEY_SIGMA_VERSION = "sigma_version";
 
-    public AlphaVersionPreferenceController(Context context, String preferenceKey) {
+    public SigmaVersionPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
     }
 

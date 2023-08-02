@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/alpha_settings"
+        android:id="@+id/sigma_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="?android:attr/listPreferredItemPaddingEnd"
@@ -31,7 +31,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="6dp"
             android:padding="4dp"
-            android:backgroundTint="@color/alpha_color_secondary_accent"
+            android:backgroundTint="@color/sigma_color_secondary_accent"
             android:background="@drawable/dot_preference_background_full">
 
             <androidx.preference.internal.PreferenceImageView
@@ -43,7 +43,7 @@
                 app:maxHeight="48dp"
                 android:paddingVertical="4dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_settings_alpha" />
+                android:src="@drawable/ic_settings_sigma" />
         </FrameLayout>
 
         <LinearLayout
@@ -60,7 +60,7 @@
                 android:layout_weight="1"
                 android:ellipsize="marquee"
                 android:singleLine="true"
-                android:text="@string/alpha_settings_title"
+                android:text="@string/sigma_settings_title"
                 android:textAppearance="?android:attr/textAppearanceListItem"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textDirection="locale" />
@@ -71,7 +71,7 @@
                 android:layout_weight="1"
                 android:ellipsize="marquee"
                 android:singleLine="true"
-                android:text="@string/alpha_settings_summary"
+                android:text="@string/sigma_settings_summary"
                 style="@style/PreferenceSummaryTextStyle"
                 android:textColor="?android:attr/textColorPrimary" />
         </LinearLayout>
@@ -91,7 +91,7 @@
             android:padding="10dp"
             android:layout_marginStart="?android:attr/listPreferredItemPaddingEnd"
             android:layout_marginEnd="2dp"
-            android:backgroundTint="@color/alpha_color_accent2"
+            android:backgroundTint="@color/sigma_color_accent2"
             android:background="@drawable/dot_preference_background_bottom_left"
             android:orientation="horizontal"
             android:gravity="center">
@@ -137,7 +137,7 @@
             android:padding="10dp"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd"
-            android:backgroundTint="@color/alpha_color_secondary_accent"
+            android:backgroundTint="@color/sigma_color_secondary_accent"
             android:background="@drawable/dot_preference_background_bottom_right"
             android:gravity="center">
 
