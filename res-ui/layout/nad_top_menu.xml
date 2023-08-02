@@ -43,7 +43,7 @@
                 app:maxHeight="48dp"
                 android:paddingVertical="4dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_settings_wallpaper_white" />
+                android:src="@drawable/ic_settings_alpha" />
         </FrameLayout>
 
         <LinearLayout
