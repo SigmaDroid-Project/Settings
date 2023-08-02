@@ -25,7 +25,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/alpha_action_bar_layout"
+        android:id="@+id/sigma_action_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="?android:attr/actionBarTheme" />
-        <include layout="@layout/settings_alphabet_header"/>
+        <include layout="@layout/settings_sigma_toolbox_header"/>
     </LinearLayout>
     <FrameLayout
         android:id="@+id/content_frame"
