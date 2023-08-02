@@ -66,18 +66,18 @@
             settings:enableCopying="true"/>
 
     <Preference
-        android:key="category_alpha"
-        android:title="@string/category_alpha_info"
+        android:key="category_sigma"
+        android:title="@string/category_sigma_info"
         android:selectable="false"/>
 
         <!-- SigmaDroid version -->
-        <com.android.settings.deviceinfo.firmwareversion.AlphaVersionPreference
+        <com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreference
             android:key="sigma_version"
             android:title="@*lineageos.platform:string/lineage_version"
             android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_alpha"
+            android:icon="@drawable/ic_sigma"
             settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.AlphaVersionPreferenceController"/>
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreferenceController"/>
 
         <!-- Build date -->
         <Preference

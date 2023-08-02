@@ -179,8 +179,8 @@ import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSettings2;
 import com.android.settings.wifi.tether.WifiTetherSettings;
 
-import com.alpha.settings.AlphaSettings;
-import com.alpha.settings.fragments.ui.SmartPixels;
+import com.sigma.settings.SigmaSettings;
+import com.sigma.settings.fragments.ui.SmartPixels;
 
 import con.android.settings.wifi.tether.WifiTetherClientManager;
 
@@ -351,7 +351,7 @@ public class SettingsGateway {
             AppLocaleDetails.class.getName(),
             TurnScreenOnSettings.class.getName(),
             TurnScreenOnDetails.class.getName(),
-            AlphaSettings.class.getName(),
+            SigmaSettings.class.getName(),
             SmartPixels.class.getName(),
             WifiTetherClientManager.class.getName()
     };
@@ -396,7 +396,7 @@ public class SettingsGateway {
             Settings.MyDeviceInfoActivity.class.getName(),
             Settings.ModuleLicensesActivity.class.getName(),
             UserBackupSettingsActivity.class.getName(),
-            Settings.AlphaSettingsActivity.class.getName(),
+            Settings.SigmaSettingsActivity.class.getName(),
             Settings.SmartPixelsActivity.class.getName(),
     };
 }

@@ -29,39 +29,39 @@ import androidx.preference.PreferenceViewHolder;
 import com.android.settings.preferences.ExpandablePreference;
 import com.android.settings.R;
 
-public class AlphaVersionPreference extends ExpandablePreference {
+public class SigmaVersionPreference extends ExpandablePreference {
 
     private static final String SIGMA_BUILD_VERSION = "ro.sigma.modversion";
     private static final String SIGMA_PACKAGE_TYPE = "ro.sigma.build.package";
     private static final String SIGMA_VERSION = "ro.sigma.display.version";
 
-    public AlphaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr,
+    public SigmaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        setCollapsedSummary(getShortAlphaVersion(context));
-        setExpandedSummary(getFullAlphaVersion(context));
+        setCollapsedSummary(getShortSigmaVersion(context));
+        setExpandedSummary(getFullSigmaVersion(context));
     }
 
-    public AlphaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SigmaVersionPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         this(context, attrs, defStyleAttr, 0);
     }
 
-    public AlphaVersionPreference(Context context, AttributeSet attrs) {
+    public SigmaVersionPreference(Context context, AttributeSet attrs) {
         this(context, attrs, TypedArrayUtils.getAttr(context,
                 androidx.preference.R.attr.preferenceStyle,
                 android.R.attr.preferenceStyle));
     }
 
-    public AlphaVersionPreference(Context context) {
+    public SigmaVersionPreference(Context context) {
         this(context, null);
     }
 
-    private String getFullAlphaVersion(Context context) {
+    private String getFullSigmaVersion(Context context) {
         return SystemProperties.get(SIGMA_VERSION,
                 context.getString(R.string.unknown));
     }
 
-    private String getShortAlphaVersion(Context context) {
+    private String getShortSigmaVersion(Context context) {
         String romVersion = SystemProperties.get(SIGMA_BUILD_VERSION,
                 context.getString(R.string.device_info_default));
         String romPackagetype = SystemProperties.get(SIGMA_PACKAGE_TYPE,
