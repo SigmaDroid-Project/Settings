@@ -15,7 +15,7 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Alpha settings collapsing toolbar-->
-    <dimen name="alpha_toolbar_layout_height">20dp</dimen>
-    <dimen name="alpha_scrim_visible_height_trigger">20dp</dimen>
+    <!-- Sigma settings collapsing toolbar-->
+    <dimen name="sigma_toolbar_layout_height">20dp</dimen>
+    <dimen name="sigma_scrim_visible_height_trigger">20dp</dimen>
 </resources>
