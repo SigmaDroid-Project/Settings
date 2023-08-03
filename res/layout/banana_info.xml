@@ -58,7 +58,7 @@
             android:layout_gravity="center"
             android:tint="?android:attr/colorAccent"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_settings_banana_logo" />
+            android:src="@drawable/ic_settings_sigma" />
 
     </com.google.android.material.card.MaterialCardView>
 
