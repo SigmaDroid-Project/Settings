@@ -23,7 +23,6 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.view.View;
 
-
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
@@ -37,6 +36,10 @@ import com.android.settingslib.search.SearchIndexable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
@@ -127,10 +130,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
                 Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
     }
 
-    @Override
-    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, this /* fragment */, getSettingsLifecycle());
-    }
+
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, FirmwareVersionSettings fragment, Lifecycle lifecycle) {
@@ -153,6 +153,13 @@ public class FirmwareVersionSettings extends DashboardFragment {
     @Override
     public int getMetricsCategory() {
         return SettingsEnums.DIALOG_FIRMWARE_VERSION;
+    }
+
+    @Override
+    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+        final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new BananaInfoPreferenceController(context));
+        return controllers;
     }
 
     /**

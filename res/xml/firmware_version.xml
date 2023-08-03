@@ -21,112 +21,84 @@
     android:title=" "
     settings:keywords="@string/keywords_android_version">
 
-    <!-- SigmaDroid logo -->
-    <PreferenceScreen
-        android:key="sigma_logo"
+    <!-- BananaDroid info -->
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="banana_info"
+        android:layout="@layout/banana_info"
         android:selectable="false" />
 
+    <!-- Android version -->
     <Preference
-        android:key="rom_build_status"
-        android:title="@string/build_status_title"
-        android:summary="@string/build_status_summary_placeholder"
-        android:icon="@drawable/ic_verified"
+        android:key="os_firmware_version"
+        android:title="@string/firmware_version"
+        android:summary="@string/summary_placeholder"
+        android:icon="@drawable/ic_android_version"
+        settings:layout="@layout/banana_card_about"
         settings:enableCopying="true"
-        android:selectable="true" />
+        settings:searchable="false"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
+
+    <!-- Security patch -->
+    <Preference
+        android:key="security_key"
+        android:title="@string/security_patch"
+        android:icon="@drawable/ic_security_patch"
+        settings:layout="@layout/banana_card_about"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SecurityPatchLevelPreferenceController"/>
+
+    <!-- Kernel -->
+    <Preference
+        android:key="kernel_version"
+        android:title="@string/kernel_version"
+        android:summary="@string/summary_placeholder"
+        android:icon="@drawable/ic_legal"
+        settings:layout="@layout/banana_card_about"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.KernelVersionPreferenceController"/>
+
+    <!-- Baseband -->
+    <Preference
+        android:key="base_band"
+        android:title="@string/baseband_version"
+        android:summary="@string/summary_placeholder"
+        android:icon="@drawable/ic_model_hardware"
+        android:selectable="false"
+        settings:layout="@layout/banana_card_about"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.BasebandVersionPreferenceController"/>
 
     <Preference
-        android:key="category_android"
-        android:title="@string/category_android_info"
-        android:selectable="false"/>
+        android:key="os_build_number"
+        android:title="@string/build_number"
+        android:summary="@string/summary_placeholder"
+        android:icon="@drawable/ic_build_number"
+        android:selectable="false"
+        settings:layout="@layout/banana_card_about"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SimpleBuildNumberPreferenceController"/>
 
-        <!-- Android version -->
-        <Preference
-            android:key="os_firmware_version"
-            android:title="@string/firmware_version"
-            android:icon="@drawable/ic_android_head"
-            android:summary="@string/summary_placeholder"
-            settings:enableCopying="true"
-            settings:searchable="false"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
-
-        <!-- Security patch -->
-        <Preference
-            android:key="security_key"
-            android:title="@string/security_patch"
-            android:icon="@drawable/ic_security_patch"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.SecurityPatchLevelPreferenceController"/>
-
-        <!-- SELinux -->
-        <Preference
-            android:key="selinux_status"
-            android:title="@string/selinux_status"
-            android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_selinux"
-            settings:enableCopying="true"/>
-
+    <!-- SELinux -->
     <Preference
-        android:key="category_sigma"
-        android:title="@string/category_sigma_info"
-        android:selectable="false"/>
-
-        <!-- SigmaDroid version -->
-        <com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreference
-            android:key="sigma_version"
-            android:title="@*lineageos.platform:string/lineage_version"
-            android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_sigma"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreferenceController"/>
-
-        <!-- Build date -->
-        <Preference
-            android:key="os_build_date"
-            android:title="@*lineageos.platform:string/build_date"
-            android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_date"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.LineageBuildDatePreferenceController"/>
-
-        <!-- Build number-->
-        <Preference
-            android:key="os_build_number"
-            android:title="@string/build_number"
-            android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_shell"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.SimpleBuildNumberPreferenceController"/>
-
+        android:key="selinux_status"
+        android:title="@string/selinux_status"
+        android:summary="@string/summary_placeholder"
+        android:icon="@drawable/ic_selinux_status"
+        android:selectable="false"
+        settings:layout="@layout/banana_card_about"
+        settings:enableCopying="false"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SelinuxStatusPreferenceController"/>
+<!-- 
+ 
     <Preference
-        android:key="category_device"
-        android:title="@string/category_device_info"
-        android:selectable="false"/>
-
-        <!-- Device name -->
-        <Preference
-            android:key="about_device_name"
-            android:title="@string/about_device_name"
-            android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_device"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.AboutDeviceNamePreferenceController"/>
-
-        <!-- Baseband -->
-        <Preference
-            android:key="base_band"
-            android:title="@string/baseband_version"
-            android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_android"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.BasebandVersionPreferenceController"/>
-
-        <!-- Kernel -->
-        <com.android.settings.deviceinfo.firmwareversion.KernelVersionPreference
-            android:key="kernel_version"
-            android:title="@string/kernel_version"
-            android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_kernel"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.KernelVersionPreferenceController"/>
-
+        android:key="changelog"
+        android:title="@string/changelog_title"
+        android:summary="@string/changelog_summary"
+        settings:layout="@layout/banana_card_about"
+        android:icon="@drawable/ic_about_changelog">
+        <intent android:action="android.intent.action.MAIN"
+             android:targetPackage="com.android.settings"
+             android:targetClass="com.android.settings.banana.ChangelogActivity" />
+    </Preference>
+-->
 </PreferenceScreen>
