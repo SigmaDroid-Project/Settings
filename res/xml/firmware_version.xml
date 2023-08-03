@@ -29,8 +29,8 @@
 
     <!-- BananaDroid info -->
     <com.android.settingslib.widget.LayoutPreference
-        android:key="banana_info"
-        android:layout="@layout/banana_info"
+        android:key="sigma_info"
+        android:layout="@layout/sigma_info"
         android:selectable="false" />
 
     <Preference

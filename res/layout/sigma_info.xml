@@ -18,7 +18,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center_vertical"
-    android:id="@+id/banana_info"
+    android:id="@+id/sigma_info"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -35,7 +35,7 @@
         app:strokeColor="?android:attr/textColorPrimary"
         app:strokeWidth="3dp">
 
-        <com.banana.settings.utils.aboutWallpaperView
+        <com.sigma.settings.utils.aboutWallpaperView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -44,7 +44,7 @@
             android:contentDescription="@null"
             android:orientation="vertical" />
 
-        <com.banana.settings.widget.WallpaperBlurView
+        <com.sigma.settings.widget.WallpaperBlurView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -80,14 +80,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/version"
-            style="@style/TextAppearance.bananaInfoTitle" />
+            style="@style/TextAppearance.SigmaInfoTitle" />
 
         <TextView
             android:id="@+id/version_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
-            style="@style/TextAppearance.bananaInfoSummary" />
+            style="@style/TextAppearance.SigmaInfoSummary" />
 
         <TextView
             android:id="@+id/device_title"
@@ -95,43 +95,43 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/about_device_name"
-            style="@style/TextAppearance.bananaInfoTitle" />
+            style="@style/TextAppearance.SigmaInfoTitle" />
 
         <TextView
             android:id="@+id/device_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
-            style="@style/TextAppearance.bananaInfoSummary" />
+            style="@style/TextAppearance.SigmaInfoSummary" />
 
         <TextView
             android:id="@+id/release_type_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="@string/banana_release_type_title"
-            style="@style/TextAppearance.bananaInfoTitle" />
+            android:text="@string/sigma_release_type_title"
+            style="@style/TextAppearance.SigmaInfoTitle" />
 
         <TextView
             android:id="@+id/release_type_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
-            style="@style/TextAppearance.bananaInfoSummary" />
+            style="@style/TextAppearance.SigmaInfoSummary" />
 
         <TextView
             android:id="@+id/maintainer_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="@string/banana_maintainer_title"
-            style="@style/TextAppearance.bananaInfoTitle" />
+            android:text="@string/sigma_maintainer_title"
+            style="@style/TextAppearance.SigmaInfoTitle" />
 
         <TextView
             android:id="@+id/maintainer_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextAppearance.bananaInfoSummary" />
+            style="@style/TextAppearance.SigmaInfoSummary" />
 
     </LinearLayout>
 </RelativeLayout>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.banana.settings.widget;
+package com.sigma.settings.widget;
 
 import android.app.WallpaperManager;
 import android.content.Context;
