@@ -39,7 +39,7 @@ public class SimStatusPreferenceController extends
         AbstractSimStatusImeiInfoPreferenceController implements PreferenceControllerMixin {
 
     private static final String KEY_SIM_STATUS = "sim_status";
-    private static final String KEY_PREFERENCE_CATEGORY = "device_detail_category";
+    private static final String KEY_PREFERENCE_CATEGORY = "basic_info_category";
 
     private final TelephonyManager mTelephonyManager;
     private final SubscriptionManager mSubscriptionManager;
@@ -88,6 +88,8 @@ public class SimStatusPreferenceController extends
             multiSimPreference.setCopyingEnabled(true);
             multiSimPreference.setOrder(simStatusOrder + simSlotNumber);
             multiSimPreference.setKey(KEY_SIM_STATUS + simSlotNumber);
+            multiSimPreference.setLayoutResource(R.layout.dot_middle_no_chevron);
+            multiSimPreference.setIcon(R.drawable.ic_sim_card);
             category.addPreference(multiSimPreference);
             mPreferenceList.add(multiSimPreference);
         }

@@ -18,4 +18,26 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- SELinux status -->
+    <string name="selinux_status">SELinux status</string>
+    <string name="selinux_status_disabled">Disabled</string>
+    <string name="selinux_status_permissive">Permissive</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
+
+    <!-- Firmware info -->
+    <string name="category_android_info">Android</string>
+    <string name="category_alpha_info">SigmaDroid</string>
+    <string name="category_device_info">Device</string>
+    <string name="category_sigma_info">SigmaDroid</string>
+
+
+    <!-- Build info -->
+    <string name="build_status_title">Build Status: %s</string>
+    <string name="build_status_summary_placeholder">Ahoy</string>
+    <string name="build_status_official">Official</string>
+    <string name="build_status_summary">Maintained by: %s</string>
+    <string name="build_status_oopsie">Searching for maintainer...</string>
+
+    <!-- Sigma maintainer -->
+    <string name="sigma_maintainer_title">Device maintainer</string>
 </resources>
