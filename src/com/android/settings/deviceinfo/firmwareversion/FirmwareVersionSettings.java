@@ -138,7 +138,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new BuildStatusPreferenceController(context));
         controllers.add(new SELinuxStatusPreferenceController(context));
-        controllers.add(new BananaInfoPreferenceController(context));
+        controllers.add(new SigmaInfoPreferenceController(context));
         return controllers;
     }
 
@@ -160,7 +160,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
     // @Override
     // protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
     //     final List<AbstractPreferenceController> controllers = new ArrayList<>();
-    //     controllers.add(new BananaInfoPreferenceController(context));
+    //     controllers.add(new SigmaInfoPreferenceController(context));
     //     return controllers;
     // }
 
