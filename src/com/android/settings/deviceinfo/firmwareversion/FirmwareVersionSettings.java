@@ -138,6 +138,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new BuildStatusPreferenceController(context));
         controllers.add(new SELinuxStatusPreferenceController(context));
+        controllers.add(new BananaInfoPreferenceController(context));
         return controllers;
     }
 
@@ -156,19 +157,12 @@ public class FirmwareVersionSettings extends DashboardFragment {
         return SettingsEnums.DIALOG_FIRMWARE_VERSION;
     }
 
-    @Override
-    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new BananaInfoPreferenceController(context));
-        return controllers;
-    }
-
-    @Override
-    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new BananaInfoPreferenceController(context));
-        return controllers;
-    }
+    // @Override
+    // protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+    //     final List<AbstractPreferenceController> controllers = new ArrayList<>();
+    //     controllers.add(new BananaInfoPreferenceController(context));
+    //     return controllers;
+    // }
 
     /**
      * For Search.
