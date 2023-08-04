@@ -34,7 +34,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     private static final String KEY_SIGMA_INFO = "sigma_info";
 
     private static final String PROP_SIGMA_VERSION = "ro.modversion";
-    private static final String PROP_SIGMA_DISPLAY_DATE = "ro.sigma.display.date";
+    private static final String PROP_SIGMA_BUILD_DATE = "ro.sigma.display.build.date";
     private static final String PROP_SIGMA_DEVICE = "ro.product.device";
     private static final String PROP_SIGMA_RELEASETYPE = "ro.sigma.release.type";
     private static final String PROP_SIGMA_BUILD_PACKAGE = "ro.sigma.build.package";
@@ -47,28 +47,26 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     private String getSigmaVersion() {
         final String version = SystemProperties.get(PROP_SIGMA_VERSION,
                 this.mContext.getString(R.string.device_info_default));
-        final String displayDate = SystemProperties.get(PROP_SIGMA_DISPLAY_DATE,
+        final String SigmaBuildPackage = SystemProperties.get(PROP_SIGMA_BUILD_PACKAGE,
                 this.mContext.getString(R.string.device_info_default));
 
-        return version + " | " + displayDate;
+        return version + " | " + SigmaBuildPackage;
     }
 
-    private String getDeviceName() {
-        String device = SystemProperties.get(PROP_SIGMA_DEVICE, "");
-        if (device.equals("")) {
-            device = Build.MANUFACTURER + " " + Build.MODEL;
-        }
-        return device;
+    private String getSigmaBuildDate() {
+        final String SigmaBuildDate = SystemProperties.get(PROP_SIGMA_BUILD_DATE,
+                this.mContext.getString(R.string.device_info_default));
+
+        return SigmaBuildDate;
     }
 
     private String getSigmaReleaseType() {
         final String releaseType = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
                 this.mContext.getString(R.string.device_info_default));
-        final String SigmaBuildPackage = SystemProperties.get(PROP_SIGMA_BUILD_PACKAGE,
-                this.mContext.getString(R.string.device_info_default));
+
 
         return releaseType.substring(0, 1).toUpperCase() +
-                 releaseType.substring(1).toLowerCase() + " | " + SigmaBuildPackage;
+                 releaseType.substring(1).toLowerCase();
     }
 
     private String getSigmaMaintainer() {
@@ -83,15 +81,15 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
         super.displayPreference(screen);
         final LayoutPreference SigmaInfoPreference = screen.findPreference(KEY_SIGMA_INFO);
         final TextView version = (TextView) SigmaInfoPreference.findViewById(R.id.version_message);
-        final TextView device = (TextView) SigmaInfoPreference.findViewById(R.id.device_message);
+        final TextView buildDate = (TextView) SigmaInfoPreference.findViewById(R.id.build_date_message);
         final TextView releaseType = (TextView) SigmaInfoPreference.findViewById(R.id.release_type_message);
         final TextView maintainer = (TextView) SigmaInfoPreference.findViewById(R.id.maintainer_message);
         final String SigmaVersion = getSigmaVersion();
-        final String SigmaDevice = getDeviceName();
+        final String SigmaBuildDate = getSigmaBuildDate();
         final String SigmaReleaseType = getSigmaReleaseType();
         final String SigmaMaintainer = getSigmaMaintainer();
         version.setText(SigmaVersion);
-        device.setText(SigmaDevice);
+        buildDate.setText(SigmaBuildDate);
         releaseType.setText(SigmaReleaseType);
         maintainer.setText(SigmaMaintainer);
     }

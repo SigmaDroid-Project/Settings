@@ -90,15 +90,15 @@
             style="@style/TextAppearance.SigmaInfoSummary" />
 
         <TextView
-            android:id="@+id/device_title"
+            android:id="@+id/build_date_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="@string/about_device_name"
+            android:text="@string/build_date"
             style="@style/TextAppearance.SigmaInfoTitle" />
 
         <TextView
-            android:id="@+id/device_message"
+            android:id="@+id/build_date_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
