@@ -49,6 +49,15 @@
             settings:searchable="false"
             settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
+        <!-- SigmaDroid version -->
+        <com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreference
+            android:key="sigma_version"
+            android:title="@*lineageos.platform:string/lineage_version"
+            android:summary="@string/summary_placeholder"
+            android:icon="@drawable/ic_sigma"
+            settings:enableCopying="true"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreferenceController"/>
+
         <!-- Security patch -->
         <Preference
             android:key="security_key"
@@ -65,19 +74,11 @@
             android:icon="@drawable/ic_selinux"
             settings:enableCopying="true"/>
 
-    <Preference
+    <!-- <Preference
         android:key="category_sigma"
         android:title="@string/category_sigma_info"
-        android:selectable="false"/>
+        android:selectable="false"/> -->
 
-        <!-- SigmaDroid version -->
-        <com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreference
-            android:key="sigma_version"
-            android:title="@*lineageos.platform:string/lineage_version"
-            android:summary="@string/summary_placeholder"
-            android:icon="@drawable/ic_sigma"
-            settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreferenceController"/>
 
         <!-- Build date -->
         <Preference
