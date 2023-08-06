@@ -44,7 +44,7 @@ import java.util.List;
  */
 public class ImeiInfoPreferenceController extends BasePreferenceController {
 
-    private static final String KEY_PREFERENCE_CATEGORY = "device_detail_category";
+    private static final String KEY_PREFERENCE_CATEGORY = "basic_info_category";
 
     private final boolean mIsMultiSim;
     private final TelephonyManager mTelephonyManager;
@@ -81,7 +81,8 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
             multiSimPreference.setCopyingEnabled(true);
             multiSimPreference.setOrder(imeiPreferenceOrder + simSlotNumber);
             multiSimPreference.setKey(getPreferenceKey() + simSlotNumber);
-            category.addPreference(multiSimPreference);
+            multiSimPreference.setIcon(R.drawable.phone_tint);
+            screen.addPreference(multiSimPreference);
             mPreferenceList.add(multiSimPreference);
             updatePreference(multiSimPreference, simSlotNumber);
         }

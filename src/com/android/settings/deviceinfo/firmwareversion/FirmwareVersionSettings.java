@@ -86,7 +86,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
                 mPreference.setLayoutResource(R.layout.card_build_status);
             } else if (mKey.startsWith("category")) {
                 mPreference.setLayoutResource(R.layout.sigma_preference_category);
-            } else if (mDashBoardStyle == 1) { // 0=stock aosp, 1=dot, 2=nad
+            } else if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
                 switch (mKey) {
                     case "sigma_version":
                         mPreference.setLayoutResource(R.layout.dot_dashboard_preference_top);

@@ -22,9 +22,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.UserInfo;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.os.UserManager;
 import android.util.Log;
 import android.view.View;
+
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -43,6 +48,9 @@ import com.android.settings.deviceinfo.UptimePreferenceController;
 import com.android.settings.deviceinfo.WifiMacAddressPreferenceController;
 import com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.BuildStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SELinuxStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -78,6 +86,12 @@ public class MyDeviceInfoFragment extends DashboardFragment
     };
 
     private BuildNumberPreferenceController mBuildNumberPreferenceController;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        setDashboardStyle();
+    }
 
     @Override
     public int getMetricsCategory() {
@@ -125,6 +139,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
         } else {
             Log.i(LOG_TAG, "context is null, not registering SimStateReceiver");
         }
+        setDashboardStyle();
     }
 
     @Override
@@ -135,6 +150,61 @@ public class MyDeviceInfoFragment extends DashboardFragment
     @Override
     protected int getPreferenceScreenResId() {
         return R.xml.my_device_info;
+    }
+
+    private void setDashboardStyle() {
+        int mDashBoardStyle = geSettingstDashboardStyle();
+        final PreferenceScreen mScreen = getPreferenceScreen();
+        final int mCount = mScreen.getPreferenceCount();
+
+        for (int i = 0; i < mCount; i++) {
+            final Preference mPreference = mScreen.getPreference(i);
+            if (mPreference == null) continue;
+
+            String mKey = mPreference.getKey();
+            if (mKey == null) continue;
+
+            if (mKey.equals("sigma_logo")) {
+                mPreference.setLayoutResource(R.layout.sigma_logo);
+            } else if (mKey.equals("rom_build_status")) {
+                mPreference.setLayoutResource(R.layout.card_build_status);
+            } else if (mKey.startsWith("category")) {
+                mPreference.setLayoutResource(R.layout.sigma_preference_category);
+            } else if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
+               if (mKey.equals("top_level_about_device")) {
+                    mPreference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
+                } else if (
+                    mKey.equals("device_name")
+                        || mKey.equals("wifi_ip_address")
+                        || mKey.equals("firmware_version")
+                        || mKey.equals("phone_number")
+                ) {
+                    mPreference.setLayoutResource(R.layout.dot_top_no_chevron);
+                } else if (
+                    mKey.equals("selinux_status")
+                        || mKey.equals("radio_info_settings")
+                        || mKey.equals("bt_address")
+                        || mKey.equals("sleep_time")
+                ) {
+                    mPreference.setLayoutResource(R.layout.dot_bottom_no_chevron);
+                } else {
+                    mPreference.setLayoutResource(R.layout.dot_middle_no_chevron); 
+                } 
+
+            } else if (mDashBoardStyle == 2) {
+                if (mKey.equals("sigma_version") || mKey.equals("security_key") || mKey.equals("kernel_version")) {
+                    mPreference.setLayoutResource(R.layout.nad_dashboard_preference_full);
+                }
+                else {
+                    mPreference.setLayoutResource(R.layout.nad_full_no_chevron);
+                }
+            }
+        }
+    }
+
+    private int geSettingstDashboardStyle() {
+        return Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
     }
 
     @Override
@@ -156,6 +226,9 @@ public class MyDeviceInfoFragment extends DashboardFragment
         controllers.add(new FccEquipmentIdPreferenceController(context));
         controllers.add(new SleeptimePreferenceController(context, lifecycle));
         controllers.add(new UptimePreferenceController(context, lifecycle));
+        controllers.add(new BuildStatusPreferenceController(context));
+        controllers.add(new SELinuxStatusPreferenceController(context));
+        controllers.add(new SigmaInfoPreferenceController(context));
         return controllers;
     }
 
