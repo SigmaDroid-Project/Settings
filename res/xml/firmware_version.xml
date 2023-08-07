@@ -27,7 +27,7 @@
         android:key="sigma_logo"
         android:selectable="false" />
 
-    <!-- BananaDroid info -->
+    <!-- SigmaDroid info -->
     <com.android.settingslib.widget.LayoutPreference
         android:key="sigma_info"
         android:layout="@layout/sigma_info"
@@ -45,16 +45,6 @@
         android:key="category_android"
         android:title="@string/category_android_info"
         android:selectable="false"/>
-
-        <!-- Android version -->
-        <Preference
-            android:key="os_firmware_version"
-            android:title="@string/firmware_version"
-            android:icon="@drawable/ic_android_head"
-            android:summary="@string/summary_placeholder"
-            settings:enableCopying="true"
-            settings:searchable="false"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
         <!-- SigmaDroid version -->
         <com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreference
@@ -86,6 +76,15 @@
         android:title="@string/category_sigma_info"
         android:selectable="false"/> -->
 
+        <!-- Android version -->
+        <Preference
+            android:key="os_firmware_version"
+            android:title="@string/firmware_version"
+            android:icon="@drawable/ic_android_head"
+            android:summary="@string/summary_placeholder"
+            settings:enableCopying="true"
+            settings:searchable="false"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
         <!-- Build date -->
         <Preference
