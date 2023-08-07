@@ -90,30 +90,30 @@
             style="@style/TextAppearance.SigmaInfoSummary" />
 
         <TextView
-            android:id="@+id/build_date_title"
+            android:id="@+id/storage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="@string/build_date"
+            android:text="@string/storage"
             style="@style/TextAppearance.SigmaInfoTitle" />
 
         <TextView
-            android:id="@+id/build_date_message"
+            android:id="@+id/cust_storage_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
             style="@style/TextAppearance.SigmaInfoSummary" />
 
         <TextView
-            android:id="@+id/release_type_title"
+            android:id="@+id/battery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="@string/sigma_release_type_title"
+            android:text="@string/battery"
             style="@style/TextAppearance.SigmaInfoTitle" />
 
         <TextView
-            android:id="@+id/release_type_message"
+            android:id="@+id/cust_battery_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
