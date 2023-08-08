@@ -34,6 +34,7 @@ import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
 
 import java.util.ArrayList;
@@ -82,8 +83,6 @@ public class FirmwareVersionSettings extends DashboardFragment {
 
             if (mKey.equals("sigma_logo")) {
                 mPreference.setLayoutResource(R.layout.sigma_logo);
-            } else if (mKey.equals("rom_build_status")) {
-                mPreference.setLayoutResource(R.layout.card_build_status);
             } else if (mKey.startsWith("category")) {
                 mPreference.setLayoutResource(R.layout.sigma_preference_category);
             } else if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
