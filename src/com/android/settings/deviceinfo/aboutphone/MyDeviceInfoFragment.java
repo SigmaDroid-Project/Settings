@@ -167,17 +167,13 @@ public class MyDeviceInfoFragment extends DashboardFragment
             if (mKey.equals("sigma_logo")) {
                 mPreference.setLayoutResource(R.layout.sigma_logo);
             } else if (mKey.equals("rom_build_status")) {
-                mPreference.setLayoutResource(R.layout.card_build_status);
-            } else if (mKey.startsWith("category")) {
-                mPreference.setLayoutResource(R.layout.sigma_preference_category);
+                mPreference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
             } else if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
-               if (mKey.equals("top_level_about_device")) {
-                    mPreference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
-                } else if (
-                    mKey.equals("device_name")
+               if (
+                    mKey.equals("rom_build_status")
                         || mKey.equals("wifi_ip_address")
                         || mKey.equals("firmware_version")
-                        || mKey.equals("phone_number")
+                        || mKey.equals("sim_status")
                 ) {
                     mPreference.setLayoutResource(R.layout.dot_top_no_chevron);
                 } else if (
@@ -226,7 +222,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
         controllers.add(new FccEquipmentIdPreferenceController(context));
         controllers.add(new SleeptimePreferenceController(context, lifecycle));
         controllers.add(new UptimePreferenceController(context, lifecycle));
-        controllers.add(new BuildStatusPreferenceController(context));
         controllers.add(new SELinuxStatusPreferenceController(context));
         controllers.add(new SigmaInfoPreferenceController(context));
         return controllers;

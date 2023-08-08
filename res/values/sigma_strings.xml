@@ -48,4 +48,7 @@
     <string name="display">Display</string>
     <string name="storage">Storage</string>
     <string name="chipset">Processor</string>
+
+    <string name="build_is_official_title">Device is officially supported!</string>
+    <string name="build_is_community_title">Device is not officially supported!</string>
 </resources>
