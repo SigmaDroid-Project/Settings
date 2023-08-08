@@ -28,8 +28,8 @@ import androidx.annotation.VisibleForTesting;
 
 public class ScreenOffUdfpsPreferenceController extends GesturePreferenceController {
 
-    private final int ON = 1;
-    private final int OFF = 0;
+    private static final int ON = 1;
+    private static final int OFF = 0;
 
     private static final String PREF_KEY_VIDEO = "gesture_screen_off_udfps_video";
 
@@ -50,7 +50,7 @@ public class ScreenOffUdfpsPreferenceController extends GesturePreferenceControl
     }
 
     private static boolean screenOffUdfpsAvailable(AmbientDisplayConfiguration config) {
-        return !TextUtils.isEmpty(config.udfpsLongPressSensorType());
+        return config != null && !TextUtils.isEmpty(config.udfpsLongPressSensorType());
     }
 
     public static boolean isSuggestionComplete(Context context, SharedPreferences prefs) {
@@ -66,12 +66,7 @@ public class ScreenOffUdfpsPreferenceController extends GesturePreferenceControl
 
     @Override
     public int getAvailabilityStatus() {
-        // No hardware support for Screen-Off UDFPS
-        if (!screenOffUdfpsAvailable(mAmbientConfig)) {
-            return UNSUPPORTED_ON_DEVICE;
-        }
-
-        return AVAILABLE;
+        return screenOffUdfpsAvailable(getAmbientConfig()) ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 
     @Override
