@@ -42,6 +42,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     private static final String PROP_SIGMA_BUILD_PACKAGE = "ro.sigma.build.package";
     private static final String PROP_SIGMA_MAINTAINER = "ro.sigma.maintainer";
     private static final String KEY_BUILD_STATUS = "rom_build_status";
+    private static final String PROP_SIGMA_BRAND_NAME = "ro.product.manufacturer";
 
     private static final String KEY_STORAGE = "storage";
     private static final String KEY_CHIPSET = "chipset";
@@ -60,15 +61,9 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
                 this.mContext.getString(R.string.device_info_default));
         final String SigmaBuildPackage = SystemProperties.get(PROP_SIGMA_BUILD_PACKAGE,
                 this.mContext.getString(R.string.device_info_default));
-
-        return version + " | " + SigmaBuildPackage;
-    }
-
-    private String getSigmaBuildDate() {
         final String SigmaBuildDate = SystemProperties.get(PROP_SIGMA_BUILD_DATE,
                 this.mContext.getString(R.string.device_info_default));
-
-        return SigmaBuildDate;
+        return version + " | " + SigmaBuildPackage  + " | " + SigmaBuildDate;
     }
 
     private String getSigmaReleaseType() {
@@ -87,6 +82,16 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
         return SigmaMaintainer;
     }
 
+    private String getDeviceName() {
+        String deviceBrand = SystemProperties.get(PROP_SIGMA_BRAND_NAME,
+                mContext.getString(R.string.device_info_default));
+        String deviceCodename = SystemProperties.get(PROP_SIGMA_DEVICE,
+                mContext.getString(R.string.device_info_default));
+        String deviceModel = Build.MODEL;
+
+        return deviceBrand + " " + deviceModel + " | " + deviceCodename;
+    }
+
     private boolean isOfficial() {
         final String releaseType = SystemProperties.get(PROP_SIGMA_RELEASETYPE, "");
         return releaseType.length() > 0 &&
@@ -94,10 +99,15 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     }
 
     private String getSigmaBuildStatus() {
-        if (isOfficial()) {
-            return mContext.getString(R.string.build_status_official);
-        }
-        return "";
+	    final String buildType = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
+                this.mContext.getString(R.string.device_info_default));
+        final String isOfficial = this.mContext.getString(R.string.build_is_official_title);
+	    final String isCommunity = this.mContext.getString(R.string.build_is_community_title);
+        if (buildType.toLowerCase().equals("official")) {
+		return isOfficial;
+	    } else {
+		return isCommunity;
+	    }
     }
 
     @Override
@@ -108,26 +118,30 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
         final Preference buildStatusPref = screen.findPreference(KEY_BUILD_STATUS);
         //final TextView buildDate = (TextView) SigmaInfoPreference.findViewById(R.id.build_date_message);
         //final TextView releaseType = (TextView) SigmaInfoPreference.findViewById(R.id.release_type_message);
-        final TextView maintainer = (TextView) SigmaInfoPreference.findViewById(R.id.maintainer_message);
+        //final TextView maintainer = (TextView) SigmaInfoPreference.findViewById(R.id.maintainer_message);
 
         //final TextView chipText = (TextView) SigmaInfoPreference.findViewById(R.id.chipset_summary);
         final TextView storText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_storage_summary);
         final TextView battText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_battery_summary);
+        final TextView device = (TextView) SigmaInfoPreference.findViewById(R.id.device_message);
         //final TextView dispText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_display_summary);
 
         final String SigmaVersion = getSigmaVersion();
-        final String SigmaBuildDate = getSigmaBuildDate();
         final String SigmaReleaseType = getSigmaReleaseType();
         final String SigmaMaintainer = getSigmaMaintainer();
         final String buildStatus = getSigmaBuildStatus();
+        final String sigmaDevice = getDeviceName();
+        final String isOfficial = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
+                this.mContext.getString(R.string.device_info_default));
 
         buildStatusPref.setTitle(buildStatus);
 	    buildStatusPref.setSummary(SigmaMaintainer);
 
         version.setText(SigmaVersion);
+        device.setText(sigmaDevice);
         //buildDate.setText(SigmaBuildDate);
         //releaseType.setText(SigmaReleaseType);
-        maintainer.setText(SigmaMaintainer);
+        //maintainer.setText(SigmaMaintainer);
 
         //chipText.setText(SpecUtils.getProcessorModel());
         storText.setText(String.valueOf(SpecUtils.getTotalInternalMemorySize()) + "GB ROM + " + SpecUtils.getTotalRAM() + " RAM");
