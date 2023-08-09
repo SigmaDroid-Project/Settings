@@ -183,6 +183,8 @@ public class MyDeviceInfoFragment extends DashboardFragment
                         || mKey.equals("sleep_time")
                 ) {
                     mPreference.setLayoutResource(R.layout.dot_bottom_no_chevron);
+                } else if (mKey.equals("sigma_info")) {
+                    mPreference.setLayoutResource(R.layout.dot_blank); 
                 } else {
                     mPreference.setLayoutResource(R.layout.dot_middle_no_chevron); 
                 } 
@@ -190,6 +192,8 @@ public class MyDeviceInfoFragment extends DashboardFragment
             } else if (mDashBoardStyle == 2) {
                 if (mKey.equals("sigma_version") || mKey.equals("security_key") || mKey.equals("kernel_version")) {
                     mPreference.setLayoutResource(R.layout.nad_dashboard_preference_full);
+                } else if (mKey.equals("sigma_info")) {
+                    mPreference.setLayoutResource(R.layout.dot_blank); 
                 }
                 else {
                     mPreference.setLayoutResource(R.layout.nad_full_no_chevron);
