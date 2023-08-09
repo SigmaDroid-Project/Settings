@@ -171,14 +171,12 @@ public class MyDeviceInfoFragment extends DashboardFragment
                 mPreference.setLayoutResource(R.layout.sigma_card_build_status);
                 } else if (
                     mKey.equals("rom_build_status")
-                        || mKey.equals("wifi_ip_address")
                         || mKey.equals("firmware_version")
                         || mKey.equals("sim_status")
                 ) {
                     mPreference.setLayoutResource(R.layout.dot_top_no_chevron);
                 } else if (
                     mKey.equals("selinux_status")
-                        || mKey.equals("radio_info_settings")
                         || mKey.equals("bt_address")
                         || mKey.equals("sleep_time")
                 ) {
