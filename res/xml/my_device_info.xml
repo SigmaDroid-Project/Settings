@@ -40,7 +40,7 @@
 
         <Preference
             android:key="rom_build_status"
-            android:title="@string/build_status"
+            android:title="@string/build_status_title"
             android:summary="@string/build_status_summary_placeholder"
             settings:enableCopying="true"
             android:order="4"
