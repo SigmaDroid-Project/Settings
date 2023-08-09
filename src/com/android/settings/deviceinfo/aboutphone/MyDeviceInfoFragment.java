@@ -166,10 +166,10 @@ public class MyDeviceInfoFragment extends DashboardFragment
 
             if (mKey.equals("sigma_logo")) {
                 mPreference.setLayoutResource(R.layout.sigma_logo);
-            } else if (mKey.equals("rom_build_status")) {
-                mPreference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
             } else if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
-               if (
+                if (mKey.equals("rom_build_status")) {
+                mPreference.setLayoutResource(R.layout.sigma_card_build_status);
+                } else if (
                     mKey.equals("rom_build_status")
                         || mKey.equals("wifi_ip_address")
                         || mKey.equals("firmware_version")
