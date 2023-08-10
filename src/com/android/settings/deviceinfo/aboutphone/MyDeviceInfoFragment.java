@@ -66,14 +66,14 @@ import android.content.IntentFilter;
 
 import com.android.internal.telephony.IccCardConstants;
 import com.android.internal.telephony.TelephonyIntents;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 @SearchIndexable
 public class MyDeviceInfoFragment extends DashboardFragment
         implements DeviceNamePreferenceController.DeviceNamePreferenceHost {
 
     private static final String LOG_TAG = "MyDeviceInfoFragment";
-    private static final String KEY_MY_DEVICE_INFO_HEADER = "my_device_info_header";
-
+    protected CollapsingToolbarLayout mCollapsingToolbarLayout;
     private final BroadcastReceiver mSimStateReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
@@ -90,7 +90,17 @@ public class MyDeviceInfoFragment extends DashboardFragment
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        hideToolbar();
         setDashboardStyle();
+    }
+
+    private void hideToolbar() {
+        if (mCollapsingToolbarLayout == null) {
+            mCollapsingToolbarLayout = getActivity().findViewById(R.id.collapsing_toolbar);
+        }
+        if (mCollapsingToolbarLayout != null) {
+            mCollapsingToolbarLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -115,6 +125,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
     @Override
     public void onPause() {
         super.onPause();
+        hideToolbar();
         Context context = getContext();
         if (context != null) {
             context.unregisterReceiver(mSimStateReceiver);
@@ -134,6 +145,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
             Log.i(LOG_TAG, "context is null, not registering SimStateReceiver");
         }
         setDashboardStyle();
+        hideToolbar();
     }
 
     @Override
