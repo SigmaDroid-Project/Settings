@@ -19,12 +19,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="my_device_info_pref_screen"
-    android:title="">
-
-        <!-- SigmaDroid logo -->
-        <PreferenceScreen
-            android:key="sigma_logo"
-            android:selectable="false" />
+    android:title="@string/about_settings">
 
         <!-- SigmaDroid info -->
         <com.android.settingslib.widget.LayoutPreference
@@ -33,22 +28,24 @@
             android:order="1"
             android:selectable="false" />
 
-        <Preference
-            android:order="3"
-            android:title="@string/my_device_info_device_details_category_title"/>
+        <!-- SigmaDroid logo -->
+        <PreferenceScreen
+            android:key="sigma_logo"
+            android:order="4"
+            android:selectable="false" />
 
         <Preference
             android:key="rom_build_status"
             android:title="@string/build_status_title"
             android:summary="@string/build_status_summary_placeholder"
             settings:enableCopying="true"
-            android:order="4"
+            android:order="5"
             android:selectable="true"/>
 
          <!-- Device name -->
         <com.android.settings.widget.ValidatedEditTextPreference
             android:key="device_name"
-            android:order="5"
+            android:order="6"
             android:icon="@drawable/phone_tint"
             android:title="@string/my_device_info_device_name_preference_title"
             android:summary="@string/summary_placeholder"
@@ -58,7 +55,7 @@
         <!-- Build number -->
         <Preference
             android:key="build_number"
-            android:order="6"
+            android:order="7"
             android:icon="@drawable/ic_info"
             android:title="@string/build_number"
             android:summary="@string/summary_placeholder"
@@ -68,7 +65,7 @@
         <!-- Baseband -->
         <Preference
             android:key="base_band"
-            android:order="7"
+            android:order="8"
             android:title="@string/baseband_version"
             android:summary="@string/summary_placeholder"
             android:icon="@drawable/ic_android"
@@ -78,7 +75,7 @@
         <!-- Kernel -->
         <com.android.settings.deviceinfo.firmwareversion.KernelVersionPreference
             android:key="kernel_version"
-            android:order="8"
+            android:order="9"
             android:title="@string/kernel_version"
             android:summary="@string/summary_placeholder"
             android:icon="@drawable/ic_kernel"
@@ -88,7 +85,7 @@
         <!-- SELinux -->
         <Preference
             android:key="selinux_status"
-            android:order="9"
+            android:order="10"
             android:title="@string/selinux_status"
             android:summary="@string/summary_placeholder"
             android:icon="@drawable/ic_selinux"
@@ -97,18 +94,19 @@
 
         <!-- Android version -->
         <Preference
-            android:key="firmware_version"
-            android:order="10"
-            android:icon="@drawable/ic_android_head"
+            android:key="os_firmware_version"
+            android:order="11"
             android:title="@string/firmware_version"
+            android:icon="@drawable/ic_android_head"
             android:summary="@string/summary_placeholder"
-            android:fragment="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionSettings"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionPreferenceController"/>
+            settings:enableCopying="true"
+            settings:searchable="false"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
         
         <!-- Account name -->
         <Preference
             android:key="branded_account"
-            android:order="11"
+            android:order="12"
             android:icon="@drawable/ic_cog"
             android:title="@string/my_device_info_account_preference_title"
             android:summary="@string/summary_placeholder"
@@ -118,7 +116,7 @@
         <!-- Phone number -->
         <com.android.settings.deviceinfo.PhoneNumberSummaryPreference
             android:key="phone_number"
-            android:order="12"
+            android:order="13"
             android:title="@string/status_number"
             android:icon="@drawable/phone_tint"
             android:summary="@string/summary_placeholder"
@@ -129,7 +127,7 @@
         <!-- Security patch -->
         <Preference
             android:key="security_key"
-            android:order="14"
+            android:order="15"
             android:title="@string/security_patch"
             android:icon="@drawable/ic_security_patch"
             settings:enableCopying="true"
@@ -138,7 +136,7 @@
        <!-- Device up time -->
         <Preference
             android:key="up_time"
-            android:order="15"
+            android:order="16"
             android:icon="@drawable/ic_cog"
             android:title="@string/status_up_time"
             android:summary="@string/summary_placeholder" />
@@ -146,19 +144,19 @@
         <!-- Device deep sleep time -->
         <Preference
             android:key="sleep_time"
-            android:order="16"
+            android:order="17"
             android:icon="@drawable/ic_sleep"
             android:title="@string/status_sleep_time"
             android:summary="@string/summary_placeholder" />
 
         <Preference
-            android:order="17"
+            android:order="18"
             android:title="@string/my_device_info_device_identifiers_category_title"/>
         
         <!-- SIM status -->
         <Preference
             android:key="sim_status"
-            android:order="18"
+            android:order="19"
             android:icon="@drawable/ic_sim_card"
             android:title="@string/sim_status_title"
             settings:keywords="@string/keywords_sim_status"

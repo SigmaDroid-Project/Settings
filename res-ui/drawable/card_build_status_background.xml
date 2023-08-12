@@ -15,8 +15,8 @@
     <item android:id="@android:id/mask">
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
             <solid android:color="#FFFFFFFF"/>
-            <corners android:bottomRightRadius="24dp" android:bottomLeftRadius="24dp"
-                android:topLeftRadius="24dp" android:topRightRadius="24dp"/>
+            <corners android:bottomRightRadius="0dp" android:bottomLeftRadius="0dp"
+                android:topLeftRadius="0dp" android:topRightRadius="0dp"/>
         </shape>
     </item>
     <item android:id="@android:id/background">
@@ -24,8 +24,8 @@
             android:shape="rectangle">
 
             <solid android:color="@color/build_status_card_bg" />
-            <corners android:bottomRightRadius="24dp" android:bottomLeftRadius="24dp"
-                android:topLeftRadius="24dp" android:topRightRadius="24dp"/> 
+            <corners android:bottomRightRadius="0dp" android:bottomLeftRadius="0dp"
+                android:topLeftRadius="0dp" android:topRightRadius="0dp"/> 
         </shape>
     </item>
 </ripple>
