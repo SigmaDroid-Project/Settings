@@ -170,14 +170,14 @@ public class MyDeviceInfoFragment extends DashboardFragment
             String mKey = mPreference.getKey();
             if (mKey == null) continue;
 
-            if (mKey.equals("sigma_logo")) {
-                mPreference.setLayoutResource(R.layout.sigma_logo);
-            } else if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
-                if (mKey.equals("rom_build_status")) {
-                mPreference.setLayoutResource(R.layout.sigma_card_build_status);
+             if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
+                if (mKey.equals("sigma_logo")) {
+                mPreference.setLayoutResource(R.layout.dot_about_logo);
+                } else if (mKey.equals("rom_build_status")) {
+                mPreference.setLayoutResource(R.layout.dot_card_build_status);
                 } else if (
-                    mKey.equals("rom_build_status")
-                        || mKey.equals("firmware_version")
+                         mKey.equals("os_firmware_version")
+                        || mKey.equals("sigma_logo")
                         || mKey.equals("sim_status")
                 ) {
                     mPreference.setLayoutResource(R.layout.dot_top_no_chevron);
@@ -198,7 +198,11 @@ public class MyDeviceInfoFragment extends DashboardFragment
                     mPreference.setLayoutResource(R.layout.nad_dashboard_preference_full);
                 } else if (mKey.equals("sigma_info")) {
                     mPreference.setLayoutResource(R.layout.dot_blank); 
-                }
+                } else if (mKey.equals("sigma_logo")) {
+                mPreference.setLayoutResource(R.layout.nad_about_logo);
+                 } else if (mKey.equals("rom_build_status")) {
+                mPreference.setLayoutResource(R.layout.nad_card_build_status);
+                } 
                 else {
                     mPreference.setLayoutResource(R.layout.nad_full_no_chevron);
                 }
