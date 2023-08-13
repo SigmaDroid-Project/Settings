@@ -34,7 +34,7 @@
 
         <com.android.internal.widget.PreferenceImageView
             android:id="@android:id/icon"
-            android:tint="@color/dot_primary_color"
+            android:tint="@color/sigma_color_accent2"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:adjustViewBounds="true"
@@ -80,7 +80,6 @@
             android:id="@+id/card_chevron"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            app:cardBackgroundColor="@color/dot_background1"
             app:cardElevation="0dp"
             app:cardCornerRadius="99dp">
 
@@ -89,8 +88,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/dot_chevron_right"
-                    android:tint="@color/dot_primary_color" />
+                    android:src="@drawable/dot_chevron_right"/>
 
         </androidx.cardview.widget.CardView>
 
