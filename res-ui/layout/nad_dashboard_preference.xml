@@ -40,7 +40,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="58dp"
+            android:minWidth="48dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginStart="10dp"
@@ -60,9 +60,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:padding="4dp"
-                android:tint="@android:color/white"
+                android:tint="@color/sigma_color_accent2"
                 app:maxHeight="32dp"
-                app:maxWidth="48dp" />
+                app:maxWidth="38dp" />
         </FrameLayout>
 
         <LinearLayout
