@@ -43,7 +43,7 @@
 
         <com.android.internal.widget.PreferenceImageView
             android:id="@android:id/icon"
-            android:tint="@android:color/white"
+            android:tint="@color/sigma_color_accent2"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:adjustViewBounds="true"
@@ -97,7 +97,7 @@
                     android:layout_height="24dp"
                     android:layout_gravity="center"
                     android:src="@drawable/dot_chevron_right"
-                    android:tint="@android:color/white" />
+                    android:tint="@color/sigma_color_accent2" />
 
         </androidx.cardview.widget.CardView>
 
