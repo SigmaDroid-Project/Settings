@@ -18,7 +18,7 @@
     android:color="@color/dot_pref_ripple">
     <item android:id="@android:id/mask">
         <shape>
-            <solid android:color="#FFFFFFFF" />
+            <solid android:color="@color/sigma_color_accent2" />
             <corners
                 android:topRightRadius="@dimen/dot_radius"
                 android:topLeftRadius="@dimen/dot_radius"
