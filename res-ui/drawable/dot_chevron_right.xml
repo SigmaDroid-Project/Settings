@@ -23,6 +23,6 @@
     <path
         android:pathData="M0 0h24v24H0V0z" />
     <path
-        android:fillColor="#FFFFFF"
+        android:fillColor="@color/sigma_color_accent2"
         android:pathData="M9.31 6.71c-0.39 0.39 -0.39 1.02 0 1.41L13.19 12l-3.88 3.88c-0.39 0.39 -0.39 1.02 0 1.41 0.39 0.39 1.02 0.39 1.41 0l4.59-4.59c0.39-0.39 0.39 -1.02 0-1.41L10.72 6.7c-0.38-0.38-1.02-0.38-1.41 0.01 z" />
 </vector>
