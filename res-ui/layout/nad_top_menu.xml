@@ -25,21 +25,19 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="58dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="10dp"
+            android:minWidth="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="6dp"
-            android:padding="4dp"
-            android:backgroundTint="@color/sigma_color_secondary_accent"
-            android:background="@drawable/dot_preference_background_full">
+            android:padding="4dp">
 
             <androidx.preference.internal.PreferenceImageView
                 android:id="@+id/avatar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:tint="@android:color/white"
-                app:maxWidth="48dp"
+                android:tint="@color/sigma_color_accent2"
+                app:maxWidth="40dp"
                 app:maxHeight="48dp"
                 android:paddingVertical="4dp"
                 android:layout_gravity="center"
