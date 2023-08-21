@@ -250,6 +250,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                         || key.equals("top_level_system")
                         || key.equals("top_level_sigma")
                         || key.equals("top_level_connected_devices")
+                        || key.equals("top_level_sigma_settings")
                 ) {
                     preference.setLayoutResource(R.layout.dot_dashboard_preference_bottom);
                 } else {
@@ -257,8 +258,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 }
                 } else if (mDashBoardStyle == 2) {
                     preference.setLayoutResource(R.layout.nad_dashboard_preference);
-            }
-            if (mDashBoardStyle == 3) {
+            } else if (mDashBoardStyle == 3) {
                 if (key.equals("top_level_about_device")) {
                     preference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
                 } else if (
@@ -444,7 +444,8 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     }
 
     private void setDashboardStyle(Context context) {
-        mDashBoardStyle = 3;
+        mDashBoardStyle = System.getIntForUser(context.getContentResolver(),
+                System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
