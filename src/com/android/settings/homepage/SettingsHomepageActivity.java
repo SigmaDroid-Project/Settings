@@ -200,9 +200,7 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         }
 
         setupEdgeToEdge();
-        int mStyle = System.getIntForUser(getContentResolver(),
-                System.SETTINGS_DASHBOARD_STYLE, DASHBOARD_DEFAULT_STYLE,
-                UserHandle.USER_CURRENT);
+        int mStyle = 3;
         setContentView(mStyle == DASHBOARD_AOSP_STYLE ? R.layout.aosp_settings_homepage_container :
                 R.layout.settings_homepage_container);
 
