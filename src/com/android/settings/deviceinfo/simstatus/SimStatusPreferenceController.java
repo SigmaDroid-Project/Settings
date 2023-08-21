@@ -88,7 +88,8 @@ public class SimStatusPreferenceController extends
             multiSimPreference.setCopyingEnabled(true);
             multiSimPreference.setOrder(simStatusOrder + simSlotNumber);
             multiSimPreference.setKey(KEY_SIM_STATUS + simSlotNumber);
-            category.addPreference(multiSimPreference);
+            multiSimPreference.setIcon(R.drawable.ic_sim_card);
+            screen.addPreference(multiSimPreference);
             mPreferenceList.add(multiSimPreference);
         }
     }

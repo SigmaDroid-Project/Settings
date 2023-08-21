@@ -22,8 +22,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.UserInfo;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.os.UserManager;
+import android.util.Log;
 import android.view.View;
+
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -41,6 +47,8 @@ import com.android.settings.deviceinfo.UptimePreferenceController;
 import com.android.settings.deviceinfo.WifiMacAddressPreferenceController;
 import com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SelinuxStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -51,14 +59,47 @@ import com.android.settingslib.widget.LayoutPreference;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+
+import com.android.internal.telephony.IccCardConstants;
+import com.android.internal.telephony.TelephonyIntents;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+
 @SearchIndexable
 public class MyDeviceInfoFragment extends DashboardFragment
         implements DeviceNamePreferenceController.DeviceNamePreferenceHost {
 
     private static final String LOG_TAG = "MyDeviceInfoFragment";
-    private static final String KEY_MY_DEVICE_INFO_HEADER = "my_device_info_header";
+    protected CollapsingToolbarLayout mCollapsingToolbarLayout;
+    private final BroadcastReceiver mSimStateReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            final String action = intent.getAction();
+            if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
+                String state = intent.getStringExtra(IccCardConstants.INTENT_KEY_ICC_STATE);
+                Log.d(LOG_TAG, "Received ACTION_SIM_STATE_CHANGED: " + state);
+                updatePreferenceStates();
+            }
+        }
+    };
 
     private BuildNumberPreferenceController mBuildNumberPreferenceController;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        hideToolbar();
+        setDashboardStyle();
+    }
+
+    private void hideToolbar() {
+        if (mCollapsingToolbarLayout == null) {
+            mCollapsingToolbarLayout = getActivity().findViewById(R.id.collapsing_toolbar);
+        }
+        if (mCollapsingToolbarLayout != null) {
+            mCollapsingToolbarLayout.setVisibility(View.GONE);
+        }
+    }
 
     @Override
     public int getMetricsCategory() {
@@ -80,9 +121,29 @@ public class MyDeviceInfoFragment extends DashboardFragment
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        initHeader();
+    public void onPause() {
+        super.onPause();
+        hideToolbar();
+        Context context = getContext();
+        if (context != null) {
+            context.unregisterReceiver(mSimStateReceiver);
+        } else {
+            Log.i(LOG_TAG, "context already null, not unregistering SimStateReceiver");
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Context context = getContext();
+        if (context != null) {
+            context.registerReceiver(mSimStateReceiver,
+                    new IntentFilter(TelephonyIntents.ACTION_SIM_STATE_CHANGED));
+        } else {
+            Log.i(LOG_TAG, "context is null, not registering SimStateReceiver");
+        }
+        setDashboardStyle();
+        hideToolbar();
     }
 
     @Override
@@ -93,6 +154,63 @@ public class MyDeviceInfoFragment extends DashboardFragment
     @Override
     protected int getPreferenceScreenResId() {
         return R.xml.my_device_info;
+    }
+
+    private void setDashboardStyle() {
+        int mDashBoardStyle = geSettingstDashboardStyle();
+        final PreferenceScreen mScreen = getPreferenceScreen();
+        final int mCount = mScreen.getPreferenceCount();
+
+        for (int i = 0; i < mCount; i++) {
+            final Preference mPreference = mScreen.getPreference(i);
+            if (mPreference == null) continue;
+
+            String mKey = mPreference.getKey();
+            if (mKey == null) continue;
+
+             if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
+                if (mKey.equals("sigma_logo")) {
+                mPreference.setLayoutResource(R.layout.dot_about_logo);
+                } else if (mKey.equals("rom_build_status")) {
+                mPreference.setLayoutResource(R.layout.dot_card_build_status);
+                } else if (
+                         mKey.equals("os_firmware_version")
+                        || mKey.equals("sigma_logo")
+                        || mKey.equals("sim_status")
+                ) {
+                    mPreference.setLayoutResource(R.layout.dot_top_no_chevron);
+                } else if (
+                    mKey.equals("selinux_status")
+                        || mKey.equals("bt_address")
+                        || mKey.equals("up_time")
+                ) {
+                    mPreference.setLayoutResource(R.layout.dot_bottom_no_chevron);
+                } else if (mKey.equals("sigma_info")) {
+                    mPreference.setLayoutResource(R.layout.dot_blank); 
+                } else {
+                    mPreference.setLayoutResource(R.layout.dot_middle_no_chevron); 
+                } 
+
+            } else if (mDashBoardStyle == 2) {
+                if (mKey.equals("sigma_version") || mKey.equals("security_key") || mKey.equals("kernel_version")) {
+                    mPreference.setLayoutResource(R.layout.nad_dashboard_preference_full);
+                } else if (mKey.equals("sigma_info")) {
+                    mPreference.setLayoutResource(R.layout.dot_blank); 
+                } else if (mKey.equals("sigma_logo")) {
+                mPreference.setLayoutResource(R.layout.nad_about_logo);
+                 } else if (mKey.equals("rom_build_status")) {
+                mPreference.setLayoutResource(R.layout.nad_card_build_status);
+                } 
+                else {
+                    mPreference.setLayoutResource(R.layout.nad_full_no_chevron);
+                }
+            }
+        }
+    }
+
+    private int geSettingstDashboardStyle() {
+        return Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
     }
 
     @Override
@@ -113,6 +231,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
         controllers.add(new FeedbackPreferenceController(fragment, context));
         controllers.add(new FccEquipmentIdPreferenceController(context));
         controllers.add(new UptimePreferenceController(context, lifecycle));
+        controllers.add(new SigmaInfoPreferenceController(context));
         return controllers;
     }
 
@@ -122,40 +241,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
             return;
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void initHeader() {
-        // TODO: Migrate into its own controller.
-        final LayoutPreference headerPreference =
-                getPreferenceScreen().findPreference(KEY_MY_DEVICE_INFO_HEADER);
-        final boolean shouldDisplayHeader = getContext().getResources().getBoolean(
-                R.bool.config_show_device_header_in_device_info);
-        headerPreference.setVisible(shouldDisplayHeader);
-        if (!shouldDisplayHeader) {
-            return;
-        }
-        final View headerView = headerPreference.findViewById(R.id.entity_header);
-        final Activity context = getActivity();
-        final Bundle bundle = getArguments();
-        final EntityHeaderController controller = EntityHeaderController
-                .newInstance(context, this, headerView)
-                .setRecyclerView(getListView(), getSettingsLifecycle())
-                .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
-                        EntityHeaderController.ActionType.ACTION_NONE);
-
-        // TODO: There may be an avatar setting action we can use here.
-        final int iconId = bundle.getInt("icon_id", 0);
-        if (iconId == 0) {
-            final UserManager userManager = (UserManager) getActivity().getSystemService(
-                    Context.USER_SERVICE);
-            final UserInfo info = Utils.getExistingUser(userManager,
-                    android.os.Process.myUserHandle());
-            controller.setLabel(info.name);
-            controller.setIcon(
-                    com.android.settingslib.Utils.getUserIcon(getActivity(), userManager, info));
-        }
-
-        controller.done(context, true /* rebindActions */);
     }
 
     @Override
