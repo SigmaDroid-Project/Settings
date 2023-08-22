@@ -56,8 +56,8 @@ android_library {
     srcs: [
         "src/**/*.java",
         "src/**/*.kt",
-        "Evolver/src/**/*.java",
-        "Evolver/src/**/*.kt",
+        "SigmaToolbox/src/**/*.java",
+        "SigmaToolbox/src/**/*.kt",
     ],
 
     aaptflags: ["--extra-packages com.evolution.settings"],
@@ -65,7 +65,7 @@ android_library {
     resource_dirs: [
         "res",
         "res-ui",
-        "Evolver/res",
+        "SigmaToolbox/res",
         "TouchGestures/res"
     ],
 
