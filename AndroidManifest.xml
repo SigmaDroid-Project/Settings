@@ -4780,8 +4780,8 @@
         </activity>
 
         <!-- Changelog Activity -->
-        <activity android:name="com.evolution.settings.about.ChangelogActivity"
-            android:label="@string/changelog_evolution_title"
+        <activity android:name="com.sigma.settings.about.ChangelogActivity"
+            android:label="@string/changelog_sigma_title"
             android:parentActivityName="com.android.settings"
             android:theme="@style/Theme.SubSettingsBase"
             android:exported="true">
