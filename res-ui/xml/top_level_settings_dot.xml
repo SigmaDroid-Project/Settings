@@ -32,7 +32,7 @@
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.evolution.settings.EvolutionSettings"
         android:icon="@drawable/ic_settings_sigma"
-        android:key="top_level_evolver"
+        android:key="top_level_sigma_settings"
         android:order="-204"
         android:title="@string/evolver_dashboard_title"
         android:summary="@string/evolver_dashboard_summary"
