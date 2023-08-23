@@ -22,7 +22,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 
-import com.android.internal.util.evolution.EvolutionUtils;
+import com.android.internal.util.sigma.SigmaUtils;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.notification.NotificationBackend;
 import com.android.settingslib.RestrictedSwitchPreference;
@@ -46,7 +46,7 @@ public class TorchBlinkPreferenceController extends NotificationPreferenceContro
 
     public TorchBlinkPreferenceController(Context context, NotificationBackend backend) {
         super(context, backend);
-        mHasTorch = EvolutionUtils.deviceHasFlashlight(context);
+        mHasTorch = SigmaUtils.deviceHasFlashlight(context);
     }
 
     @Override

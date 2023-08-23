@@ -22,14 +22,14 @@
     android:title="Settings">
 
     <com.android.settings.widget.HomepagePreference
-        android:fragment="com.sigma.settings.EvolutionSettings"
+        android:fragment="com.sigma.settings.SigmaToolbox"
         android:icon="@drawable/ic_settings_sigma"
         android:key="top_level_sigma"
         android:order="-160"
         android:title="@string/sigma_dashboard_title"
         android:summary="@string/sigma_dashboard_summary"
         settings:highlightableMenuKey="@string/menu_key_sigma"
-        settings:controller="com.sigma.settings.TopLevelEvolutionSettingsPreferenceController"/>
+        settings:controller="com.sigma.settings.TopLevelSigmaToolboxPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.network.NetworkDashboardFragment"

@@ -183,7 +183,7 @@ import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSetting
 import com.android.settings.wifi.tether.WifiTetherSettings;
 
 import com.android.settings.livedisplay.LiveDisplaySettings;
-import com.sigma.settings.EvolutionSettings;
+import com.sigma.settings.SigmaToolbox;
 import com.sigma.settings.fragments.HeadsUpSettings;
 import com.sigma.settings.fragments.SmartPixels;
 
@@ -359,7 +359,7 @@ public class SettingsGateway {
             AppLocaleDetails.class.getName(),
             TurnScreenOnSettings.class.getName(),
             TurnScreenOnDetails.class.getName(),
-            EvolutionSettings.class.getName(),
+            SigmaToolbox.class.getName(),
             HeadsUpSettings.class.getName(),
             LiveDisplaySettings.class.getName(),
             WifiTetherClientManager.class.getName(),
@@ -409,7 +409,7 @@ public class SettingsGateway {
             Settings.MyDeviceInfoActivity.class.getName(),
             Settings.ModuleLicensesActivity.class.getName(),
             UserBackupSettingsActivity.class.getName(),
-            Settings.EvolutionSettingsActivity.class.getName(),
+            Settings.SigmaToolboxActivity.class.getName(),
             Settings.HeadsUpSettingsActivity.class.getName(),
             Settings.DevRunningServicesActivity.class.getName(),
             Settings.SmartPixelsActivity.class.getName(),

@@ -127,7 +127,7 @@ public class TopMenu extends Preference {
         mNad.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$EvolutionSettingsActivity"));
+                intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$SigmaToolboxActivity"));
                 context.startActivity(intent);
             }
         });

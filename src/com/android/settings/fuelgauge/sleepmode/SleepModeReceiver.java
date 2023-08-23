@@ -21,7 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
 
-import com.android.internal.util.evolution.EvolutionUtils.SleepModeController;
+import com.android.internal.util.sigma.SigmaUtils.SleepModeController;
 
 public class SleepModeReceiver extends BroadcastReceiver {
 
