@@ -54,7 +54,7 @@ public class RingerMuteSettings extends SettingsPreferenceFragment implements On
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.EVOLVER;
+        return MetricsProto.MetricsEvent.SIGMA;
     }
 
     @Override

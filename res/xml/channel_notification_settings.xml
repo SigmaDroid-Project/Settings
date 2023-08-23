@@ -95,7 +95,7 @@
         android:visibility="gone" >
 
         <!-- Custom vibration pattern 1 -->
-        <com.evolution.settings.preference.CustomSeekBarPreference
+        <com.sigma.settings.preference.CustomSeekBarPreference
             android:key="custom_vibrate1"
             android:title="@string/notification_custom_vibrate_slider1"
             android:order="15"
@@ -105,7 +105,7 @@
             settings:units="@string/unit_ms" />
 
         <!-- Custom vibration pattern 2 -->
-        <com.evolution.settings.preference.CustomSeekBarPreference
+        <com.sigma.settings.preference.CustomSeekBarPreference
             android:key="custom_vibrate2"
             android:title="@string/notification_custom_vibrate_slider2"
             android:order="16"
@@ -115,7 +115,7 @@
             settings:units="@string/unit_ms" />
 
         <!-- Custom vibration pattern 3 -->
-        <com.evolution.settings.preference.CustomSeekBarPreference
+        <com.sigma.settings.preference.CustomSeekBarPreference
             android:key="custom_vibrate3"
             android:title="@string/notification_custom_vibrate_slider1"
             android:order="17"
@@ -140,7 +140,7 @@
         android:visibility="gone" >
 
         <!-- Flashlight blinking times -->
-        <com.evolution.settings.preference.CustomSeekBarPreference
+        <com.sigma.settings.preference.CustomSeekBarPreference
             android:key="default_notification_torch1"
             android:title="@string/default_notification_torch_slider1"
             android:order="20"
@@ -150,7 +150,7 @@
             settings:units="@string/unit_times" />
 
         <!-- Flashlight blinking rate -->
-        <com.evolution.settings.preference.CustomSeekBarPreference
+        <com.sigma.settings.preference.CustomSeekBarPreference
             android:key="default_notification_torch2"
             android:title="@string/default_notification_torch_slider2"
             android:order="21"

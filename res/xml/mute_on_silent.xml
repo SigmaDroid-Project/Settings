@@ -18,14 +18,14 @@
         android:title="@string/ringer_mute_main_switch_title"
         android:defaultValue="false"/>
 
-    <com.evolution.settings.preference.GlobalSettingSwitchPreference
+    <com.sigma.settings.preference.GlobalSettingSwitchPreference
         android:key="mute_sp"
         android:title="@string/mute_sp_title"
         android:summary="@string/mute_sp_summary"
-        android:defaultValue="false" 
+        android:defaultValue="false"
         android:dependency="ringer_mute_speaker_media" />
 
-    <com.evolution.settings.preference.GlobalSettingSwitchPreference
+    <com.sigma.settings.preference.GlobalSettingSwitchPreference
         android:key="pulse_panel"
         android:title="@string/pulse_panel_title"
         android:summary="@string/pulse_panel_summary"

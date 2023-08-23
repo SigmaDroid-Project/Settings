@@ -4,9 +4,9 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- The Evolver -->
-    <string name="evolver_dashboard_title">The Evolver</string>
-    <string name="evolver_dashboard_summary">Welcome to the Eve of Evolution</string>
+    <!-- SigmaToolbox -->
+    <string name="sigma_dashboard_title">Sigma Toolbox</string>
+    <string name="sigma_dashboard_summary">Everything including the kitchen sink!</string>
 
     <!-- Hardware info -->
     <string name="soc_model">SoC Model</string>
@@ -14,7 +14,7 @@
 
     <!-- About device screen, Evolution X -->
     <string name="about_device_name">Device</string>
-    <string name="evolution_x_version">Evolution X version</string>
+    <string name="evolution_x_version">SigmaDroid version</string>
 
     <!-- About device screen, Build date -->
     <string name="build_date">Build date</string>
@@ -37,8 +37,8 @@
     <!-- App details: open play store link if app is user installed -->
     <string name="app_play_store">Google Play</string>
 
-    <!-- Default getTimeSpentInApp string for Wellbeing to display. [CHAR LIMIT=NONE] --> 
-    <string name="duration_less_than_one_minute">Less than 1 Minute</string> 
+    <!-- Default getTimeSpentInApp string for Wellbeing to display. [CHAR LIMIT=NONE] -->
+    <string name="duration_less_than_one_minute">Less than 1 Minute</string>
 
     <!-- Summary for Wellbeing screen time usage. [CHAR LIMIT=NONE] -->
     <string name="screen_time_summary_usage_today">%1$s today</string>

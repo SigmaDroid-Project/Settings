@@ -4,9 +4,9 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- The Evolver -->
-    <string name="evolver_dashboard_title">L\'Evolucionador</string>
-    <string name="evolver_dashboard_summary">Et donem la benvinguda al centre d\'Evolution</string>
+    <!-- Sigma Toolbox -->
+    <string name="sigma_dashboard_title">L\'Evolucionador</string>
+    <string name="sigma_dashboard_summary">Et donem la benvinguda al centre d\'Evolution</string>
     <!-- Hardware info -->
     <string name="soc_model">Model SoC</string>
     <string name="total_ram">RAM total</string>

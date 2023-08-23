@@ -31,7 +31,7 @@ import com.android.settings.core.TogglePreferenceController;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 
-import com.evolution.settings.preference.SecureSettingSwitchPreference;
+import com.sigma.settings.preference.SecureSettingSwitchPreference;
 
 public class AmbientDisplayNotificationsPreferenceController extends
         TogglePreferenceController implements Preference.OnPreferenceChangeListener {

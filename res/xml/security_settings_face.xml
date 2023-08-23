@@ -39,7 +39,7 @@
             android:title="@string/biometric_settings_use_biometric_for_apps"
             settings:keywords="@string/keywords_face_unlock"
             settings:controller="com.android.settings.biometrics.face.FaceSettingsAppPreferenceController"/>
-        <com.evolution.settings.preference.SecureSettingSwitchPreference
+        <com.sigma.settings.preference.SecureSettingSwitchPreference
             android:key="ignore_auth_confirmation"
             android:title="@string/skip_biometric_auth_confirmation_title"
             android:dependency="security_settings_face_app"/>
@@ -62,7 +62,7 @@
             settings:keywords="@string/keywords_face_unlock"
             settings:controller="com.android.settings.biometrics.face.FaceSettingsConfirmPreferenceController"/>
 
-        <com.evolution.settings.preference.SecureSettingListPreference
+        <com.sigma.settings.preference.SecureSettingListPreference
             android:key="face_unlock_method"
             android:title="@string/face_unlock_method_title"
             android:summary="%s"

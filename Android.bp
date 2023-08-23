@@ -60,7 +60,7 @@ android_library {
         "SigmaToolbox/src/**/*.kt",
     ],
 
-    aaptflags: ["--extra-packages com.evolution.settings"],
+    aaptflags: ["--extra-packages com.sigma.settings"],
 
     resource_dirs: [
         "res",

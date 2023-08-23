@@ -4650,12 +4650,12 @@
             </intent-filter>
         </activity>
 
-        <!-- The Evolver -->
-        <activity android:name="Settings$EvolutionSettingsActivity"
-                  android:label="@string/evolver_dashboard_title"
+        <!-- Sigma Toolbox -->
+        <activity android:name="Settings$SigmaToolboxActivity"
+                  android:label="@string/sigma_dashboard_title"
                   android:exported="true">
             <intent-filter android:priority="1">
-                <action android:name="com.evolution.settings.EvolutionSettings" />
+                <action android:name="com.sigma.settings.SigmaToolbox" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <intent-filter>
@@ -4664,17 +4664,17 @@
             </intent-filter>
             <meta-data android:name="com.android.settings.order" android:value="-1"/>
             <meta-data android:name="com.android.settings.summary"
-                       android:resource="@string/evolver_dashboard_summary"/>
+                       android:resource="@string/sigma_dashboard_summary"/>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                       android:value="com.evolution.settings.EvolutionSettings" />
+                       android:value="com.sigma.settings.SigmaToolbox" />
             <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
-                       android:value="@string/menu_key_evolver"/>
+                       android:value="@string/menu_key_sigma"/>
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                        android:value="true" />
         </activity>
 
         <activity
-            android:name="com.evolution.settings.fragments.uibench.JitterTestActivity"
+            android:name="com.sigma.settings.fragments.uibench.JitterTestActivity"
             android:theme="@style/Theme.SubSettingsBase"
             android:exported="true">
             <intent-filter>
@@ -4691,7 +4691,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                       android:value="com.evolution.settings.fragments.HeadsUpSettings"/>
+                       android:value="com.sigma.settings.fragments.HeadsUpSettings"/>
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                        android:value="true" />
         </activity>
@@ -4717,7 +4717,7 @@
                 android:value="true" />
         </activity>
 
-        <activity android:name="com.evolution.settings.security.applock.AppLockCredentialActivity"
+        <activity android:name="com.sigma.settings.security.applock.AppLockCredentialActivity"
             android:exported="false"
             android:permission="android.permission.MANAGE_APP_LOCK"
             android:excludeFromRecents="true"
@@ -4731,7 +4731,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.evolution.settings.security.applock.AppLockSubSettings"
+        <activity android:name="com.sigma.settings.security.applock.AppLockSubSettings"
             android:exported="false"
             android:excludeFromRecents="true"
             android:taskAffinity="com.android.settings.applock"
@@ -4747,7 +4747,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.evolution.settings.fragments.SmartPixels" />
+                android:value="com.sigma.settings.fragments.SmartPixels" />
         </activity>
 
         <!-- Sleep Mode -->

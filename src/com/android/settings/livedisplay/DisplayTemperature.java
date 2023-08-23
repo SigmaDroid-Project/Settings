@@ -32,7 +32,7 @@ import com.android.internal.lineage.hardware.LiveDisplayManager;
 import com.android.internal.lineage.util.MathUtils;
 import com.android.settings.R;
 
-import com.evolution.settings.preference.CustomDialogPreference;
+import com.sigma.settings.preference.CustomDialogPreference;
 
 /**
  * Preference for selection of color temperature range for LiveDisplay

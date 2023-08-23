@@ -4,15 +4,15 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- The Evolver -->
-    <string name="evolver_dashboard_title">Evolver</string>
-    <string name="evolver_dashboard_summary">Bienvenue à la veille de l\'évolution</string>
+    <!-- Sigma Toolbox -->
+    <string name="sigma_dashboard_title">Sigma Toolbox</string>
+    <string name="sigma_dashboard_summary">Bienvenue à la veille de l\'évolution</string>
     <!-- Hardware info -->
     <string name="soc_model">Modèle SoC</string>
     <string name="total_ram">Mémoire RAM totale</string>
-    <!-- About device screen, Evolution X -->
+    <!-- About device screen, SigmaDroid -->
     <string name="about_device_name">Appareil</string>
-    <string name="evolution_x_version">Version de Evolution X</string>
+    <string name="evolution_x_version">Version de SigmaDroid</string>
     <!-- About device screen, Build date -->
     <string name="build_date">Date de compilation</string>
     <!-- About device screen, build maintainer -->

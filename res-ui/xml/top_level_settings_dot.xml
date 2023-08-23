@@ -30,14 +30,14 @@
         settings:controller="com.android.settings.deviceinfo.aboutphone.TopLevelAboutDevicePreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
-        android:fragment="com.evolution.settings.EvolutionSettings"
+        android:fragment="com.sigma.settings.EvolutionSettings"
         android:icon="@drawable/ic_settings_sigma"
-        android:key="top_level_evolver"
+        android:key="top_level_sigma"
         android:order="-204"
-        android:title="@string/evolver_dashboard_title"
-        android:summary="@string/evolver_dashboard_summary"
-        settings:highlightableMenuKey="@string/menu_key_evolver"
-        settings:controller="com.evolution.settings.TopLevelEvolutionSettingsPreferenceController"/>
+        android:title="@string/sigma_dashboard_title"
+        android:summary="@string/sigma_dashboard_summary"
+        settings:highlightableMenuKey="@string/menu_key_sigma"
+        settings:controller="com.sigma.settings.TopLevelEvolutionSettingsPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.network.NetworkDashboardFragment"

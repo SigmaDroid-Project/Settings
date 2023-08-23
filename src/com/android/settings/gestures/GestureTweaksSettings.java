@@ -37,9 +37,9 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settingslib.search.Indexable;
 
-import com.evolution.settings.preference.CustomSeekBarPreference;
-import com.evolution.settings.preference.SystemSettingListPreference;
-import com.evolution.settings.preference.SystemSettingSwitchPreference;
+import com.sigma.settings.preference.CustomSeekBarPreference;
+import com.sigma.settings.preference.SystemSettingListPreference;
+import com.sigma.settings.preference.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -175,7 +175,7 @@ public class GestureTweaksSettings extends SettingsPreferenceFragment
                     mRightVerticalSwipeActions.getEntries()[index]);
             mRightVerticalSwipeAppSelection.setVisible(mExtendedSwipe.isChecked() && rightVerticalSwipeActions == 4);
             customAppCheck();
-            return true; 
+            return true;
         } else if (preference == mExtendedSwipe) {
             boolean enabled = ((Boolean) newValue).booleanValue();
             mExtendedSwipe.setChecked(enabled);
@@ -184,7 +184,7 @@ public class GestureTweaksSettings extends SettingsPreferenceFragment
             mRightVerticalSwipeActions.setEnabled(enabled);
             mLeftVerticalSwipeAppSelection.setVisible(enabled && mLeftVerticalSwipeActions.getValue().equals("4"));
             mRightVerticalSwipeAppSelection.setVisible(enabled && mRightVerticalSwipeActions.getValue().equals("4"));
-            return true; 
+            return true;
         }
         return false;
     }
@@ -263,7 +263,7 @@ public class GestureTweaksSettings extends SettingsPreferenceFragment
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.EVOLVER;
+        return MetricsProto.MetricsEvent.SIGMA;
     }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

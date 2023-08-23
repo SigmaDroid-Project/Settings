@@ -4,14 +4,14 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- The Evolver -->
-    <string name="evolver_dashboard_title">The Evolver</string>
-    <string name="evolver_dashboard_summary">Καλώς ήλθατε στο Eve of Evolution</string>
+    <!-- Sigma Toolbox -->
+    <string name="sigma_dashboard_title">Sigma Toolbox</string>
+    <string name="sigma_dashboard_summary">Καλώς ήλθατε στο Eve of Evolution</string>
     <!-- Hardware info -->
     <string name="platform_revision">Πλατφόρμα</string>
     <string name="total_ram">Συνολική RAM</string>
-    <!-- About device screen, Evolution X -->
-    <string name="evolution_x_version">Έκδοση Evolution X</string>
+    <!-- About device screen, SigmaDroid -->
+    <string name="evolution_x_version">Έκδοση SigmaDroid</string>
     <!-- About device screen, Build date -->
     <string name="build_date">Ημερομηνία έκδοσης</string>
     <!-- About device screen, build maintainer -->

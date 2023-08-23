@@ -25,7 +25,7 @@
         android:key="dark_ui_top_intro"
         android:title="@string/dark_ui_text"
         settings:searchable="false"/>
-        
+
    <com.android.settingslib.widget.IllustrationPreference
         android:key="dark_illustration"
         app:lottie_rawRes="@raw/darkmode"/>
@@ -66,7 +66,7 @@
         settings:searchable="false"
         settings:controller="com.android.settings.display.darkmode.DarkModeCustomBedtimePreferenceController" />
 
-    <com.evolution.settings.preference.SecureSettingListPreference
+    <com.sigma.settings.preference.SecureSettingListPreference
         android:key="system_custom_theme"
         android:title="@string/custom_theme_title"
         android:summary="%s"

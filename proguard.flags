@@ -72,5 +72,5 @@
 -dontwarn androidx.window.extensions.**
 -keep class androidx.window.** { *; }
 
-# The Evolver: Keep all classes.
--keep class com.evolution.settings.**
+# Sigma Toolbox: Keep all classes.
+-keep class com.sigma.settings.**

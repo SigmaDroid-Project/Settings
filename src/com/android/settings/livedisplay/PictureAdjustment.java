@@ -27,7 +27,7 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.evolution.settings.preference.CustomDialogPreference;
+import com.sigma.settings.preference.CustomDialogPreference;
 import com.android.settings.widget.IntervalSeekBar;
 import com.android.settings.R;
 

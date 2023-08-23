@@ -451,9 +451,9 @@ public class Settings extends SettingsActivity {
     public static class OneHandedSettingsActivity extends SettingsActivity { /* empty */ }
 
     /**
-     * Activity for The Evolver
+     * Activity for Sigma Toolbox
      */
-    public static class EvolutionSettingsActivity extends SettingsActivity {}
+    public static class SigmaToolboxActivity extends SettingsActivity {}
     public static class HeadsUpSettingsActivity extends SettingsActivity { /* empty */ }
     public static class DevRunningServicesActivity extends SettingsActivity { /* empty */ }
     public static class SmartPixelsActivity extends SettingsActivity {}

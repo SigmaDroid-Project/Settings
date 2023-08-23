@@ -4,9 +4,9 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- The Evolver -->
-    <string name="evolver_dashboard_title">Evolver</string>
-    <string name="evolver_dashboard_summary">Welcome to the Eve of Evolution</string>
+    <!-- Sigma Toolbox -->
+    <string name="sigma_dashboard_title">Sigma Toolbox</string>
+    <string name="sigma_dashboard_summary">Everything including the kitchen sink!</string>
     <!-- Hardware info -->
     <string name="platform_revision">플랫폼</string>
     <string name="total_ram">전체 메모리</string>

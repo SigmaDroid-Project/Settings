@@ -27,7 +27,7 @@ import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.notification.NotificationBackend;
 import com.android.settingslib.RestrictedSwitchPreference;
 
-import com.evolution.settings.preference.CustomSeekBarPreference;
+import com.sigma.settings.preference.CustomSeekBarPreference;
 
 public class TorchBlinkPreferenceController extends NotificationPreferenceController
         implements PreferenceControllerMixin, Preference.OnPreferenceChangeListener {

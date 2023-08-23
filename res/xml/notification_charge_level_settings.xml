@@ -12,7 +12,7 @@
         android:key="notification_battery_charge_level_summary_intro_text"
         android:title="@string/notification_battery_charge_level_summary" />
 
-    <com.evolution.settings.preference.SystemSettingMainSwitchPreference
+    <com.sigma.settings.preference.SystemSettingMainSwitchPreference
         android:key="battery_level_charge_alarm_enabled"
         android:title="@string/notification_battery_charge_level_main_switch_title"
         android:defaultValue="false" />
@@ -22,7 +22,7 @@
         android:title="@string/notification_battery_charge_level_ringtone"
         android:dependency="battery_level_charge_alarm_enabled" />
 
-    <com.evolution.settings.preference.CustomSeekBarPreference
+    <com.sigma.settings.preference.CustomSeekBarPreference
         android:key="battery_level_charge_seek_bar"
         android:title="@string/notification_battery_charge_level_seek_bar"
         android:max="100"

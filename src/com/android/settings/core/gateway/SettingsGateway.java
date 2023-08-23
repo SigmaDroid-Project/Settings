@@ -183,9 +183,9 @@ import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSetting
 import com.android.settings.wifi.tether.WifiTetherSettings;
 
 import com.android.settings.livedisplay.LiveDisplaySettings;
-import com.evolution.settings.EvolutionSettings;
-import com.evolution.settings.fragments.HeadsUpSettings;
-import com.evolution.settings.fragments.SmartPixels;
+import com.sigma.settings.EvolutionSettings;
+import com.sigma.settings.fragments.HeadsUpSettings;
+import com.sigma.settings.fragments.SmartPixels;
 
 import ink.kscope.settings.wifi.tether.WifiTetherClientManager;
 

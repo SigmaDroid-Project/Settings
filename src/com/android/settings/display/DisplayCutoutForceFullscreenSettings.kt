@@ -42,7 +42,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-import com.android.internal.util.evolution.cutout.CutoutFullscreenController
+import com.android.internal.util.sigma.cutout.CutoutFullscreenController
 
 import com.android.settings.R
 
@@ -238,7 +238,7 @@ class DisplayCutoutForceFullscreenSettings: Fragment(R.layout.cutout_force_fulls
             getLabel(packageInfo),
             packageInfo.applicationInfo.loadIcon(packageManager),
         )
-    
+
     private fun getLabel(packageInfo: PackageInfo) =
         packageInfo.applicationInfo.loadLabel(packageManager).toString()
 
@@ -297,7 +297,7 @@ class DisplayCutoutForceFullscreenSettings: Fragment(R.layout.cutout_force_fulls
         private val itemCallback = object: DiffUtil.ItemCallback<AppInfo>() {
             override fun areItemsTheSame(oldInfo: AppInfo, newInfo: AppInfo) =
                 oldInfo.packageName == newInfo.packageName
-            
+
             override fun areContentsTheSame(oldInfo: AppInfo, newInfo: AppInfo) =
                 oldInfo == newInfo
         }
