@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.SystemProperties;
 import android.widget.TextView;
 
+import android.provider.Settings;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
@@ -53,7 +54,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
 
     private String mBuildStatus;
 
-    final String isOfficial = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
+    final String isOfficial = SystemProperties.get(KEY_SIGMA_RELEASE_TYPE_PROP,
                 this.mContext.getString(R.string.device_info_default));
 
     public SigmaInfoPreferenceController(Context context) {
@@ -94,29 +95,27 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
+        final LayoutPreference SigmaInfoPreference = screen.findPreference(KEY_SIGMA_INFO);
 
+        final TextView version = (TextView) SigmaInfoPreference.findViewById(R.id.version_message);
 
         final TextView storText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_storage_summary);
         final TextView battText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_battery_summary);
         final TextView device = (TextView) SigmaInfoPreference.findViewById(R.id.device_message);
 
 
-        final String sigmaDevice = getDeviceName();
         final String isOfficial = SystemProperties.get(KEY_SIGMA_RELEASE_TYPE_PROP,
                 this.mContext.getString(R.string.device_info_default));
 
-        mBuildStatus = mContext.getResources().getString(R.string.build_status_summary);
+        final String SigmaDevice = getDeviceName();
+        final String SigmaVersion = getSigmaVersion();
 
-        buildStatusPref.setTitle(mBuildStatus);
+        version.setText(SigmaVersion);
+        device.setText(SigmaDevice);
 
         storText.setText(String.valueOf(SpecUtils.getTotalInternalMemorySize()) + "GB ROM + " + SpecUtils.getTotalRAM() + " RAM");
         battText.setText(SpecUtils.getBatteryCapacity(mContext) + " mAh");
 
-        if (isOfficial.toLowerCase().contains("official")) {
-		buildStatusPref.setIcon(R.drawable.verified);
-	    } else {
-		buildStatusPref.setIcon(R.drawable.unverified);
-	    }
     }
 
     @Override
