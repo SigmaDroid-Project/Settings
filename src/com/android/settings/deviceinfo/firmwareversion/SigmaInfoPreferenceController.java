@@ -39,18 +39,18 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     private static final String KEY_BUILD_STATUS = "rom_build_status";
 
     private static final String KEY_BRAND_NAME_PROP = "ro.product.manufacturer";
-    private static final String KEY_DEVICE_NAME_PROP = "org.evolution.device";
+    private static final String KEY_DEVICE_NAME_PROP = "org.sigma.device";
     private static final String KEY_MARKET_NAME_PROP = "ro.product.marketname";
-    private static final String KEY_EVOLUTION_BUILD_VERSION_PROP = "org.evolution.build_version";
-    private static final String KEY_EVOLUTION_CODENAME_PROP = "org.evolution.build_codename";
-    private static final String KEY_EVOLUTION_RELEASE_TYPE_PROP = "org.evolution.build_type";
-    private static final String KEY_EVOLUTION_VERSION_PROP = "org.evolution.version.display";
+    private static final String KEY_SIGMA_BUILD_VERSION_PROP = "org.sigma.build_version";
+    private static final String KEY_SIGMA_CODENAME_PROP = "org.sigma.build_codename";
+    private static final String KEY_SIGMA_RELEASE_TYPE_PROP = "org.sigma.build_type";
+    private static final String KEY_SIGMA_VERSION_PROP = "org.sigma.version.display";
 
     private static final String KEY_STORAGE = "storage";
     private static final String KEY_CHIPSET = "chipset";
     private static final String KEY_BATTERY = "battery";
     private static final String KEY_DISPLAY = "display";
-    
+
     private String mBuildStatus;
 
     final String isOfficial = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
@@ -61,11 +61,11 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     }
 
     private String getSigmaVersion() {
-        String romVersion = SystemProperties.get(KEY_EVOLUTION_BUILD_VERSION_PROP,
+        String romVersion = SystemProperties.get(KEY_SIGMA_BUILD_VERSION_PROP,
                 this.mContext.getString(R.string.device_info_default));
-        String romCodename = SystemProperties.get(KEY_EVOLUTION_CODENAME_PROP,
+        String romCodename = SystemProperties.get(KEY_SIGMA_CODENAME_PROP,
                 this.mContext.getString(R.string.device_info_default));
-        String romReleasetype = SystemProperties.get(KEY_EVOLUTION_RELEASE_TYPE_PROP,
+        String romReleasetype = SystemProperties.get(KEY_SIGMA_RELEASE_TYPE_PROP,
                 this.mContext.getString(R.string.device_info_default));
 
         return romVersion  + " | " + romCodename  + " | " + romReleasetype;
@@ -102,9 +102,9 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
 
 
         final String sigmaDevice = getDeviceName();
-        final String isOfficial = SystemProperties.get(KEY_EVOLUTION_RELEASE_TYPE_PROP,
+        final String isOfficial = SystemProperties.get(KEY_SIGMA_RELEASE_TYPE_PROP,
                 this.mContext.getString(R.string.device_info_default));
-        
+
         mBuildStatus = mContext.getResources().getString(R.string.build_status_summary);
 
         buildStatusPref.setTitle(mBuildStatus);

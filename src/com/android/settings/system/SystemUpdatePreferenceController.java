@@ -35,8 +35,8 @@ public class SystemUpdatePreferenceController extends BasePreferenceController {
 
     private static final String KEY_SYSTEM_UPDATE_SETTINGS = "system_update_settings";
 
-    private static final String OTA_BUILD_TYPE_PROP = "org.evolution.build_type";
-    private static final String OTA_APP_PACKAGE = "org.evolution.ota";
+    private static final String OTA_BUILD_TYPE_PROP = "org.sigma.build_type";
+    private static final String OTA_APP_PACKAGE = "org.sigma.ota";
 
     private final UserManager mUm;
 

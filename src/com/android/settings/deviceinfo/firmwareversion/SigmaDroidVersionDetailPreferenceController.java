@@ -43,12 +43,12 @@ public class SigmaDroidVersionDetailPreferenceController extends BasePreferenceC
     private static final int DELAY_TIMER_MILLIS = 500;
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
 
-    private static final String KEY_EVOLUTION_BUILD_VERSION_PROP = "org.evolution.build_version";
-    private static final String KEY_EVOLUTION_CODENAME_PROP = "org.evolution.build_codename";
-    private static final String KEY_EVOLUTION_RELEASE_TYPE_PROP = "org.evolution.build_type";
-    private static final String KEY_EVOLUTION_VERSION_PROP = "org.evolution.version.display";
+    private static final String KEY_SIGMA_BUILD_VERSION_PROP = "org.sigma.build_version";
+    private static final String KEY_SIGMA_CODENAME_PROP = "org.sigma.build_codename";
+    private static final String KEY_SIGMA_RELEASE_TYPE_PROP = "org.sigma.build_type";
+    private static final String KEY_SIGMA_VERSION_PROP = "org.sigma.version.display";
 
-    private static final String PLATLOGO_PACKAGE_NAME = "org.evolution.easteregg";
+    private static final String PLATLOGO_PACKAGE_NAME = "org.sigma.easteregg";
     private static final String PLATLOGO_ACTIVITY_CLASS =
             PLATLOGO_PACKAGE_NAME + ".EasterEgg";
 
@@ -94,7 +94,7 @@ public class SigmaDroidVersionDetailPreferenceController extends BasePreferenceC
             preference.setSummary(shortRomVersion());
             fullRomVersion = false;
         } else {
-            preference.setSummary(SystemProperties.get(KEY_EVOLUTION_VERSION_PROP,
+            preference.setSummary(SystemProperties.get(KEY_SIGMA_VERSION_PROP,
                 mContext.getString(R.string.unknown)));
             fullRomVersion = true;
         }
@@ -125,11 +125,11 @@ public class SigmaDroidVersionDetailPreferenceController extends BasePreferenceC
     }
 
     private String shortRomVersion() {
-        String romVersion = SystemProperties.get(KEY_EVOLUTION_BUILD_VERSION_PROP,
+        String romVersion = SystemProperties.get(KEY_SIGMA_BUILD_VERSION_PROP,
                 this.mContext.getString(R.string.device_info_default));
-        String romCodename = SystemProperties.get(KEY_EVOLUTION_CODENAME_PROP,
+        String romCodename = SystemProperties.get(KEY_SIGMA_CODENAME_PROP,
                 this.mContext.getString(R.string.device_info_default));
-        String romReleasetype = SystemProperties.get(KEY_EVOLUTION_RELEASE_TYPE_PROP,
+        String romReleasetype = SystemProperties.get(KEY_SIGMA_RELEASE_TYPE_PROP,
                 this.mContext.getString(R.string.device_info_default));
         String shortVersion = romVersion + " (" + romCodename + ") | " + romReleasetype;
         return shortVersion;
