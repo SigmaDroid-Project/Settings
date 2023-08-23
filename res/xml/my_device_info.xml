@@ -40,7 +40,7 @@
             android:title="@string/build_maintainer"
             android:summary="@string/summary_placeholder"
             settings:enableCopying="true"
-            settings:controller="com.android.settings.deviceinfo.firmwareversion.EvolutionXBuildMaintainerPreferenceController">
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaDroidBuildMaintainerPreferenceController">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="@string/build_maintainer_donate_url"/>
@@ -53,7 +53,7 @@
         android:summary="@string/summary_placeholder"
         android:selectable="false"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.EvolutionXBuildStatusPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaDroidBuildStatusPreferenceController"/>
 
 
          <!-- Device name -->
@@ -117,7 +117,7 @@
             settings:enableCopying="true"
             settings:searchable="false"
             settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
-        
+
         <!-- Account name -->
         <Preference
             android:key="branded_account"
@@ -159,7 +159,7 @@
         <Preference
             android:order="18"
             android:title="@string/my_device_info_device_identifiers_category_title"/>
-        
+
         <!-- SIM status -->
         <Preference
             android:key="sim_status"

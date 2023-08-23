@@ -21,12 +21,12 @@
     android:title="@string/about_settings"
     settings:keywords="@string/keywords_android_version">
 
-    <!-- Evolution X logo -->
+    <!-- SigmaDroid logo -->
     <com.android.settingslib.widget.LayoutPreference
-        android:key="evolution_logo"
-        android:layout="@layout/evolution_logo"
+        android:key="sigma_logo"
+        android:layout="@layout/sigma_logo"
         android:clickable="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.EvolutionXLogoPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaDroidLogoPreferenceController"/>
 
     <!-- Android version -->
     <Preference
@@ -44,7 +44,7 @@
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
         settings:searchable="false"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.EvolutionXVersionDetailPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaDroidVersionDetailPreferenceController"/>
 
     <!-- Device name -->
     <Preference
@@ -97,7 +97,7 @@
         android:summary="@string/summary_placeholder"
         android:selectable="false"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.EvolutionXBuildStatusPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaDroidBuildStatusPreferenceController"/>
 
     <!-- Build maintainer -->
     <Preference
@@ -105,7 +105,7 @@
         android:title="@string/build_maintainer"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.EvolutionXBuildMaintainerPreferenceController">
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaDroidBuildMaintainerPreferenceController">
         <intent
             android:action="android.intent.action.VIEW"
             android:data="@string/build_maintainer_donate_url"/>
@@ -118,7 +118,7 @@
         android:summary="@string/summary_placeholder"
         android:selectable="false"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.EvolutionXBuildDatePreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaDroidBuildDatePreferenceController"/>
 
     <!-- Build number -->
     <!--Preference

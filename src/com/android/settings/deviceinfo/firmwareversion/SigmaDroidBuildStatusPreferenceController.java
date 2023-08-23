@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019-2021 The Evolution X Project
+ * Copyright (C) 2019-2022 Evolution X
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,38 +17,30 @@
 package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Log;
-
-import androidx.preference.Preference;
+import android.os.SystemProperties;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class EvolutionXBuildMaintainerPreferenceController extends BasePreferenceController {
+public class SigmaDroidBuildStatusPreferenceController extends BasePreferenceController {
 
-    private static final String TAG = "EvolutionXBuildMaintainerCtrl";
+    private static final String TAG = "SigmaDroidBuildStatusCtrl";
 
-    private String mDeviceMaintainer;
+    private String mBuildStatus;
 
-    public EvolutionXBuildMaintainerPreferenceController(Context context, String key) {
+    public SigmaDroidBuildStatusPreferenceController(Context context, String key) {
         super(context, key);
-        mDeviceMaintainer = mContext.getResources().getString(R.string.build_maintainer_summary);
+        mBuildStatus = mContext.getResources().getString(R.string.build_status_summary);
     }
 
     @Override
     public int getAvailabilityStatus() {
-        if (mDeviceMaintainer.equalsIgnoreCase("UNKNOWN")) {
-            return UNSUPPORTED_ON_DEVICE;
-        }
-        return AVAILABLE;
+        return mContext.getResources().getBoolean(R.bool.config_show_build_status)
+                ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 
     @Override
     public CharSequence getSummary() {
-        return mDeviceMaintainer;
+        return mBuildStatus;
     }
 }

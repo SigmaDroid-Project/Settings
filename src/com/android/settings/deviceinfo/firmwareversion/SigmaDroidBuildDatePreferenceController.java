@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2019-2022 Evolution X
+ * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019-2021 The Evolution X Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,25 +23,24 @@ import android.os.SystemProperties;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class EvolutionXBuildStatusPreferenceController extends BasePreferenceController {
+public class SigmaDroidBuildDatePreferenceController extends BasePreferenceController {
 
-    private static final String TAG = "EvolutionXBuildStatusCtrl";
+    private static final String TAG = "SigmaDroidBuildDateCtrl";
 
-    private String mBuildStatus;
+    private static final String KEY_BUILD_DATE_PROP = "ro.build.date";
 
-    public EvolutionXBuildStatusPreferenceController(Context context, String key) {
+    public SigmaDroidBuildDatePreferenceController(Context context, String key) {
         super(context, key);
-        mBuildStatus = mContext.getResources().getString(R.string.build_status_summary);
     }
 
     @Override
     public int getAvailabilityStatus() {
-        return mContext.getResources().getBoolean(R.bool.config_show_build_status)
-                ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        return AVAILABLE;
     }
 
     @Override
     public CharSequence getSummary() {
-        return mBuildStatus;
+        return SystemProperties.get(KEY_BUILD_DATE_PROP,
+                mContext.getString(R.string.unknown));
     }
 }

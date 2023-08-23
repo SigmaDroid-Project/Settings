@@ -37,9 +37,9 @@ import com.android.settings.slices.Sliceable;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtilsInternal;
 
-public class EvolutionXVersionDetailPreferenceController extends BasePreferenceController {
+public class SigmaDroidVersionDetailPreferenceController extends BasePreferenceController {
 
-    private static final String TAG = "evolutionXVersionDialogCtrl";
+    private static final String TAG = "sigmaDroidVersionDialogCtrl";
     private static final int DELAY_TIMER_MILLIS = 500;
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
 
@@ -59,7 +59,7 @@ public class EvolutionXVersionDetailPreferenceController extends BasePreferenceC
     private boolean mFunDisallowedBySystem;
     private boolean fullRomVersion = false;
 
-    public EvolutionXVersionDetailPreferenceController(Context context, String key) {
+    public SigmaDroidVersionDetailPreferenceController(Context context, String key) {
         super(context, key);
         mUserManager = (UserManager) mContext.getSystemService(Context.USER_SERVICE);
         initializeAdminPermissions();

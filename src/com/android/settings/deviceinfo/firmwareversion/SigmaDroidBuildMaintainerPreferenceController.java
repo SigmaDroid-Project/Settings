@@ -1,5 +1,4 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
  * Copyright (C) 2019-2021 The Evolution X Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,29 +17,38 @@
 package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.util.Log;
+
+import androidx.preference.Preference;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class EvolutionXBuildDatePreferenceController extends BasePreferenceController {
+public class SigmaDroidBuildMaintainerPreferenceController extends BasePreferenceController {
 
-    private static final String TAG = "EvolutionXBuildDateCtrl";
+    private static final String TAG = "SigmaDroidBuildMaintainerCtrl";
 
-    private static final String KEY_BUILD_DATE_PROP = "ro.build.date";
+    private String mDeviceMaintainer;
 
-    public EvolutionXBuildDatePreferenceController(Context context, String key) {
+    public SigmaDroidBuildMaintainerPreferenceController(Context context, String key) {
         super(context, key);
+        mDeviceMaintainer = mContext.getResources().getString(R.string.build_maintainer_summary);
     }
 
     @Override
     public int getAvailabilityStatus() {
+        if (mDeviceMaintainer.equalsIgnoreCase("UNKNOWN")) {
+            return UNSUPPORTED_ON_DEVICE;
+        }
         return AVAILABLE;
     }
 
     @Override
     public CharSequence getSummary() {
-        return SystemProperties.get(KEY_BUILD_DATE_PROP,
-                mContext.getString(R.string.unknown));
+        return mDeviceMaintainer;
     }
 }

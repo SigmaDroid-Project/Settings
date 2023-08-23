@@ -30,14 +30,14 @@ import androidx.preference.Preference;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class EvolutionXLogoPreferenceController extends BasePreferenceController {
+public class SigmaDroidLogoPreferenceController extends BasePreferenceController {
 
     private static final Uri INTENT_URI_DATA = Uri.parse("https://evolution-x.org/");
-    private static final String TAG = "EvolutionXLogoPreferenceCtrl";
+    private static final String TAG = "SigmaDroidLogoPreferenceCtrl";
 
     private final PackageManager mPackageManager;
 
-    public EvolutionXLogoPreferenceController(Context context, String preferenceKey) {
+    public SigmaDroidLogoPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
         mPackageManager = mContext.getPackageManager();
     }
