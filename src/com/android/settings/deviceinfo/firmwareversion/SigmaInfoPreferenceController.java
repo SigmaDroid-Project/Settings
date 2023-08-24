@@ -36,15 +36,16 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     private static final String KEY_SIGMA_INFO = "sigma_info";
 
     private static final String PROP_SIGMA_DEVICE = "ro.product.device";
-    private static final String KEY_BUILD_STATUS = "rom_build_status";
+    private static final String KEY_BUILD_STATUS = "os_build_maintainer";
 
     private static final String KEY_BRAND_NAME_PROP = "ro.product.manufacturer";
     private static final String KEY_DEVICE_NAME_PROP = "org.evolution.device";
     private static final String KEY_MARKET_NAME_PROP = "ro.product.marketname";
-    private static final String KEY_EVOLUTION_BUILD_VERSION_PROP = "org.evolution.build_version";
-    private static final String KEY_EVOLUTION_CODENAME_PROP = "org.evolution.build_codename";
-    private static final String KEY_EVOLUTION_RELEASE_TYPE_PROP = "org.evolution.build_type";
-    private static final String KEY_EVOLUTION_VERSION_PROP = "org.evolution.version.display";
+    private static final String KEY_SIGMA_BUILD_VERSION_PROP = "org.sigma.build_version";
+    private static final String KEY_SIGMA_CODENAME_PROP = "org.sigma.build_codename";
+    private static final String KEY_SIGMA_RELEASE_TYPE_PROP = "org.sigma.build_type";
+    private static final String KEY_SIGMA_VERSION_PROP = "org.sigma.version.display";
+    private static final String PROP_SIGMA_MAINTAINER = "ro.sigma.maintainer";
 
     private static final String KEY_STORAGE = "storage";
     private static final String KEY_BATTERY = "battery";
@@ -54,6 +55,40 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
 
     public SigmaInfoPreferenceController(Context context) {
         super(context);
+    }
+
+    private String getSigmaMaintainer() {
+
+        final String SigmaMaintainer = mContext.getResources().getString(R.string.build_maintainer_summary);
+
+        final String buildType = SystemProperties.get(KEY_SIGMA_RELEASE_TYPE_PROP,
+                    this.mContext.getString(R.string.device_info_default));
+        final String isOffFine = this.mContext.getString(R.string.build_status_summary, SigmaMaintainer);
+        final String isOffMiss = this.mContext.getString(R.string.build_status_oopsie);
+        final String isCommMiss = this.mContext.getString(R.string.build_status_oopsie);
+        final String isCommFine = this.mContext.getString(R.string.build_is_community_summary, SigmaMaintainer);
+	
+        if (buildType.toLowerCase().equals("official") && !SigmaMaintainer.equalsIgnoreCase("Unknown")) {
+            return isOffFine;
+        } else if (buildType.toLowerCase().equals("official") && SigmaMaintainer.equalsIgnoreCase("Unknown")) {
+            return isOffMiss;
+        } else if (buildType.equalsIgnoreCase("Community") && SigmaMaintainer.equalsIgnoreCase("Unknown")) {
+            return isCommMiss;
+        } else {
+            return isCommFine;
+        }
+        }
+
+    private String getSigmaBuildStatus() {
+	    final String buildType = SystemProperties.get(KEY_SIGMA_RELEASE_TYPE_PROP,
+                this.mContext.getString(R.string.device_info_default));
+        final String isOfficial = this.mContext.getString(R.string.build_is_official_title);
+	    final String isCommunity = this.mContext.getString(R.string.build_is_community_title);
+        if (buildType.toLowerCase().equals("official")) {
+		return isOfficial;
+	    } else {
+		return isCommunity;
+	    }
     }
 
     private String getSigmaVersion() {
@@ -91,22 +126,32 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         final LayoutPreference SigmaInfoPreference = screen.findPreference(KEY_SIGMA_INFO);
-
+        final Preference buildStatusPref = screen.findPreference(KEY_BUILD_STATUS);
         final TextView version = (TextView) SigmaInfoPreference.findViewById(R.id.version_message);
         final TextView storText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_storage_summary);
         final TextView battText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_battery_summary);
         final TextView device = (TextView) SigmaInfoPreference.findViewById(R.id.device_message);
 
-        final String isOfficial = SystemProperties.get(KEY_EVOLUTION_RELEASE_TYPE_PROP,
+        final String isOfficial = SystemProperties.get(KEY_SIGMA_RELEASE_TYPE_PROP,
                 this.mContext.getString(R.string.device_info_default));
         final String SigmaDevice = getDeviceName();
         final String SigmaVersion = getSigmaVersion();
+        final String SigmaMaintainer = getSigmaMaintainer();
+        final String BuildStatus = getSigmaBuildStatus();
+
+        buildStatusPref.setTitle(BuildStatus);
+	    buildStatusPref.setSummary(SigmaMaintainer);
 
         version.setText(SigmaVersion);
         device.setText(SigmaDevice);
         storText.setText(String.valueOf(SpecUtils.getTotalInternalMemorySize()) + "GB ROM + " + SpecUtils.getTotalRAM() + " RAM");
         battText.setText(SpecUtils.getBatteryCapacity(mContext) + " mAh");
 
+        if (isOfficial.toLowerCase().contains("official")) {
+		 buildStatusPref.setIcon(R.drawable.verified);
+	    } else {
+		 buildStatusPref.setIcon(R.drawable.unverified);
+	    }
     }
 
     @Override

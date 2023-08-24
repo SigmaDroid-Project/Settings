@@ -42,5 +42,14 @@
     <string name="storage">Storage</string>
     <string name="chipset">Processor</string>
 
+
+    <!-- Build info -->
+    <string name="build_status_title">Build Status: %s</string>
+    <string name="build_status_summary_placeholder">Ahoy</string>
+    <string name="build_status_official">Official</string>
+    <string name="build_status_summary">Maintained by: %s</string>
     <string name="build_status_oopsie">Searching for maintainer...</string>
+    <string name="build_is_official_title">Officially supported!</string>
+    <string name="build_is_community_title">Not officially supported!</string>
+    <string name="build_is_community_summary">Unofficial build by %s</string>
 </resources>
