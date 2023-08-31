@@ -147,7 +147,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
         storText.setText(String.valueOf(SpecUtils.getTotalInternalMemorySize()) + "GB ROM + " + SpecUtils.getTotalRAM() + " RAM");
         battText.setText(SpecUtils.getBatteryCapacity(mContext) + " mAh");
 
-        if (isOfficial.toLowerCase().contains("official")) {
+        if (isOfficial.toLowerCase().equals("official")) {
 		 buildStatusPref.setIcon(R.drawable.verified);
 	    } else {
 		 buildStatusPref.setIcon(R.drawable.unverified);
