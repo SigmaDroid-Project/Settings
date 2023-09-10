@@ -52,10 +52,21 @@
             settings:controller="com.android.settings.deviceinfo.DeviceNamePreferenceController"
             settings:enableCopying="true"/>
 
+        <!-- Build date -->
+        <Preference
+            android:key="os_build_date"
+            android:order="7"
+            android:icon="@drawable/ic_date"
+            android:title="@string/build_date"
+            android:summary="@string/summary_placeholder"
+            android:selectable="false"
+            settings:enableCopying="true"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaDroidBuildDatePreferenceController"/>
+
         <!-- Build number -->
         <Preference
             android:key="build_number"
-            android:order="7"
+            android:order="8"
             android:icon="@drawable/ic_info"
             android:title="@string/build_number"
             android:summary="@string/summary_placeholder"
@@ -65,7 +76,7 @@
         <!-- Baseband -->
         <Preference
             android:key="base_band"
-            android:order="8"
+            android:order="9"
             android:title="@string/baseband_version"
             android:summary="@string/summary_placeholder"
             android:icon="@drawable/ic_android"
@@ -75,7 +86,7 @@
         <!-- Kernel -->
         <Preference
             android:key="kernel_version"
-            android:order="9"
+            android:order="10"
             android:icon="@drawable/ic_kernel"
             android:title="@string/kernel_version"
             android:summary="@string/summary_placeholder"
@@ -86,7 +97,7 @@
         <!-- SELinux -->
         <Preference
             android:key="selinux_status"
-            android:order="10"
+            android:order="11"
             android:title="@string/selinux_status"
             android:summary="@string/summary_placeholder"
             android:icon="@drawable/ic_selinux"
@@ -96,7 +107,7 @@
         <!-- Android version -->
         <Preference
             android:key="os_firmware_version"
-            android:order="11"
+            android:order="12"
             android:title="@string/firmware_version"
             android:icon="@drawable/ic_android_head"
             android:summary="@string/summary_placeholder"
@@ -107,7 +118,7 @@
         <!-- Account name -->
         <Preference
             android:key="branded_account"
-            android:order="12"
+            android:order="13"
             android:icon="@drawable/ic_cog"
             android:title="@string/my_device_info_account_preference_title"
             android:summary="@string/summary_placeholder"
@@ -117,7 +128,7 @@
         <!-- Phone number -->
         <com.android.settings.deviceinfo.PhoneNumberSummaryPreference
             android:key="phone_number"
-            android:order="13"
+            android:order="14"
             android:title="@string/status_number"
             android:icon="@drawable/phone_tint"
             android:summary="@string/summary_placeholder"
@@ -128,7 +139,7 @@
         <!-- Security patch -->
         <Preference
             android:key="security_key"
-            android:order="15"
+            android:order="16"
             android:title="@string/security_patch"
             android:icon="@drawable/ic_security_patch"
             settings:enableCopying="true"
@@ -137,19 +148,19 @@
        <!-- Device up time -->
         <Preference
             android:key="up_time"
-            android:order="16"
+            android:order="17"
             android:icon="@drawable/ic_cog"
             android:title="@string/status_up_time"
             android:summary="@string/summary_placeholder" />
 
         <Preference
-            android:order="18"
+            android:order="19"
             android:title="@string/my_device_info_device_identifiers_category_title"/>
         
         <!-- SIM status -->
         <Preference
             android:key="sim_status"
-            android:order="19"
+            android:order="20"
             android:icon="@drawable/ic_sim_card"
             android:title="@string/sim_status_title"
             settings:keywords="@string/keywords_sim_status"
@@ -160,7 +171,7 @@
         <!-- IMEI -->
         <com.android.settings.deviceinfo.PhoneNumberSummaryPreference
             android:key="imei_info"
-            android:order="21"
+            android:order="22"
             android:title="@string/status_imei"
             android:icon="@drawable/phone_tint"
             android:summary="@string/summary_placeholder"
@@ -172,7 +183,7 @@
             <Preference
             android:title="@string/radio_info_title"
             android:key="radio_info_settings"
-            android:order="23"
+            android:order="24"
             android:icon="@drawable/phone_tint"
             settings:controller="com.android.settings.deviceinfo.RadioInfoPreferenceController">
             <intent android:action="android.intent.action.MAIN"
@@ -183,7 +194,7 @@
         <!--IP address -->
         <Preference
             android:key="wifi_ip_address"
-            android:order="24"
+            android:order="25"
             android:icon="@drawable/ic_settings_wireless"
             android:title="@string/wifi_ip_address"
             android:summary="@string/summary_placeholder"
@@ -192,7 +203,7 @@
         <!-- Wi-Fi MAC address -->
         <Preference
             android:key="saved_accesspoints_wifi_mac_address"
-            android:order="25"
+            android:order="26"
             android:icon="@drawable/ic_settings_wireless"
             android:title="@string/status_wifi_mac_address"
             android:summary="@string/view_saved_network"
@@ -202,7 +213,7 @@
         <!-- Factory Wi-Fi MAC address -->
         <Preference
             android:key="wifi_mac_address"
-            android:order="26"
+            android:order="27"
             android:icon="@drawable/ic_settings_wireless"
             android:title="@string/status_device_wifi_mac_address"
             android:summary="@string/summary_placeholder"
@@ -211,7 +222,7 @@
         <!-- Bluetooth address -->
         <Preference
             android:key="bt_address"
-            android:order="27"
+            android:order="28"
             android:icon="@drawable/ic_bluetooth_disabled"
             android:title="@string/status_bt_address"
             android:summary="@string/summary_placeholder"
