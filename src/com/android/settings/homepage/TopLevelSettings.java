@@ -258,7 +258,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                         || key.equals("top_level_system")
                         || key.equals("top_level_battery")
                         || key.equals("top_level_connected_devices")
-                        || key.equals("top_level_syberia_settings")
+                        || key.equals("top_level_sigma")
                         || key.equals("top_level_privacy")
                         || key.equals("top_level_accessibility")
                         || key.equals("top_level_wellbeing")
