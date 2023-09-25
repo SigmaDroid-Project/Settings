@@ -33,7 +33,7 @@
         app:keywords="@string/keywords_gesture"
         app:controller="com.android.settings.gestures.PickupGesturePreferenceController" />
 
-    <com.alpha.settings.preferences.SecureSettingSwitchPreference
+    <com.sigma.settings.preferences.SecureSettingSwitchPreference
         android:key="doze_pick_up_gesture_ambient"
         android:title="@string/doze_gesture_ambient_title"
         android:summary="@string/doze_gesture_ambient_summary"

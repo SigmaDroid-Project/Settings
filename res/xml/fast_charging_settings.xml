@@ -25,7 +25,7 @@
         android:title="@string/fast_charging_title"
         android:summary="@string/fast_charging_summary"/>
 
-    <com.alpha.settings.preferences.CustomSeekBarPreference
+    <com.sigma.settings.preferences.CustomSeekBarPreference
         android:key="restricted_current"
         android:summary="@string/restricted_current_summary"
         settings:interval="100"
