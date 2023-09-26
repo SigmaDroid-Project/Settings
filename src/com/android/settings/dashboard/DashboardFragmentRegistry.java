@@ -131,7 +131,7 @@ public class DashboardFragmentRegistry {
         PARENT_TO_CATEGORY_KEY_MAP.put(CommunalDashboardFragment.class.getName(),
                 CategoryKey.CATEGORY_COMMUNAL_SETTINGS);
         PARENT_TO_CATEGORY_KEY_MAP.put(SigmaSettings.class.getName(),
-                CategoryKey.CATEGORY_ALPHA_SETTINGS);
+                CategoryKey.CATEGORY_SIGMA_SETTINGS);
 
         CATEGORY_KEY_TO_PARENT_MAP = new ArrayMap<>(PARENT_TO_CATEGORY_KEY_MAP.size());
 
