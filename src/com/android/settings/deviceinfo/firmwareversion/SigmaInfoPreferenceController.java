@@ -26,10 +26,12 @@ import android.widget.TextView;
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
+import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.widget.LayoutPreference;
 
-public class SigmaInfoPreferenceController extends AbstractPreferenceController {
+public class SigmaInfoPreferenceController extends AbstractPreferenceController implements
+         PreferenceControllerMixin {
 
     private static final String KEY_SIGMA_INFO = "sigma_info";
 
@@ -79,7 +81,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
         final String isOffMiss = this.mContext.getString(R.string.build_status_oopsie);
         final String isCommMiss = this.mContext.getString(R.string.build_status_oopsie);
         final String isCommFine = this.mContext.getString(R.string.build_is_community_summary, SigmaMaintainer);
-	
+
         if (buildType.toLowerCase().equals("official") && !SigmaMaintainer.equalsIgnoreCase("Unknown")) {
             return isOffFine;
         } else if (buildType.toLowerCase().equals("official") && SigmaMaintainer.equalsIgnoreCase("Unknown")) {
