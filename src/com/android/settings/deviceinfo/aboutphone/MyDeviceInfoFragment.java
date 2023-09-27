@@ -31,7 +31,6 @@ import android.view.View;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.dashboard.DashboardFragment;
-import com.android.settings.deviceinfo.DeviceNamePreferenceController;
 import com.android.settings.deviceinfo.BuildNumberPreferenceController;
 import com.android.settings.deviceinfo.DeviceNamePreferenceController;
 import com.android.settings.deviceinfo.SleeptimePreferenceController;
@@ -43,9 +42,7 @@ import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
-import com.android.settingslib.widget.ActionBarShadowController;
 import com.android.settingslib.widget.LayoutPreference;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -144,7 +141,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
             String mKey = mPreference.getKey();
             if (mKey == null) continue;
 
-             if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
+            if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
                 if (mKey.equals("sigma_logo")) {
                 mPreference.setLayoutResource(R.layout.dot_about_logo);
                 } else if (mKey.equals("rom_build_status")) {
@@ -155,9 +152,13 @@ public class MyDeviceInfoFragment extends DashboardFragment
                 ) {
                     mPreference.setLayoutResource(R.layout.dot_top_no_chevron);
                 } else if (
-                        mKey.equals("sleep_time") || mKey.equals("kernel_version")
+                        mKey.equals("sleep_time")
                 ) {
                     mPreference.setLayoutResource(R.layout.dot_bottom_no_chevron);
+                } else if (mKey.equals("sigma_info")) {
+                    mPreference.setLayoutResource(R.layout.dot_blank); 
+                } else if (mKey.equals("kernel_version")) {
+                    mPreference.setLayoutResource(R.layout.dot_dashboard_preference_bottom);
                 } else {
                     mPreference.setLayoutResource(R.layout.dot_middle_no_chevron); 
                 } 
@@ -198,14 +199,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
             return;
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    private void initActionbar() {
-        final ActionBar actionBar = getActivity().getActionBar();
-        if (actionBar == null) {
-            return;
-        }
-        ActionBarShadowController.attachToView(getActivity(), getSettingsLifecycle(), getListView());
     }
 
     @Override

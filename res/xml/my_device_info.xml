@@ -21,15 +21,11 @@
     android:key="my_device_info_pref_screen"
     android:title="@string/about_settings">
 
-        <Preference
-            android:order="18"
-            android:title="@string/hardware_info_title"/>
-
         <!-- SigmaDroid info -->
         <com.android.settingslib.widget.LayoutPreference
             android:key="sigma_info"
             android:layout="@layout/sigma_info"
-            android:order="1"
+            android:order="2"
             android:selectable="false" />
 
         <Preference

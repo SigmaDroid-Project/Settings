@@ -76,8 +76,8 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
     }
 
     private String getSigmaMaintainer() {
-
-        final String SigmaMaintainer = mContext.getResources().getString(R.string.device_info_default);
+        final String SigmaMaintainer = SystemProperties.get(PROP_SIGMA_MAINTAINER,
+                this.mContext.getString(R.string.device_info_default));
 
         final String buildType = SystemProperties.get(PROP_SIGMA_MAINTAINER,
                     this.mContext.getString(R.string.device_info_default));
