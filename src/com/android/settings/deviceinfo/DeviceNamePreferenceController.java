@@ -51,7 +51,8 @@ public class DeviceNamePreferenceController extends BasePreferenceController
     protected WifiManager mWifiManager;
     private final BluetoothAdapter mBluetoothAdapter;
     private final WifiDeviceNameTextValidator mWifiDeviceNameTextValidator;
-    private ValidatedEditTextPreference mPreference;
+    private LayoutPreference mPreference;
+    //private DeviceCardView mDeviceCard;
     private DeviceNamePreferenceHost mHost;
     private String mPendingDeviceName;
 
@@ -63,16 +64,6 @@ public class DeviceNamePreferenceController extends BasePreferenceController
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         initializeDeviceName();
-    }
-
-    @Override
-    public void displayPreference(PreferenceScreen screen) {
-        super.displayPreference(screen);
-        mPreference = screen.findPreference(getPreferenceKey());
-        final CharSequence deviceName = getSummary();
-        mPreference.setSummary(deviceName);
-        mPreference.setText(deviceName.toString());
-        mPreference.setValidator(this);
     }
 
     private void initializeDeviceName() {
@@ -128,11 +119,13 @@ public class DeviceNamePreferenceController extends BasePreferenceController
      * This method presumes that security/validity checks have already been passed.
      */
     private void setDeviceName(String deviceName) {
-        mDeviceName = deviceName;
-        setSettingsGlobalDeviceName(deviceName);
-        setBluetoothDeviceName(deviceName);
-        setTetherSsidName(deviceName);
-        mPreference.setSummary(getSummary());
+        if (mWifiDeviceNameTextValidator.isTextValid(deviceName)) {
+            mDeviceName = deviceName;
+            setSettingsGlobalDeviceName(deviceName);
+            setBluetoothDeviceName(deviceName);
+            setTetherSsidName(deviceName);
+            //mDeviceCard.setDeviceName(deviceName);
+        }
     }
 
     private void setSettingsGlobalDeviceName(String deviceName) {
