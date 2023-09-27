@@ -41,4 +41,39 @@
     <string name="changelog_title">Changelog</string>
     <string name="changelog_summary">Since the last update</string>
     <string name="changelog_error">Unable to load changelog</string>
+
+    <!-- AOD Schedule -->
+    <string name="always_on_display_schedule_title">Always on display schedule</string>
+    <string name="always_on_display_schedule_sunset">Sunset</string>
+    <string name="always_on_display_schedule_sunrise">Sunrise</string>
+    <string name="always_on_display_schedule_mixed_sunset">Turns on from sunset till a time</string>
+    <string name="always_on_display_schedule_mixed_sunrise">Turns on from a time till sunrise</string>
+
+    <!-- Ambient wake toggles -->
+    <string name="doze_gesture_ambient_title">Show Ambient</string>
+    <string name="doze_gesture_ambient_summary">Show Ambient Display instead of fully waking the screen up</string>
+
+    <!-- Doze enablement -->
+    <string name="doze_enabled_title">Ambient display</string>
+    <string name="doze_enabled_summary">Whether to enable the doze package functionality</string>
+
+    <!-- Doze on double tap -->
+    <string name="double_tap_title">Double tap</string>
+    <string name="doze_double_tap_title">Double tap to check phone</string>
+    <string name="doze_double_tap_summary">Pulse notifications by a double tap</string>
+
+    <!-- Build info -->
+    <string name="build_status_title">Build Status: %s</string>
+    <string name="build_status_summary_placeholder">Ahoy</string>
+    <string name="build_status_official">Official</string>
+    <string name="build_status_summary">Maintained by: %s</string>
+    <string name="build_status_oopsie">Searching for maintainer...</string>
+    <string name="build_is_official_title">Officially supported!</string>
+    <string name="build_is_community_title">Not officially supported!</string>
+    <string name="build_is_community_summary">Unofficial build by %s</string>
+
+    <string name="hardware_info_title">Hardware info</string>
+    <string name="sigma_model_info">Device Information</string>
+    <string name="keywords_model_and_hardware">serial number, hardware version</string>
+    <string name="sigma_build_date_title">Build Date</string>
 </resources>
