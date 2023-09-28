@@ -64,21 +64,6 @@
             settings:controller="com.android.settings.deviceinfo.PhoneNumberPreferenceController"
             settings:enableCopying="true"/>
 
-       <!-- Device up time -->
-        <Preference
-            android:key="up_time"
-            android:order="12"
-            android:icon="@drawable/ic_cog"
-            android:title="@string/status_up_time"
-            android:summary="@string/summary_placeholder" />
-
-        <!-- Device deep sleep time -->
-        <Preference
-            android:key="sleep_time"
-            android:order="13"
-            android:icon="@drawable/ic_sleep"
-            android:title="@string/status_sleep_time"
-            android:summary="@string/summary_placeholder" />
 
          <!-- Device name -->
         <com.android.settings.widget.ValidatedEditTextPreference
@@ -110,10 +95,20 @@
             settings:enableCopying="true"
             settings:controller="com.android.settings.deviceinfo.BuildNumberPreferenceController"/>
 
+        <!-- SELinux -->
+        <Preference
+            android:key="selinux_status"
+            android:order="17"
+            android:title="@string/selinux_status"
+            android:summary="@string/summary_placeholder"
+            android:icon="@drawable/ic_selinux"
+            settings:enableCopying="true"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.SElinuxStatusPreferenceController"/>
+
         <!-- Kernel -->
         <com.android.settings.deviceinfo.firmwareversion.KernelVersionPreference
             android:key="kernel_version"
-            android:order="17"
+            android:order="18"
             android:title="@string/kernel_version"
             android:summary="@string/summary_placeholder"
             android:icon="@drawable/ic_kernel"

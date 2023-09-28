@@ -53,6 +53,21 @@
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="com.android.phone"
                     android:targetClass="com.android.phone.settings.RadioInfo" />
+
+        
+       <!-- Device up time -->
+        <Preference
+            android:key="up_time"
+            android:order="7"
+            android:title="@string/status_up_time"
+            android:summary="@string/summary_placeholder" />
+
+        <!-- Device deep sleep time -->
+        <Preference
+            android:key="sleep_time"
+            android:order="8"
+            android:title="@string/status_sleep_time"
+            android:summary="@string/summary_placeholder" />
          </Preference>
 
     </PreferenceCategory>
