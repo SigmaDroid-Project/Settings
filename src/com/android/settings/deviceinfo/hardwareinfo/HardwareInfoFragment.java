@@ -34,6 +34,8 @@ import com.android.settings.deviceinfo.RegulatoryInfoPreferenceController;
 import com.android.settings.deviceinfo.SafetyInfoPreferenceController;
 import com.android.settings.deviceinfo.WifiMacAddressPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
+import com.android.settings.deviceinfo.SleeptimePreferenceController;
+import com.android.settings.deviceinfo.UptimePreferenceController;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
@@ -76,6 +78,8 @@ public class HardwareInfoFragment extends DashboardFragment {
         controllers.add(new ManualPreferenceController(context));
         controllers.add(new FeedbackPreferenceController(fragment, context));
         controllers.add(new FccEquipmentIdPreferenceController(context));
+        controllers.add(new SleeptimePreferenceController(context, lifecycle));
+        controllers.add(new UptimePreferenceController(context, lifecycle));
         return controllers;
     }
 
