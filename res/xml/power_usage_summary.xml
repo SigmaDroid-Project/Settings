@@ -59,9 +59,9 @@
         settings:keywords="@string/keywords_battery_adaptive_preferences" />
 
     <!-- Charging control -->
-    <!-- <lineageos.preference.LineagePartsPreference
+    <lineageos.preference.LineagePartsPreference
         android:key="charging_control"
-        settings:requiresService="lineagehealth" /> -->
+        settings:requiresService="lineagehealth" />
 
     <Preference
         android:key="high_power_apps"
