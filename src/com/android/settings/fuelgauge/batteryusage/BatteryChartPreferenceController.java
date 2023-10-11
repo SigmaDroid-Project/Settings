@@ -429,15 +429,15 @@ public class BatteryChartPreferenceController extends AbstractPreferenceControll
     private boolean refreshUiWithLevelDataCase() {
         setChartSummaryVisible(true);
         // Gets valid battery level data.
-        if (isBatteryLevelDataInOneDay()) {
+        // if (isBatteryLevelDataInOneDay()) {
             // Only 1 day data, hide the daily chart view.
-            mDailyChartView.setVisibility(View.GONE);
-            mDailyChartIndex = 0;
-        } else {
+            // mDailyChartView.setVisibility(View.GONE);
+            // mDailyChartIndex = 0;
+        // } else {
             mDailyChartView.setVisibility(View.VISIBLE);
             mDailyViewModel.setSelectedIndex(mDailyChartIndex);
             mDailyChartView.setViewModel(mDailyViewModel);
-        }
+        // }
 
         if (mDailyChartIndex == BatteryChartViewModel.SELECTED_INDEX_ALL) {
             // Multiple days are selected, hide the hourly chart view.
@@ -452,7 +452,7 @@ public class BatteryChartPreferenceController extends AbstractPreferenceControll
 
         if (mBatteryUsageMap == null) {
             // Battery usage data is not ready, wait for data ready to refresh UI.
-            return false;
+            return true;
         }
         return true;
     }
