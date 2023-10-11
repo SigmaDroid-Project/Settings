@@ -116,7 +116,6 @@ android_library {
         "kotlin-stdlib",
         "kotlinx_coroutines_android",
         "kotlinx_coroutines",
-        "SettingsGoogle-lib",
     ],
 
     libs: [

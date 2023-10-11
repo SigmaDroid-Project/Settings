@@ -144,7 +144,7 @@
             android:defaultToDeviceProtectedStorage="true"
             android:directBootAware="true"
             android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-            tools:replace="android:appComponentFactory"
+            tools:replace="android:appComponentFactory">
             android:enableOnBackInvokedCallback="true">
 
         <uses-library android:name="org.apache.http.legacy" />
@@ -2923,8 +2923,6 @@
             </intent-filter>
         </activity>
 
-            <!-- android:theme="@style/Theme.AppCompat.NoActionBar" -->
-
         <activity
             android:name="Settings$PowerUsageSummaryActivity"
             android:label="@string/power_usage_summary_title"
@@ -3966,7 +3964,7 @@
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.settings.VIEW_ADVANCED_POWER_USAGE_DETAIL" />
                 <category android:name="android.intent.category.DEFAULT" />
