@@ -28,16 +28,18 @@
             android:order="2"
             android:selectable="false" />
 
-        <Preference
-            android:order="3"
-            android:title="@string/my_device_info_device_details_category_title"/>
+        <!-- SigmaDroid logo -->
+        <PreferenceScreen
+            android:key="sigma_logo"
+            android:order="4"
+            android:selectable="false" />
 
         <Preference
             android:key="rom_build_status"
-            android:title="@string/build_status"
+            android:title="@string/build_status_title"
             android:summary="@string/build_status_summary_placeholder"
             settings:enableCopying="true"
-            android:order="4"
+            android:order="5"
             android:selectable="true"/>
 
         <!-- Device Information -->
@@ -58,7 +60,6 @@
             android:order="8"
             android:title="@string/status_number"
             android:icon="@drawable/phone_tint"
-            android:order="11"
             android:summary="@string/summary_placeholder"
             settings:isPreferenceVisible="@bool/config_show_sim_info"
             settings:controller="com.android.settings.deviceinfo.PhoneNumberPreferenceController"
