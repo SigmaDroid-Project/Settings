@@ -52,4 +52,17 @@
 
     <string name="build_is_official_title">Device is officially supported!</string>
     <string name="build_is_community_title">Device is not officially supported!</string>
+
+    <string name="sigma_model_info">Device Information</string>
+    <string name="sigma_build_date_title">Build Date</string>
+
+        <!-- Preference title for advanced battery usage [CHAR LIMIT=40] -->
+    <string name="advanced_battery_preference_title">Battery usage</string>
+        <!-- Preference summary for advanced battery usage, for past 24 hours [CHAR LIMIT=40] -->
+    <string name="advanced_battery_preference_summary_with_hours">View usage for past 24 hours</string>
+    <!-- Preference summary for advanced battery usage, since last full charge [CHAR LIMIT=40] -->
+    <string name="advanced_battery_preference_summary">View usage since last full charge</string>
+
+        <!-- Pixel battery usage chart -->
+    <string name="advanced_battery_preference_summary_google">Use Pixel Battery usage chart</string>
 </resources>
