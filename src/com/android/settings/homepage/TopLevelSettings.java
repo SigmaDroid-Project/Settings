@@ -277,6 +277,10 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     key.equals("top_level_accessibility")
                     || key.equals("top_level_storage")
                     || key.equals("top_level_emergency")
+                    || key.equals("top_level_apps")
+                    || key.equals("top_level_display")
+                    || key.equals("top_level_privacy")
+                    || key.equals("top_level_google")
                 ) {
                     preference.setLayoutResource(R.layout.dot_dashboard_preference_top);
                 } else if (
@@ -284,6 +288,11 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     || key.equals("top_level_location")
                     || key.equals("top_level_system")
                     || key.equals("top_level_notification")
+                    || key.equals("top_level_connected_devices")
+                    || key.equals("top_level_sound")
+                    || key.equals("top_level_security")
+                    || key.equals("top_level_wellbeing")
+                    || key.equals("dashboard_tile_pref_com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity")
                 ) {
                     preference.setLayoutResource(R.layout.dot_dashboard_preference_bottom);
                 } else {
