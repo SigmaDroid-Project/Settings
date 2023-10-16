@@ -34,11 +34,23 @@ import androidx.preference.PreferenceScreen;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.deviceinfo.BluetoothAddressPreferenceController;
 import com.android.settings.deviceinfo.BuildNumberPreferenceController;
 import com.android.settings.deviceinfo.DeviceNamePreferenceController;
+import com.android.settings.deviceinfo.FccEquipmentIdPreferenceController;
+import com.android.settings.deviceinfo.FeedbackPreferenceController;
+import com.android.settings.deviceinfo.IpAddressPreferenceController;
+import com.android.settings.deviceinfo.ManualPreferenceController;
+import com.android.settings.deviceinfo.RegulatoryInfoPreferenceController;
+import com.android.settings.deviceinfo.SafetyInfoPreferenceController;
+import com.android.settings.deviceinfo.SleeptimePreferenceController;
+import com.android.settings.deviceinfo.UptimePreferenceController;
+import com.android.settings.deviceinfo.WifiMacAddressPreferenceController;
+import com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController;
+import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
 import com.android.settings.deviceinfo.firmwareversion.BuildStatusPreferenceController;
-import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settings.deviceinfo.firmwareversion.SELinuxStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
@@ -104,6 +116,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        use(ImeiInfoPreferenceController.class).setHost(this /* parent */);
         use(DeviceNamePreferenceController.class).setHost(this /* parent */);
         mBuildNumberPreferenceController = use(BuildNumberPreferenceController.class);
         mBuildNumberPreferenceController.setHost(this /* parent */);
@@ -157,26 +170,25 @@ public class MyDeviceInfoFragment extends DashboardFragment
             String mKey = mPreference.getKey();
             if (mKey == null) continue;
 
-            if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
+             if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
                 if (mKey.equals("sigma_logo")) {
                 mPreference.setLayoutResource(R.layout.dot_about_logo);
                 } else if (mKey.equals("rom_build_status")) {
                 mPreference.setLayoutResource(R.layout.dot_card_build_status);
                 } else if (
-                        mKey.equals("sigma_logo")
-                        || mKey.equals("branded_account")
+                         mKey.equals("os_firmware_version")
+                        || mKey.equals("sigma_logo")
+                        || mKey.equals("sim_status")
                 ) {
                     mPreference.setLayoutResource(R.layout.dot_top_no_chevron);
                 } else if (
-                        mKey.equals("device_name")
+                    mKey.equals("selinux_status")
+                        || mKey.equals("bt_address")
+                        || mKey.equals("sleep_time")
                 ) {
                     mPreference.setLayoutResource(R.layout.dot_bottom_no_chevron);
                 } else if (mKey.equals("sigma_info")) {
                     mPreference.setLayoutResource(R.layout.dot_blank); 
-                } else if (mKey.equals("kernel_version")) {
-                    mPreference.setLayoutResource(R.layout.dot_dashboard_preference_bottom);
-                } else if (mKey.equals("device_model")) {
-                    mPreference.setLayoutResource(R.layout.dot_dashboard_preference_middle);
                 } else {
                     mPreference.setLayoutResource(R.layout.dot_middle_no_chevron); 
                 } 
@@ -211,8 +223,19 @@ public class MyDeviceInfoFragment extends DashboardFragment
     private static List<AbstractPreferenceController> buildPreferenceControllers(
             Context context, MyDeviceInfoFragment fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new SigmaInfoPreferenceController(context));
+        controllers.add(new SimStatusPreferenceController(context, fragment));
+        controllers.add(new IpAddressPreferenceController(context, lifecycle));
+        controllers.add(new WifiMacAddressPreferenceController(context, lifecycle));
+        controllers.add(new BluetoothAddressPreferenceController(context, lifecycle));
+        controllers.add(new RegulatoryInfoPreferenceController(context));
+        controllers.add(new SafetyInfoPreferenceController(context));
+        controllers.add(new ManualPreferenceController(context));
+        controllers.add(new FeedbackPreferenceController(fragment, context));
+        controllers.add(new FccEquipmentIdPreferenceController(context));
+        controllers.add(new SleeptimePreferenceController(context, lifecycle));
+        controllers.add(new UptimePreferenceController(context, lifecycle));
         controllers.add(new SELinuxStatusPreferenceController(context));
+        controllers.add(new SigmaInfoPreferenceController(context));
         return controllers;
     }
 

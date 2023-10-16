@@ -18,25 +18,22 @@
 
 package com.android.settings.deviceinfo.firmwareversion;
 
-//import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.os.SystemProperties;
 import android.widget.TextView;
-//import android.view.View;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-//import androidx.preference.PreferenceViewHolder;
-//import android.widget.LinearLayout;
+
 import com.sigma.settings.utils.SpecUtils;
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.widget.LayoutPreference;
 
-
-public class SigmaInfoPreferenceController extends AbstractPreferenceController {
+public class SigmaInfoPreferenceController extends AbstractPreferenceController implements
+         PreferenceControllerMixin {
 
     private static final String KEY_SIGMA_INFO = "sigma_info";
 
@@ -68,7 +65,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
                 this.mContext.getString(R.string.device_info_default));
         final String SigmaBuildDate = SystemProperties.get(PROP_SIGMA_BUILD_DATE,
                 this.mContext.getString(R.string.device_info_default));
-        return version + " / " + SigmaBuildPackage  + " / "  + SigmaBuildDate;
+        return version + " | " + SigmaBuildPackage  + " | " + SigmaBuildDate;
     }
 
     private String getSigmaReleaseType() {
@@ -84,7 +81,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
         final String SigmaMaintainer = SystemProperties.get(PROP_SIGMA_MAINTAINER,
                 this.mContext.getString(R.string.device_info_default));
 
-        final String buildType = SystemProperties.get(PROP_SIGMA_MAINTAINER,
+        final String buildType = SystemProperties.get(PROP_SIGMA_RELEASETYPE,
                     this.mContext.getString(R.string.device_info_default));
         final String isOffFine = this.mContext.getString(R.string.build_status_summary, SigmaMaintainer);
         final String isOffMiss = this.mContext.getString(R.string.build_status_oopsie);
@@ -109,7 +106,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
                 mContext.getString(R.string.device_info_default));
         String deviceModel = Build.MODEL;
 
-        return deviceBrand + " " + deviceModel + " (" + deviceCodename + ")";
+        return deviceBrand + " " + deviceModel + " | " + deviceCodename;
     }
 
     private boolean isOfficial() {
@@ -130,7 +127,7 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
 	    }
     }
 
-    //@Override
+    @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         final LayoutPreference SigmaInfoPreference = screen.findPreference(KEY_SIGMA_INFO);
@@ -139,8 +136,6 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
 
         final TextView storText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_storage_summary);
         final TextView battText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_battery_summary);
-        final TextView chipsetText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_chipset_summary);
-        final TextView displayText = (TextView) SigmaInfoPreference.findViewById(R.id.cust_display_summary);
         final TextView device = (TextView) SigmaInfoPreference.findViewById(R.id.device_message);
 
         final String SigmaVersion = getSigmaVersion();
@@ -158,32 +153,8 @@ public class SigmaInfoPreferenceController extends AbstractPreferenceController 
         device.setText(sigmaDevice);
         storText.setText(String.valueOf(SpecUtils.getTotalInternalMemorySize()) + "GB ROM + " + SpecUtils.getTotalRAM() + " RAM");
         battText.setText(SpecUtils.getBatteryCapacity(mContext) + " mAh");
-        chipsetText.setText(SpecUtils.getProcessorModel());
-        displayText.setText(SpecUtils.getScreenRes(mContext));
-        
-        //LinearLayout mbattery = holder.itemView.findViewById(mContext.getResources().
-        //        getIdentifier("id/battery_info", null, mContext.getPackageName()));
-        //mbattery.setClickable(true);
-        //mbattery.setOnClickListener(new View.OnClickListener() {
-        //    public void onClick(View v) {
-        //        Intent intent = new Intent();
-        //        intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$PowerUsageSummaryActivity"));
-        //        mContext.startActivity(intent);
-        //    }
-        //});
 
-        //LinearLayout mStorage = holder.itemView.findViewById(mContext.getResources().
-        //        getIdentifier("id/storage_info", null, mContext.getPackageName()));
-        //mStorage.setClickable(true);
-        //mStorage.setOnClickListener(new View.OnClickListener() {
-        //    public void onClick(View v) {
-        //        Intent intent = new Intent();
-        //        intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$StorageDashboardActivity"));
-        //        mContext.startActivity(intent);
-        //    }
-        //});
-
-        if (isOfficial.toLowerCase().equals("official")) {
+        if (isOfficial.toLowerCase().contains("official")) {
 		 buildStatusPref.setIcon(R.drawable.verified);
 	    } else {
 		buildStatusPref.setIcon(R.drawable.unverified);

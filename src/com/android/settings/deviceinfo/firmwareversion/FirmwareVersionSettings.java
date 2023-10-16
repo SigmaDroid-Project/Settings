@@ -33,6 +33,8 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
 
 import java.util.ArrayList;
@@ -81,11 +83,9 @@ public class FirmwareVersionSettings extends DashboardFragment {
 
             if (mKey.equals("sigma_logo")) {
                 mPreference.setLayoutResource(R.layout.sigma_logo);
-            } else if (mKey.equals("rom_build_status")) {
-                mPreference.setLayoutResource(R.layout.card_build_status);
             } else if (mKey.startsWith("category")) {
                 mPreference.setLayoutResource(R.layout.sigma_preference_category);
-            } else if (mDashBoardStyle == 1) { // 0=stock aosp, 1=dot, 2=nad
+            } else if (mDashBoardStyle == 1 || mDashBoardStyle == 3) { // 0=stock aosp, 1=dot, 2=nad, 3=sigma
                 switch (mKey) {
                     case "sigma_version":
                         mPreference.setLayoutResource(R.layout.dot_dashboard_preference_top);
@@ -137,6 +137,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new BuildStatusPreferenceController(context));
         controllers.add(new SELinuxStatusPreferenceController(context));
+        controllers.add(new SigmaInfoPreferenceController(context));
         return controllers;
     }
 
@@ -154,6 +155,13 @@ public class FirmwareVersionSettings extends DashboardFragment {
     public int getMetricsCategory() {
         return SettingsEnums.DIALOG_FIRMWARE_VERSION;
     }
+
+    // @Override
+    // protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+    //     final List<AbstractPreferenceController> controllers = new ArrayList<>();
+    //     controllers.add(new SigmaInfoPreferenceController(context));
+    //     return controllers;
+    // }
 
     /**
      * For Search.
