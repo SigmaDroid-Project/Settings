@@ -10,4 +10,6 @@
     <string name="jitter_test_title">Jitter</string>
     <string name="jitter_test_summary">Calculate rendering jitter</string>
 
+    <string name="build_status_unofficial">Unofficial</string>
+
 </resources>
