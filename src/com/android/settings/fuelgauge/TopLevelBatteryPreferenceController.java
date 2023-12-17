@@ -62,8 +62,6 @@ public class TopLevelBatteryPreferenceController extends BasePreferenceControlle
                 Log.d(TAG, "getBatteryInfo: " + info);
                 mBatteryInfo = info;
                 updateState(mPreference);
-                // Update the preference summary text to the latest state.
-                setSummaryAsync(info);
             }, true /* shortString */);
         });
 

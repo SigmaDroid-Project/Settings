@@ -59,24 +59,56 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:touchscreenBlocksFocus="false"
-        android:keyboardNavigationCluster="false">
-        <LinearLayout
-            android:id="@+id/app_bar_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="bottom"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+        android:keyboardNavigationCluster="false"
+        android:elevation="0.1dp" >
 
-            <include
-                android:id="@+id/homepage_app_bar_regular_phone_view"
-                layout="@layout/settings_homepage_app_bar_regular_phone_layout"/>
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/homepage_collapsing_toolbar_layout"
+            android:clipToPadding="false"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/settingslib_toolbar_layout_height"
+            app:collapsedTitleTextAppearance="@style/CollapsingToolbarTitle.Collapsed"
+            app:contentScrim="@drawable/home_header_round"
+            app:expandedTitleMarginBottom="95dp"
+            app:expandedTitleMarginEnd="@dimen/expanded_title_margin_end"
+            app:expandedTitleMarginStart="@dimen/expanded_title_margin_start"
+            app:expandedTitleTextAppearance="@style/CollapsingToolbarTitle.Expanded"
+            app:extraMultilineHeightEnabled="true"
+            app:forceApplySystemWindowInsetTop="true"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll|snap"
+            app:maxLines="3"
+            app:scrimAnimationDuration="50"
+            app:scrimVisibleHeightTrigger="@dimen/settingslib_scrim_visible_height_trigger"
+            app:statusBarScrim="?android:colorBackground"
+            app:title="@string/settings_label"
+            app:titleCollapseMode="scale">
+            <Toolbar
+                  android:theme="?android:actionBarTheme"
+                  android:layout_width="fill_parent"
+                  android:layout_height="66.0dip"
+                  android:transitionName="shared_element_view"
+                  app:layout_collapseMode="pin"
+                  android:layout_marginTop="5.0dp"
+                  app:titleMarginStart="@dimen/expanded_title_margin_start" />
+            <LinearLayout
+                  android:id="@+id/app_bar_container"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:gravity="bottom"
+                  app:layout_scrollFlags="exitUntilCollapsed|scroll|snap">
 
-            <include
-                android:id="@+id/homepage_app_bar_two_pane_view"
-                layout="@layout/settings_homepage_app_bar_two_pane_layout"
-                android:visibility="gone"/>
-        </LinearLayout>
+                <include
+                    android:id="@+id/homepage_app_bar_regular_phone_view"
+                    layout="@layout/settings_homepage_app_bar_regular_phone_layout"/>
+
+                <include
+                    android:id="@+id/homepage_app_bar_two_pane_view"
+                    layout="@layout/settings_homepage_app_bar_two_pane_layout"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

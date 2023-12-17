@@ -242,7 +242,8 @@ public class SettingsHomepageActivity extends FragmentActivity implements
               @Override
               public void onClick(View v) {
                   Intent intent = new Intent(Intent.ACTION_MAIN);
-                  intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
+                  intent.setComponent(new ComponentName("com.android.settings",
+                          "com.android.settings.Settings$UserSettingsActivity"));
                   startActivity(intent);
               }
           });
@@ -258,7 +259,8 @@ public class SettingsHomepageActivity extends FragmentActivity implements
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
+                intent.setComponent(new ComponentName("com.android.settings",
+                        "com.android.settings.Settings$UserSettingsActivity"));
                 startActivity(intent);
             }
         });
