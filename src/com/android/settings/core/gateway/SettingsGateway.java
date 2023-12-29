@@ -196,8 +196,8 @@ import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.wifi.savedaccesspoints2.SavedAccessPointsWifiSettings2;
 import com.android.settings.wifi.tether.WifiTetherSettings;
 
-import com.alpha.settings.AlphaSettings;
-import com.alpha.settings.fragments.misc.SmartPixels;
+import com.sigma.settings.SigmaSettings;
+import com.sigma.settings.fragments.misc.SmartPixels;
 
 import com.google.android.settings.security.SecurityHubDashboard;
 
@@ -384,7 +384,7 @@ public class SettingsGateway {
             RegionalPreferencesEntriesFragment.class.getName(),
             BatteryInfoFragment.class.getName(),
             UserAspectRatioDetails.class.getName(),
-            AlphaSettings.class.getName(),
+            SigmaSettings.class.getName(),
             RunningServices.class.getName(),
             SmartPixels.class.getName(),
             SecurityHubDashboard.class.getName(),
@@ -434,7 +434,7 @@ public class SettingsGateway {
             UserBackupSettingsActivity.class.getName(),
             Settings.MemtagPageActivity.class.getName(),
             Settings.NavigationModeSettingsActivity.class.getName(),
-            Settings.AlphaSettingsActivity.class.getName(),
+            Settings.SigmaSettingsActivity.class.getName(),
             Settings.DevRunningServicesActivity.class.getName(),
             Settings.SmartPixelsActivity.class.getName(),
     };
