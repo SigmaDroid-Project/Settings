@@ -27,7 +27,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
-import com.alpha.settings.preferences.CustomSeekBarPreference;
+import com.sigma.settings.preferences.CustomSeekBarPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
