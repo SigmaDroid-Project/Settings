@@ -64,7 +64,7 @@ android_library {
            "AlphaSettings/src/**/*.kt",
     ],
 
-    aaptflags: ["--extra-packages com.alpha.settings"],
+    aaptflags: ["--extra-packages com.sigma.settings"],
 
     resource_dirs: [
         "res",
