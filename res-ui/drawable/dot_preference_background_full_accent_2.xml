@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright 2022 The DotOS Project
+     Copyright 2021 xdroid, xyzprjkt
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,14 +14,18 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <dimen name="contextual_card_stroke_width">1dp</dimen>
-
-    <dimen name="storage_card_min_width">148dp</dimen>
-    <dimen name="storage_card_min_height">@dimen/storage_card_min_width</dimen>
-
-     <dimen name="dot_radius">18dp</dimen>
-     <dimen name="dot_radius_merge">0dp</dimen>
-     <dimen name="dot_pref_horizontal_padding">16dp</dimen>
-     <dimen name="dot_pref_horizontal_padding-negative">-16dp</dimen>
-</resources>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/dot_pref_ripple">
+    <item android:id="@android:id/mask">
+        <shape>
+            <solid android:color="#FFFFFFFF" />
+            <corners android:radius="@dimen/dot_radius" />
+        </shape>
+    </item>
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/system_accent3_200" />
+            <corners android:radius="@dimen/dot_radius" />
+        </shape>
+    </item>
+</ripple>

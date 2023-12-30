@@ -15,13 +15,9 @@
      limitations under the License.
 -->
 <resources>
-    <dimen name="contextual_card_stroke_width">1dp</dimen>
-
-    <dimen name="storage_card_min_width">148dp</dimen>
-    <dimen name="storage_card_min_height">@dimen/storage_card_min_width</dimen>
-
-     <dimen name="dot_radius">18dp</dimen>
-     <dimen name="dot_radius_merge">0dp</dimen>
-     <dimen name="dot_pref_horizontal_padding">16dp</dimen>
-     <dimen name="dot_pref_horizontal_padding-negative">-16dp</dimen>
+     <color name="dot_pref_color">@android:color/system_neutral1_800</color>
+     <color name="dot_background1">@android:color/system_neutral1_900</color>
+     <color name="dot_background2">@android:color/system_neutral1_800</color>
+     <color name="dot_background3">@android:color/system_accent1_200</color>
+     <color name="dot_background4">@android:color/system_accent3_200</color>
 </resources>
