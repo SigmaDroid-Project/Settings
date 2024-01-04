@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright 2022 The DotOS Project
+     Copyright 2021 xdroid, xyzprjkt
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,12 +14,15 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-     <dimen name="dot_radius">22dp</dimen>
-     <dimen name="dot_radius_merge">0dp</dimen>
-     <dimen name="dot_pref_horizontal_padding">16dp</dimen>
-     <dimen name="dot_pref_horizontal_padding-negative">-16dp</dimen>
-     <dimen name="contextual_card_stroke_width">1dp</dimen>
-     <dimen name="storage_card_min_width">148dp</dimen>
-     <dimen name="storage_card_min_height">@dimen/storage_card_min_width</dimen>
-</resources>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    style="@style/dotDashboardPreferenceBottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        layout="@layout/sigma_dashboard_pref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</FrameLayout>
