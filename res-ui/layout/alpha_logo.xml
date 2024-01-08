@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright 2021 xdroid, xyzprjkt
-     Copyright 2022 AlphaDroid
+     Copyright 2022 SigmaDroid
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/alpha_logo" />
+            android:src="@drawable/sigma_logo" />
 
     </LinearLayout>
 </FrameLayout>

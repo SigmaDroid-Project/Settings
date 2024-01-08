@@ -26,14 +26,14 @@ import androidx.preference.Preference;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 
-public class AlphaVersionPreferenceController extends BasePreferenceController {
+public class SigmaVersionPreferenceController extends BasePreferenceController {
 
-    private static final String ALPHA_BUILD_VERSION = "ro.alpha.modversion";
-    private static final String KEY_ALPHA_VERSION = "alpha_version";
-    private static final String ALPHA_PACKAGE_TYPE = "ro.alpha.build.package";
+    private static final String SIGMA_BUILD_VERSION = "ro.sigma.modversion";
+    private static final String KEY_SIGMA_VERSION = "sigma_version";
+    private static final String SIGMA_PACKAGE_TYPE = "ro.sigma.build.package";
 
 
-    public AlphaVersionPreferenceController(Context context, String preferenceKey) {
+    public SigmaVersionPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
     }
 
@@ -44,14 +44,14 @@ public class AlphaVersionPreferenceController extends BasePreferenceController {
 
     @Override
     public String getPreferenceKey() {
-        return KEY_ALPHA_VERSION;
+        return KEY_SIGMA_VERSION;
     }
 
     @Override
     public CharSequence getSummary() {
-        String version = SystemProperties.get(ALPHA_BUILD_VERSION, "");
+        String version = SystemProperties.get(SIGMA_BUILD_VERSION, "");
         if (TextUtils.isEmpty(version)) return "";
-        String packageType = SystemProperties.get(ALPHA_PACKAGE_TYPE, "");
+        String packageType = SystemProperties.get(SIGMA_PACKAGE_TYPE, "");
         if (TextUtils.isEmpty(packageType)) return version;
         return version + " (" + packageType + ")";
     }

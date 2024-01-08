@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!--  Alpha settings -->
-    <string name="alpha_settings_title">Alpha Settings</string>
-    <string name="alpha_settings_summary">There will be goodies!</string>
+    <!--  Sigma settings -->
+    <string name="sigma_settings_title">Sigma Toolbox</string>
+    <string name="sigma_settings_summary">Everything, including the kitchen sink!</string>
 
     <!-- UiBench -->
     <string name="category_uibench">UiBench</string>

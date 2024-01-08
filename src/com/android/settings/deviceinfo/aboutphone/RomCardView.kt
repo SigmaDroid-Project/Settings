@@ -42,9 +42,9 @@ class RomCardView(context: Context, attrs: AttributeSet?) : AboutBaseCard(contex
         rom_logo.layoutParams = rlparams
         minimumWidth = rom_logo.width
         val androidVersion = Build.VERSION.RELEASE_OR_PREVIEW_DISPLAY.toString()
-        val alphaVersion = SystemProperties.get("ro.alpha.modversion")
+        val sigmaVersion = SystemProperties.get("ro.sigma.modversion")
         val rom_title = TextView(context)
-        rom_title.text = "AlphaDroid $alphaVersion"
+        rom_title.text = "SigmaDroid $sigmaVersion"
         rom_title.setTextColor(
             Utils.getColorAttrDefaultColor(
                 context,
