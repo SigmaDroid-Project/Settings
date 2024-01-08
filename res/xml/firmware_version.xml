@@ -21,10 +21,10 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
-    <!-- Alpha logo -->
+    <!-- Sigma logo -->
     <com.android.settingslib.widget.LayoutPreference
-        android:layout="@layout/alpha_logo"
-        android:key="alpha_logo"
+        android:layout="@layout/sigma_logo"
+        android:key="sigma_logo"
         android:selectable="false" />
 
     <!-- Device name -->
@@ -44,13 +44,13 @@
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
-    <!-- Alpha version -->
+    <!-- Sigma version -->
     <Preference
-        android:key="alpha_version"
+        android:key="sigma_version"
         android:title="@*lineageos.platform:string/lineage_version"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.AlphaVersionPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreferenceController"/>
 
     <!-- Security patch -->
     <Preference

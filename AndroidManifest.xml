@@ -5027,10 +5027,10 @@
 
         <!-- This is the longest AndroidManifest.xml ever. -->
 
-        <!-- Begin Alpha Settings -->
+        <!-- Begin Sigma Settings -->
         <activity android:name="Settings$SigmaSettingsActivity"
-                android:label="@string/alpha_settings_title"
-                android:icon="@drawable/ic_settings_alpha"
+                android:label="@string/sigma_settings_title"
+                android:icon="@drawable/ic_settings_sigma"
                 android:exported="true"
                 android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings">
@@ -5043,7 +5043,7 @@
                 <category android:name="com.android.settings.SHORTCUT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.summary"
-                       android:resource="@string/alpha_settings_summary"/>
+                       android:resource="@string/sigma_settings_summary"/>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                        android:value="com.sigma.settings.SigmaSettings" />
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
