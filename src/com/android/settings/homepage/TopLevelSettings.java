@@ -474,7 +474,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 
     private void setDashboardStyle(Context context) {
         mDashBoardStyle = Settings.System.getIntForUser(context.getContentResolver(),
-                Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
+                Settings.System.SETTINGS_STYLE, 2, UserHandle.USER_CURRENT);
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
