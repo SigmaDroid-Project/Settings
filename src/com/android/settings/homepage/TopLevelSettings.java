@@ -25,62 +25,37 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.UserHandle;
-import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.VisibleForTesting;
-import androidx.annotation.NonNull;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceGroupAdapter;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.window.embedding.ActivityEmbeddingController;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.window.embedding.SplitController;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.activityembedding.ActivityEmbeddingRulesController;
 import com.android.settings.activityembedding.ActivityEmbeddingUtils;
-import com.android.settings.core.OnActivityResultListener;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.overlay.FeatureFactory;
-import com.android.settings.nad.NadWifiHomepagePreferenceController;
-import com.android.settings.nad.TopMenuBatteryController;
-import com.android.settings.network.InternetPreferenceController;
-import com.android.settings.network.TetherPreferenceController;
-import com.android.settings.network.AirplaneModePreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.support.SupportPreferenceController;
 import com.android.settings.widget.HomepagePreference;
 import com.android.settings.widget.HomepagePreferenceLayoutHelper.HomepagePreferenceLayout;
-import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.instrumentation.Instrumentable;
-import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
-import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.drawer.Tile;
 import com.android.settingslib.search.SearchIndexable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 @SearchIndexable(forTarget = MOBILE)
 public class TopLevelSettings extends DashboardFragment implements SplitLayoutListener,
-        PreferenceFragmentCompat.OnPreferenceStartFragmentCallback, OnActivityResultListener {
+        PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
     private static final String TAG = "TopLevelSettings";
     private static final String SAVED_HIGHLIGHT_MIXIN = "highlight_mixin";
@@ -92,7 +67,6 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     private boolean mScrollNeeded = true;
     private boolean mFirstStarted = true;
     private ActivityEmbeddingController mActivityEmbeddingController;
-    private int mSettingsStyle;
 
     public TopLevelSettings() {
         final Bundle args = new Bundle();
@@ -110,18 +84,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 
     @Override
     protected int getPreferenceScreenResId() {
-        switch (mSettingsStyle) {
-           case 0:
-               return R.xml.top_level_settings;
-           case 1:
-               return R.xml.top_level_settings_aosp;
-           case 2:
-               return R.xml.top_level_settings;
-           case 3:
-               return R.xml.top_level_settings_grid;
-           default:
-               return R.xml.top_level_settings;
-        }
+        return R.xml.top_level_settings;
     }
 
     @Override
@@ -139,8 +102,6 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         super.onAttach(context);
         HighlightableMenu.fromXml(context, getPreferenceScreenResId());
         use(SupportPreferenceController.class).setActivity(getActivity());
-        mSettingsStyle = Settings.System.getInt(context.getContentResolver(),
-                    Settings.System.SETTINGS_STYLE, 3);
     }
 
     @Override
@@ -254,101 +215,6 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 icon.setTint(tintColor);
             }
         });
-
-        iteratePreferences(preference -> {
-            if (preference instanceof HomepagePreferenceLayout) {
-                ((HomepagePreferenceLayout) preference).getHelper()
-                        .setSettingsStyle(mSettingsStyle);
-            }
-        });
-
-        for (int i = 0; i < getPreferenceScreen().getPreferenceCount(); i++) {
-            Preference preference = getPreferenceScreen().getPreference(i);
-            boolean visible = preference.isVisible() && preference.getTitle() != null;
-            String key = preference.getKey();
-            if (mSettingsStyle == 1 && visible) {
-                preference.setLayoutResource(R.layout.homepage_preference_aosp);
-            } else if (mSettingsStyle == 2 && visible) {
-                preference.setLayoutResource(R.layout.homepage_preference_grid);
-            } else if (mSettingsStyle == 3 && visible) {
-                preference.setLayoutResource(R.layout.homepage_preference_nad_grid);
-                preference.setSingleLineTitle(true);
-            } else {
-                if (visible) {
-                    if (key.equals("top_level_network")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_top);
-                    }
-                    if (key.equals("top_level_connected_devices")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_bottom);
-                    }
-                    if (key.equals("top_level_apps")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_top);
-                    }
-                    if (key.equals("top_level_notifications")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("top_level_battery")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("top_level_storage")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_bottom);
-                    }
-                    if (key.equals("top_level_sound")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_top);
-                    }
-                    if (key.equals("top_level_display")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("top_level_wallpaper")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_bottom);
-                    }
-                    if (key.equals("top_level_accessibility")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_top);
-                    }
-                    if (key.equals("top_level_security")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("top_level_privacy")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("top_level_location")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_bottom);
-                    }
-                    if (key.equals("top_level_emergency")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_top);
-                    }
-                    if (key.equals("dashboard_tile_pref_com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("dashboard_tile_pref_com.google.android.gms.app.settings.GoogleSettingsIALink")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("top_level_google")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("dashboard_tile_pref_com.google.android.apps.wellbeing.home.TopLevelSettingsActivity")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("top_level_wellbeing")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                    if (key.equals("top_level_accounts")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_bottom);
-                    }
-                    if (key.equals("top_level_system")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_top);
-                    }
-                    if (key.equals("top_level_about_device")) {
-                        preference.setLayoutResource(R.layout.homepage_preference_bottom);
-                    }
-                    if (preference.getLayoutResource() != R.layout.homepage_preference_top &&
-                            preference.getLayoutResource() != R.layout.homepage_preference_bottom &&
-                            preference.getLayoutResource() != R.layout.homepage_preference) {
-                        preference.setLayoutResource(R.layout.homepage_preference_middle);
-                    }
-                }
-            }
-        }
     }
 
     @Override
@@ -378,11 +244,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             Bundle savedInstanceState) {
         RecyclerView recyclerView = super.onCreateRecyclerView(inflater, parent,
                 savedInstanceState);
-        if (mSettingsStyle == 2) {
-            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL));
-        } else {
-        	recyclerView.setPadding(mPaddingHorizontal, 0, mPaddingHorizontal, 0);
-        }
+        recyclerView.setPadding(mPaddingHorizontal, 0, mPaddingHorizontal, 0);
         return recyclerView;
     }
 
@@ -511,21 +373,6 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         }
 
         void doForEach(Preference preference);
-    }
-
-    @Override
-    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, getSettingsLifecycle(), mMetricsFeatureProvider, this /* fragment */);
-    }
-
-    private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
-            Lifecycle lifecycle, MetricsFeatureProvider metricsFeatureProvider, Fragment fragment) {
-
-        final List<AbstractPreferenceController> controllers = new ArrayList<>();
-        controllers.add(new NadWifiHomepagePreferenceController(context, lifecycle));
-        controllers.add(new TetherPreferenceController(context, lifecycle));
-        controllers.add(new TopMenuBatteryController(context, lifecycle));
-        return controllers;
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

@@ -1,3 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!--  Alpha settings -->
+    <string name="alpha_settings_title">Alpha Settings</string>
+    <string name="alpha_settings_summary">There will be goodies!</string>
+
+    <!-- UiBench -->
+    <string name="category_uibench">UiBench</string>
+    <string name="jitter_test_title">Jitter</string>
+    <string name="jitter_test_summary">Calculate rendering jitter</string>
+
+    <!-- Generic support strings -->
+    <string name="string_enabled">Enabled</string>
+    <string name="string_disabled">Disabled</string>
+    <string name="string_on">On</string>
+    <string name="string_off">Off</string>
+
+    <!-- Fastcharge -->
+    <string name="restricted_current_summary">Set max allowed current (mA)</string>
+    <string name="fastcharge_disabled_extended_summary">Charge limited to: <xliff:g id="current" example="3000 mA">%1$s</xliff:g>.</string>
+
 </resources>

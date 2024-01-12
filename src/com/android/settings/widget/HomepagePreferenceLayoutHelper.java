@@ -17,8 +17,6 @@
 package com.android.settings.widget;
 
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
@@ -28,13 +26,11 @@ import com.android.settings.R;
 /** Helper for homepage preference to manage layout. */
 public class HomepagePreferenceLayoutHelper {
 
-    private Preference mPreference;
     private View mIcon;
     private View mText;
     private boolean mIconVisible = true;
     private int mIconPaddingStart = -1;
     private int mTextPaddingStart = -1;
-    private int mSettingsStyle;
 
     /** The interface for managing preference layouts on homepage */
     public interface HomepagePreferenceLayout {
@@ -43,11 +39,7 @@ public class HomepagePreferenceLayoutHelper {
     }
 
     public HomepagePreferenceLayoutHelper(Preference preference) {
-    	mPreference = preference;
-    }
-
-    public void setSettingsStyle(int style) {
-    	mSettingsStyle = style;
+        preference.setLayoutResource(R.layout.homepage_preference);
     }
 
     /** Sets whether the icon should be visible */
@@ -79,14 +71,8 @@ public class HomepagePreferenceLayoutHelper {
     void onBindViewHolder(PreferenceViewHolder holder) {
         mIcon = holder.findViewById(R.id.icon_frame);
         mText = holder.findViewById(R.id.text_frame);
-        mText.setSelected(true);
         setIconVisible(mIconVisible);
         setIconPaddingStart(mIconPaddingStart);
         setTextPaddingStart(mTextPaddingStart);
-        String key = mPreference.getKey();
-        boolean showSummary = key.equals("main_toggle_wifi") || key.equals("tether_settings")
-                || key.equals("top_level_location");
-        TextView summary = (TextView) holder.findViewById(android.R.id.summary);
-        if (mSettingsStyle == 3 && !showSummary) summary.setVisibility(View.GONE);
     }
 }

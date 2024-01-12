@@ -262,8 +262,8 @@ public class SettingsBaseActivity extends FragmentActivity implements CategoryHa
         if (mAppBarLayout == null) {
             return;
         }
-        //final CoordinatorLayout.LayoutParams params =
-        //        (CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams();
+        final CoordinatorLayout.LayoutParams params =
+                (CoordinatorLayout.LayoutParams) mAppBarLayout.getLayoutParams();
         final AppBarLayout.Behavior behavior = new AppBarLayout.Behavior();
         behavior.setDragCallback(
                 new AppBarLayout.Behavior.DragCallback() {
@@ -274,7 +274,7 @@ public class SettingsBaseActivity extends FragmentActivity implements CategoryHa
                                 == Configuration.ORIENTATION_LANDSCAPE;
                     }
                 });
-        //params.setBehavior(behavior);
+        params.setBehavior(behavior);
     }
 
     private int getTransitionType(Intent intent) {

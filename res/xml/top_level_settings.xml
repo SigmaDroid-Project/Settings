@@ -21,13 +21,12 @@
     android:key="top_level_settings">
 
     <com.android.settings.widget.HomepagePreference
-        android:icon="@drawable/ic_settings_alpha"
         android:key="top_level_alpha_settings"
         android:title="@string/alpha_settings_title"
         android:summary="@string/alpha_settings_summary"
         android:order="-204"
         android:fragment="com.alpha.settings.AlphaSettings"
-        settings:controller="com.alpha.settings.TopLevelAlphaEntryPreferenceController" />
+    settings:controller="com.alpha.settings.TopLevelAlphaEntryPreferenceController" />
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.network.NetworkDashboardFragment"
@@ -188,7 +187,7 @@
         android:fragment="com.android.settings.accounts.AccountDashboardFragment"
         android:icon="@drawable/ic_settings_accounts"
         android:key="top_level_accounts"
-        android:order="120"
+        android:order="-10"
         android:title="@string/account_dashboard_title"
         android:summary="@string/summary_placeholder"
         settings:highlightableMenuKey="@string/menu_key_accounts"

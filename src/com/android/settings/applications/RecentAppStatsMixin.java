@@ -61,7 +61,7 @@ public class RecentAppStatsMixin implements LifecycleObserver, OnStart {
     private static final Set<String> SKIP_SYSTEM_PACKAGES = new ArraySet<>();
 
     @VisibleForTesting
-    public List<UsageStatsWrapper> mRecentApps;
+    List<UsageStatsWrapper> mRecentApps;
 
     private final int mMaximumApps;
     private final Context mContext;
@@ -110,7 +110,7 @@ public class RecentAppStatsMixin implements LifecycleObserver, OnStart {
     }
 
     @VisibleForTesting
-    public void loadDisplayableRecentApps(int limit) {
+    void loadDisplayableRecentApps(int limit) {
         mRecentApps.clear();
         mCalendar = Calendar.getInstance();
         mCalendar.add(Calendar.DAY_OF_YEAR, -1);
@@ -214,7 +214,7 @@ public class RecentAppStatsMixin implements LifecycleObserver, OnStart {
         void onReloadDataCompleted(List<UsageStatsWrapper> recentApps);
     }
 
-    public static class UsageStatsWrapper {
+    static class UsageStatsWrapper {
 
         public final UsageStats mUsageStats;
         public final int mUserId;
