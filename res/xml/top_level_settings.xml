@@ -26,7 +26,6 @@
         android:summary="@string/sigma_settings_summary"
         android:icon="@drawable/ic_settings_sigma"
         android:order="-204"
-        android:icon="@drawable/ic_settings_sigma"
         android:fragment="com.sigma.settings.SigmaSettings"
         settings:controller="com.sigma.settings.TopLevelSigmaEntryPreferenceController" />
 
