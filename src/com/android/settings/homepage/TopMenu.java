@@ -122,12 +122,12 @@ public class TopMenu extends Preference {
         });*/
 
         LinearLayout mNad = holder.itemView.findViewById(context.getResources().
-                getIdentifier("id/alpha_settings", null, context.getPackageName()));
+                getIdentifier("id/sigma_settings", null, context.getPackageName()));
         mNad.setClickable(true);
         mNad.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$AlphaSettingsActivity"));
+                intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$SigmaSettingsActivity"));
                 context.startActivity(intent);
             }
         });
