@@ -20,4 +20,28 @@
     <string name="restricted_current_summary">Set max allowed current (mA)</string>
     <string name="fastcharge_disabled_extended_summary">Charge limited to: <xliff:g id="current" example="3000 mA">%1$s</xliff:g>.</string>
 
+    <!-- Build info -->
+    <string name="build_status_title">Build Status: %s</string>
+    <string name="build_status_summary_placeholder">Ahoy</string>
+    <string name="build_status_summary">Maintained by: %s</string>
+    <string name="build_status_oopsie">Searching for maintainer...</string>
+
+    <string name="version">Sigma Version</string>
+
+  <string name="build_status">Build Status</string>
+
+    <!-- About page -->
+    <string name="battery">Battery</string>
+    <string name="display">Display</string>
+    <string name="storage">Storage</string>
+    <string name="chipset">Processor</string>
+
+    <string name="build_is_official_title">Device is officially supported!</string>
+    <string name="build_is_community_title">Device is not officially supported!</string>
+    <string name="build_is_community_summary">Unofficial build by %s</string>
+    <string name="build_status_official">Official</string>
+
+    <string name="sigma_model_info">Device Information</string>
+    <string name="sigma_build_date_title">Build Date</string>
+
 </resources>
