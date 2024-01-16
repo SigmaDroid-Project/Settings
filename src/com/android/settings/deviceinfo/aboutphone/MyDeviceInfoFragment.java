@@ -47,6 +47,7 @@ import com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController;
 import com.android.settings.deviceinfo.simstatus.EidStatus;
 import com.android.settings.deviceinfo.simstatus.SimEidPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SlotSimStatus;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.EntityHeaderController;
@@ -169,6 +170,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
         controllers.add(new FccEquipmentIdPreferenceController(context));
         controllers.add(new SleeptimePreferenceController(context, lifecycle));
         controllers.add(new UptimePreferenceController(context, lifecycle));
+        controllers.add(new SigmaInfoPreferenceController(context));
 
         Consumer<String> imeiInfoList = imeiKey -> {
             ImeiInfoPreferenceController imeiRecord =
