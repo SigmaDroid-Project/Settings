@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/version"
-            style="@style/TextAppearance.SigmaInfoTitle" />
+            style="@style/sigmaTextPrimaryMedium" />
 
         <TextView
             android:id="@+id/version_message"
@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/storage"
-            style="@style/TextAppearance.SigmaInfoTitle" />
+            style="@style/sigmaTextPrimaryMedium" />
 
         <TextView
             android:id="@+id/cust_storage_summary"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/battery"
-            style="@style/TextAppearance.SigmaInfoTitle" />
+            style="@style/sigmaTextPrimaryMedium" />
 
         <TextView
             android:id="@+id/cust_battery_summary"
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/about_device_name"
-            style="@style/TextAppearance.SigmaInfoTitle" />
+            style="@style/sigmaTextPrimaryMedium" />
 
         <TextView
             android:id="@+id/device_message"
