@@ -35,11 +35,14 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import com.android.settings.R;
+import android.util.Log;
 
 public class SpecUtils {
     private static final String CPU_MODEL_PROPERTY = "ro.sigma.chipset";
     private static final String FALLBACK_CPU_MODEL_PROPERTY = "ro.board.platform";
+    private static final String FALLBACK_BATTERY_CAPACITY_PROPERTY = "ro.sigma.battery.capacity";
     private static final BigDecimal GB2MB = new BigDecimal(1024);
+    private static final String TAG = "SpecUtils";
 
     public static String getTotalInternalMemorySize() {
         File path = Environment.getDataDirectory();
@@ -112,10 +115,15 @@ public class SpecUtils {
     }
 
     public static int getBatteryCapacity(Context context) {
+        String batteryCapacityFallback = SystemProperties.get(FALLBACK_BATTERY_CAPACITY_PROPERTY);
         PowerProfile powerProfile = new PowerProfile(context);
         double batteryCapacity = powerProfile.getBatteryCapacity();
         String str = Double.toString(batteryCapacity);
         String strArray[] = str.split("\\.");
-        return Integer.parseInt(strArray[0]);
+        int capacity = Integer.parseInt(strArray[0]);
+        if (capacity > 0)
+            return capacity;
+        else
+            return Integer.parseInt(batteryCapacityFallback);
     }
 }
