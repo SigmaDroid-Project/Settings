@@ -40,6 +40,9 @@ import androidx.annotation.Nullable;
 
 import com.android.settings.R;
 
+import com.android.settingslib.udfps.UdfpsOverlayParams;
+import com.android.settingslib.udfps.UdfpsUtils;
+
 /**
  * UDFPS fingerprint drawable that is shown when enrolling
  */
@@ -60,6 +63,8 @@ public class UdfpsEnrollDrawable extends Drawable {
     private final Paint mBlueFill;
     @NonNull
     private final ShapeDrawable mFingerprintDrawable;
+    
+    Drawable mUdfpsDrawable;
 
     private int mAlpha;
     private boolean mSkipDraw = false;
