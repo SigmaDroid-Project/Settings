@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/alpha_settings_logo" />
+            android:src="@drawable/sigma_logo" />
 
     </LinearLayout>
 </FrameLayout>
