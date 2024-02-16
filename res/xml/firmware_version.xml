@@ -21,10 +21,10 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
-    <!-- Alpha logo -->
+    <!-- Sigma logo -->
     <com.android.settingslib.widget.LayoutPreference
-        android:layout="@layout/alpha_logo"
-        android:key="alpha_logo"
+        android:layout="@layout/sigma_logo"
+        android:key="sigma_logo"
         android:selectable="false" />
 
     <Preference
@@ -42,77 +42,15 @@
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
-    <!-- Security patch -->
+    <!-- Sigma version -->
     <Preference
-        android:key="security_key"
-        android:title="@string/security_patch"
-        android:icon="@drawable/ic_security_patch"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.SecurityPatchLevelPreferenceController"/>
-
-    <Preference
-        android:key="category_alpha"
-        android:title="@string/category_alpha_info"
-        android:selectable="false"/>
-
-    <Preference
-        android:key="rom_build_status"
-        android:icon="@drawable/ic_build_status"
-        android:title="@string/build_status_title"
-        android:summary="@string/build_status_summary"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmware_version.BuildStatusPreferenceController"/>
-
-    <Preference
-        android:key="rom_maintainer"
-        android:icon="@drawable/ic_maintainer"
-        android:title="@string/maintainer_title"
-        android:summary="@string/maintainer_summary"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmware_version.MaintainerPreferenceController"/>
-
-    <!-- AlphaDroid version -->
-    <Preference
-        android:key="alpha_version"
+        android:key="sigma_version"
         android:title="@*lineageos.platform:string/lineage_version"
         android:summary="@string/summary_placeholder"
-        android:icon="@drawable/ic_settings_alpha"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.AlphaVersionPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SigmaVersionPreferenceController"/>
 
-    <!-- Build date -->
-    <Preference
-        android:key="os_build_date"
-        android:title="@*lineageos.platform:string/build_date"
-        android:summary="@string/summary_placeholder"
-        android:icon="@drawable/ic_date"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.LineageBuildDatePreferenceController"/>
-
-    <!-- Build number-->
-    <Preference
-        android:key="os_build_number"
-        android:title="@string/build_number"
-        android:summary="@string/summary_placeholder"
-        android:icon="@drawable/ic_shell"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.SimpleBuildNumberPreferenceController"/>
-
-    <Preference
-        android:key="category_device"
-        android:title="@string/category_device_info"
-        android:selectable="false"/>
-
-    <!-- Device name -->
-    <Preference
-        android:key="about_device_name"
-        android:title="@string/about_device_name"
-        android:summary="@string/summary_placeholder"
-        android:icon="@drawable/ic_device"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.AboutDeviceNamePreferenceController"/>
-
-    <!-- SELinux -->
+    <!-- Security patch -->
     <Preference
         android:key="selinux_status"
         android:title="@string/selinux_status"
