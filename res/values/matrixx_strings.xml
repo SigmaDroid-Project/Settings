@@ -90,4 +90,7 @@
 
     <string name="sigma_model_info">Device Information</string>
     <string name="sigma_build_date_title">Build Date</string>
+
+       <!-- Title for preference category showing the name of device details. [CHAR LIMIT=60]-->
+    <string name="my_device_info_firmware_details_category_title">Firmware details</string>
 </resources>
