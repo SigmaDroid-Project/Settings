@@ -24,9 +24,14 @@ import android.content.Intent;
 import android.content.pm.UserInfo;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.os.UserManager;
 import android.util.Log;
 import android.view.View;
+
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -47,6 +52,8 @@ import com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController;
 import com.android.settings.deviceinfo.simstatus.EidStatus;
 import com.android.settings.deviceinfo.simstatus.SimEidPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.BuildStatusPreferenceController;
+import com.android.settings.deviceinfo.firmwareversion.SELinuxStatusPreferenceController;
 import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SlotSimStatus;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -171,6 +178,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
         controllers.add(new SleeptimePreferenceController(context, lifecycle));
         controllers.add(new UptimePreferenceController(context, lifecycle));
         controllers.add(new SigmaInfoPreferenceController(context));
+        controllers.add(new SELinuxStatusPreferenceController(context));
 
         Consumer<String> imeiInfoList = imeiKey -> {
             ImeiInfoPreferenceController imeiRecord =

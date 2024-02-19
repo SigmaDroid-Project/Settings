@@ -26,6 +26,9 @@
     <string name="build_status_summary">Maintained by: %s</string>
     <string name="build_status_oopsie">Searching for maintainer...</string>
 
+       <!-- Title for preference category showing the name of device details. [CHAR LIMIT=60]-->
+    <string name="my_device_info_firmware_details_category_title">Firmware details</string>
+
     <string name="version">Sigma Version</string>
 
   <string name="build_status">Build Status</string>
