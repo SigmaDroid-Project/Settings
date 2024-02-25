@@ -4,6 +4,21 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <style name="op_control_text_style_base">
+        <item name="android:breakStrategy">simple</item>
+    </style>
+
+    <style name="op_control_text_style_body1" parent="@style/op_control_text_style_base">
+        <item name="android:textSize">13.0sp</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    </style>
+    
+    <style name="op_control_text_style_h6" parent="@style/op_control_text_style_base">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:fontFamily">@*android:string/config_headlineFontFamilyMedium</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+    
     <!-- Cards -->
     <style name="rdnt_cardview_text_primary">
         <item name="android:textSize">18dp</item>

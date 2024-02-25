@@ -22,23 +22,34 @@ import static com.android.settingslib.search.SearchIndexable.MOBILE;
 import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
+import android.os.UserManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.VisibleForTesting;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.window.embedding.ActivityEmbeddingController;
+
+import com.android.internal.util.UserIcons;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -51,8 +62,14 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.widget.HomepagePreference;
 import com.android.settings.widget.HomepagePreferenceLayoutHelper.HomepagePreferenceLayout;
 import com.android.settingslib.core.instrumentation.Instrumentable;
+import com.android.settingslib.drawable.CircleFramedDrawable;
 import com.android.settingslib.drawer.Tile;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settingslib.widget.LayoutPreference;
+
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Arrays;
 
 @SearchIndexable(forTarget = MOBILE)
 public class TopLevelSettings extends DashboardFragment implements SplitLayoutListener,
@@ -68,6 +85,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     private boolean mScrollNeeded = true;
     private boolean mFirstStarted = true;
     private ActivityEmbeddingController mActivityEmbeddingController;
+    
+    private boolean googleServicesAvailable;
+    private int extraPreferenceOrder = -151;
 
     public TopLevelSettings() {
         final Bundle args = new Bundle();
@@ -89,11 +109,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             case 0:
                 return R.xml.top_level_settings;
             case 1:
-                return R.xml.top_level_settings_dot;
-            case 2:
                 return R.xml.top_level_settings_nad;
-            case 3:
-                return R.xml.top_level_settings_sigma;
             default:
                 return R.xml.top_level_settings_nad;
         }
@@ -113,7 +129,6 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     public void onAttach(Context context) {
         super.onAttach(context);
         HighlightableMenu.fromXml(context, getPreferenceScreenResId());
-        setDashboardStyle(context);
     }
 
     @Override
@@ -158,6 +173,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+
         mIsEmbeddingActivityEnabled =
                 ActivityEmbeddingUtils.isEmbeddingActivityEnabled(getContext());
         if (!mIsEmbeddingActivityEnabled) {
@@ -175,6 +191,60 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         if (mHighlightMixin == null) {
             mHighlightMixin = new TopLevelHighlightMixin(activityEmbedded);
         }
+    }
+
+    private void initHomepageWidgetsView() {
+        final LayoutPreference bannerPreference =
+                        (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_banner_view");
+        final LayoutPreference widgetPreference =
+                        (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_widgets");
+        if (bannerPreference != null) {
+            final ImageView avatarView = bannerPreference.findViewById(R.id.account_avatar);
+            avatarView.setImageDrawable(getCircularUserIcon(getActivity()));
+            avatarView.bringToFront();
+            avatarView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    launchComponent("com.android.settings", "com.android.settings.Settings$UserSettingsActivity");
+                }
+            });
+            final String wppClass = getContext().getResources().getString(R.string.config_styles_and_wallpaper_picker_class);
+            final String wppPkg = getContext().getResources().getString(R.string.config_wallpaper_picker_package);
+            final String wppExtraIntent = getContext().getResources().getString(R.string.config_wallpaper_picker_launch_extra);
+            final Intent wallpaperIntent = new Intent()
+                    .setComponent(new ComponentName(wppPkg, wppClass))
+                    .putExtra(wppExtraIntent, "app_launched_settings")
+                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            final View bannerView = bannerPreference.findViewById(R.id.homepage_banner);
+            bannerView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(wallpaperIntent);
+                }
+            });
+        }
+    }
+
+    private Drawable getCircularUserIcon(Context context) {
+        final UserManager mUserManager = getSystemService(UserManager.class);
+        Bitmap bitmapUserIcon = mUserManager.getUserIcon(UserHandle.myUserId());
+
+        if (bitmapUserIcon == null) {
+            // get default user icon.
+            final Drawable defaultUserIcon = UserIcons.getDefaultUserIcon(
+                    context.getResources(), UserHandle.myUserId(), false);
+            bitmapUserIcon = UserIcons.convertToBitmap(defaultUserIcon);
+        }
+        Drawable drawableUserIcon = new CircleFramedDrawable(bitmapUserIcon,
+                (int) context.getResources().getDimension(R.dimen.homepage_user_icon_size));
+
+        return drawableUserIcon;
+    }
+
+    private void launchComponent(String packageName, String className) {
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName(packageName, className));
+        startActivity(intent);
     }
 
     /** Wrap ActivityEmbeddingController#isActivityEmbedded for testing. */
@@ -201,6 +271,15 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     /* scrollNeeded= */ false);
         }
         super.onStart();
+        RecyclerView recyclerView = getListView();
+        if (recyclerView != null) {
+            recyclerView.post(new Runnable() {
+                @Override
+                public void run() {
+                    initHomepageWidgetsView();
+                }
+            });
+        }
     }
 
     private boolean isOnlyOneActivityInTask() {
@@ -226,88 +305,73 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             if (icon != null) {
                 icon.setTint(tintColor);
             }
-            onSetPrefCard();
+            String preferenceKey = preference.getKey();
+            if (preferenceKey != null && !("top_level_homepage_widgets".equals(preferenceKey) ||
+                                           "top_level_homepage_banner_view".equals(preferenceKey))) {
+                setUpPreferenceLayout(preference);
+            }
         });
     }
 
+    private void setUpPreferenceLayout(Preference preference) {
+        String key = preference.getKey();
 
-    private void onSetPrefCard() {
-        final PreferenceScreen screen = getPreferenceScreen();
-        final int count = screen.getPreferenceCount();
-        for (int i = 0; i < count; i++) {
-            final Preference preference = screen.getPreference(i);
+        //Log.d("PreferenceLogging", "Setting up layout for preference key: " + key);
 
-            String key = preference.getKey();
+        Set<String> topPreferences = new HashSet<>(Arrays.asList(
+                "top_level_battery", 
+                "top_level_system", 
+                "top_level_apps",
+                "top_level_location",
+                "top_level_sigma_settings",
+                "top_level_accessibility",
+                "top_level_privacy", 
+                "top_level_emergency",
+                "top_level_display"
+        ));
 
-            if (key == null) continue;
+        Set<String> middlePreferences = new HashSet<>(Arrays.asList(
+                "top_level_communal",
+                "top_level_sound"
+        ));
+        
+        Set<String> bottomPreferences = new HashSet<>(Arrays.asList(
+                "top_level_connected_devices",
+                "top_level_wallpaper",
+                "top_level_accounts", 
+                "top_level_notifications",
+                "top_level_storage", 
+                "top_level_security",
+                "top_level_network", 
+                "top_level_safety_center",
+                "top_level_about_device"
+        ));
+        
+        if (mDashBoardStyle == 1) {
+            preference.setLayoutResource(R.layout.top_level_preference_solo_card);
+        } 
 
-             if (mDashBoardStyle == 1) {
-                if (key.equals("top_level_about_device")) {
-                    preference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
-                } else if (
-                    key.equals("top_level_network")
-                        || key.equals("top_level_apps")
-                        || key.equals("top_level_sound")
-                        || key.equals("top_level_display")
-                        || key.equals("top_level_security")
-                        || key.equals("top_level_location")
-                        || key.equals("top_level_accounts")
-                        || key.equals("top_level_safety_center")
-                        || key.equals("top_level_wellbeing")
-                        || key.equals("dashboard_tile_pref_com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity")
-                ) {
-                    preference.setLayoutResource(R.layout.dot_dashboard_preference_top);
-                } else if (
-                        key.equals("top_level_notifications")
-                        || key.equals("top_level_wallpaper")
-                        || key.equals("top_level_storage")
-                        || key.equals("top_level_system")
-                        || key.equals("top_level_battery")
-                        || key.equals("top_level_connected_devices")
-                        || key.equals("top_level_sigma_settings")
-                        || key.equals("top_level_privacy")
-                        || key.equals("top_level_accessibility")
-                        || key.equals("top_level_emergency")
-                ) {
-                    preference.setLayoutResource(R.layout.dot_dashboard_preference_bottom);
-                }  else {
-                    preference.setLayoutResource(R.layout.dot_dashboard_preference_middle);
-                }
-            } else if (mDashBoardStyle == 2) {
-                preference.setLayoutResource(R.layout.nad_dashboard_preference);
-            } else  if (mDashBoardStyle == 3) {
-                if (key.equals("top_level_about_device")) {
-                    preference.setLayoutResource(R.layout.sigma_dashboard_preference_phone);
-                } else if (
-                    key.equals("top_level_network")
-                        || key.equals("top_level_apps")
-                        || key.equals("top_level_sound")
-                        || key.equals("top_level_display")
-                        || key.equals("top_level_security")
-                        || key.equals("top_level_location")
-                        || key.equals("top_level_accounts")
-                        || key.equals("top_level_safety_center")
-                        || key.equals("top_level_wellbeing")
-                        || key.equals("dashboard_tile_pref_com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity")
-                ) {
-                    preference.setLayoutResource(R.layout.sigma_dashboard_preference_top);
-                } else if (
-                        key.equals("top_level_notifications")
-                        || key.equals("top_level_wallpaper")
-                        || key.equals("top_level_storage")
-                        || key.equals("top_level_system")
-                        || key.equals("top_level_battery")
-                        || key.equals("top_level_connected_devices")
-                        || key.equals("top_level_sigma_settings")
-                        || key.equals("top_level_privacy")
-                        || key.equals("top_level_accessibility")
-                        || key.equals("top_level_emergency")
-                ) {
-                    preference.setLayoutResource(R.layout.sigma_dashboard_preference_bottom);
-                }  else {
-                    preference.setLayoutResource(R.layout.sigma_dashboard_preference_middle);
-                }
-            }
+        if ("top_level_sigma_settings".equals(key)) {
+            preference.setLayoutResource(R.layout.top_level_preference_toolbox_card);
+        } else if ("top_level_wellbeing".equals(key)) {
+            preference.setLayoutResource(R.layout.top_level_preference_wellbeing_card);
+        } else if ("top_level_google".equals(key)) {
+            preference.setLayoutResource(R.layout.top_level_preference_google_card);
+            googleServicesAvailable = true;
+        } else if (topPreferences.contains(key)) {
+            preference.setLayoutResource(R.layout.top_level_preference_top_card);
+        } else if (middlePreferences.contains(key)) {
+            preference.setLayoutResource(R.layout.top_level_preference_middle_card);
+        } else if (key.equals("top_level_accounts") && googleServicesAvailable) {
+            preference.setLayoutResource(R.layout.top_level_preference_middle_card);
+        } else if (bottomPreferences.contains(key)) {
+            preference.setLayoutResource(R.layout.top_level_preference_bottom_card);
+        } else {
+            // highlight injected top level preference e.g OEM parts
+            int order = extraPreferenceOrder - 1;
+            extraPreferenceOrder = order;
+            preference.setOrder(order);
+            preference.setLayoutResource(R.layout.top_level_preference_solo_card);
         }
     }
 
@@ -485,7 +549,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 
     private void setDashboardStyle(Context context) {
         mDashBoardStyle = Settings.System.getIntForUser(context.getContentResolver(),
-                Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
+                Settings.System.SETTINGS_DASHBOARD_STYLE, 1, UserHandle.USER_CURRENT);
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =

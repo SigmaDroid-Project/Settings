@@ -47,4 +47,7 @@
     <string name="sigma_model_info">Device Information</string>
     <string name="sigma_build_date_title">Build Date</string>
 
+    <string name="lockscreen_albumart_filter_blur_radius_title">Album art blur level</string>
+    <string name="ls_media_artwork_fade_percent_title">Album art fade level</string>
+    <string name="category_name_network">Network and Connectivity settings</string>
 </resources>

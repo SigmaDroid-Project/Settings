@@ -20,12 +20,17 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="top_level_settings">
 
+    <com.android.settingslib.widget.LayoutPreference
+        android:layout="@layout/top_level_preference_banner_view"
+        android:key="top_level_homepage_banner_view"
+        android:order="-180"/>
+
     <com.android.settings.widget.HomepagePreference
         android:key="top_level_sigma_settings"
         android:title="@string/sigma_settings_title"
         android:summary="@string/sigma_settings_summary"
         android:icon="@drawable/ic_settings_sigma"
-        android:order="-204"
+        android:order="-170"
         android:fragment="com.sigma.settings.SigmaSettings"
         settings:controller="com.sigma.settings.TopLevelSigmaEntryPreferenceController" />
 
@@ -108,32 +113,32 @@
         settings:highlightableMenuKey="@string/menu_key_sound"/>
 
     <com.android.settings.widget.HomepagePreference
-        android:fragment="com.android.settings.notification.ConfigureNotificationSettings"
-        android:key="top_level_notifications"
-        android:icon="@drawable/ic_notifications"
-        android:order="-90"
-        android:title="@string/configure_notification_settings"
-        android:summary="@string/notification_dashboard_summary"
-        settings:highlightableMenuKey="@string/menu_key_notifications"/>
+        android:fragment="com.android.settings.security.SecuritySettings"
+        android:icon="@drawable/ic_settings_security_white"
+        android:key="top_level_security"
+        android:order="-95"
+        android:title="@string/security_settings_title"
+        android:summary="@string/security_dashboard_summary"
+        settings:highlightableMenuKey="@string/menu_key_security"
+        settings:controller="com.android.settings.security.TopLevelSecurityEntryPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.applications.AppDashboardFragment"
         android:icon="@drawable/ic_apps"
         android:key="top_level_apps"
-        android:order="-80"
+        android:order="-90"
         android:title="@string/apps_dashboard_title"
         android:summary="@string/app_and_notification_dashboard_summary"
         settings:highlightableMenuKey="@string/menu_key_apps"/>
 
     <com.android.settings.widget.HomepagePreference
-        android:fragment="com.android.settings.security.SecuritySettings"
-        android:icon="@drawable/ic_settings_security_white"
-        android:key="top_level_security"
-        android:order="-70"
-        android:title="@string/security_settings_title"
-        android:summary="@string/security_dashboard_summary"
-        settings:highlightableMenuKey="@string/menu_key_security"
-        settings:controller="com.android.settings.security.TopLevelSecurityEntryPreferenceController"/>
+        android:fragment="com.android.settings.notification.ConfigureNotificationSettings"
+        android:key="top_level_notifications"
+        android:icon="@drawable/ic_notifications"
+        android:order="-80"
+        android:title="@string/configure_notification_settings"
+        android:summary="@string/notification_dashboard_summary"
+        settings:highlightableMenuKey="@string/menu_key_notifications"/>
 
     <com.android.settings.widget.HomepagePreference
         android:icon="@drawable/ic_settings_safety_center"
