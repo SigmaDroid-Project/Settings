@@ -53,8 +53,8 @@
     <dimen name="default_padding">16dp</dimen>
     <dimen name="header_text_size_contextual">24sp</dimen>
     <dimen name="header_text_size_default">36sp</dimen>
-    <dimen name="homepage_user_icon_size">110dp</dimen>
+    <dimen name="homepage_user_icon_size">75dp</dimen>
     <dimen name="homepage_banner_margin_top">44dp</dimen>
-    <dimen name="homepage_avatar_margin_top">10dp</dimen>
+    <dimen name="homepage_avatar_margin_top">50dp</dimen>
     <dimen name="top_level_preference_summary_max_width">200dp</dimen>
 </resources>

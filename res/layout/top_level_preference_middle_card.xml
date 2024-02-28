@@ -32,12 +32,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/sigma_text_color_primary"
-                style="@style/sigma_text_style_h6" />
+                style="@style/sigmaTextPrimaryMedium" />
 
             <TextView
                 android:id="@android:id/summary"
-                style="@style/sigma_text_style_body1"
                 android:layout_width="@dimen/top_level_preference_summary_max_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@android:id/title"
@@ -45,7 +43,8 @@
                 android:layout_alignLeft="@android:id/title"
                 android:layout_marginTop="2.0dip"
                 android:maxLines="4"
-                android:textColor="@color/sigma_text_color_secondary" />
+                 style="@style/sigmaTextSecondary" />
+                
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_surface_color"
-                    android:tint="@android:color/white"/>
+                    android:tint="@color/top_level_preference_icon_tint"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

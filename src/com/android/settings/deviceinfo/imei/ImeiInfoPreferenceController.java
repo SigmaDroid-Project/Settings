@@ -103,8 +103,13 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
             multiImeiPreference.setKey(DEFAULT_KEY + (1 + simSlotNumber));
             multiImeiPreference.setEnabled(true);
             multiImeiPreference.setCopyingEnabled(true);
-            multiImeiPreference.setLayoutResource(R.layout.top_level_preference_bottom_card);
+            //multiImeiPreference.setLayoutResource(R.layout.top_level_preference_middle_card);
             multiImeiPreference.setIcon(R.drawable.ic_number);
+            if (simSlotNumber == 0) {
+                multiImeiPreference.setLayoutResource(R.layout.top_level_preference_middle_card);
+            } else {
+                multiImeiPreference.setLayoutResource(R.layout.top_level_preference_bottom_card);
+            }
             category.addPreference(multiImeiPreference);
        }
     }

@@ -125,10 +125,27 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         return SettingsEnums.DASHBOARD_SUMMARY;
     }
 
+    private void onSetPrefCard() {
+        final PreferenceScreen screen = getPreferenceScreen();
+        final int count = screen.getPreferenceCount();
+        for (int i = 0; i < count; i++) {
+            final Preference preference = screen.getPreference(i);
+
+            String key = preference.getKey();
+
+            if (key == null) continue;
+
+             if (mDashBoardStyle == 2) {
+                preference.setLayoutResource(R.layout.nad_dashboard_preference);
+            } 
+        }
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         HighlightableMenu.fromXml(context, getPreferenceScreenResId());
+        setDashboardStyle(context);
     }
 
     @Override
@@ -310,6 +327,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                                            "top_level_homepage_banner_view".equals(preferenceKey))) {
                 setUpPreferenceLayout(preference);
             }
+            onSetPrefCard();
         });
     }
 
@@ -317,7 +335,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         String key = preference.getKey();
 
         //Log.d("PreferenceLogging", "Setting up layout for preference key: " + key);
-
+        if (mDashBoardStyle == 1) {
+           preference.setLayoutResource(R.layout.nad_dashboard_preference);
+        } else {
         Set<String> topPreferences = new HashSet<>(Arrays.asList(
                 "top_level_battery", 
                 "top_level_system", 
@@ -346,10 +366,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 "top_level_safety_center",
                 "top_level_about_device"
         ));
-        
-        if (mDashBoardStyle == 1) {
-            preference.setLayoutResource(R.layout.top_level_preference_solo_card);
-        } 
+     
 
         if ("top_level_sigma_settings".equals(key)) {
             preference.setLayoutResource(R.layout.top_level_preference_toolbox_card);
@@ -373,6 +390,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             preference.setOrder(order);
             preference.setLayoutResource(R.layout.top_level_preference_solo_card);
         }
+    }
     }
 
     @Override
