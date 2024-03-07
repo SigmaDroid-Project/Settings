@@ -37,6 +37,7 @@
         android:key="doze_pick_up_gesture_ambient"
         android:title="@string/doze_gesture_ambient_title"
         android:summary="@string/doze_gesture_ambient_summary"
-        android:defaultValue="false" />
+        android:defaultValue="false"
+        android:dependency="gesture_pick_up" />
 
 </PreferenceScreen>
