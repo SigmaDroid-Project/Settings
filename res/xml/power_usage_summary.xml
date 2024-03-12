@@ -72,9 +72,9 @@
         settings:controller="com.google.android.settings.fuelgauge.reversecharging.ReverseChargingPreferenceController" />
 
     <!-- Charging control -->
-    <lineageos.preference.LineagePartsPreference
+    <!-- <lineageos.preference.LineagePartsPreference
         android:key="charging_control"
-        settings:requiresService="lineagehealth" />
+        settings:requiresService="lineagehealth" /> -->
 
     <Preference
         android:key="high_power_apps"
