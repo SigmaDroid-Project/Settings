@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright 2022 The sigmaOS Project
+     Copyright 2021 xdroid, xyzprjkt
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,12 +14,14 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <dimen name="alpha_toolbar_layout_height">20dp</dimen>
-    <dimen name="alpha_scrim_visible_height_trigger">20dp</dimen>
-    
-     <dimen name="sigma_radius">20dp</dimen>
-     <dimen name="sigma_radius_merge">0dp</dimen>
-     <dimen name="sigma_pref_horizontal_padding">16dp</dimen>
-     <dimen name="sigma_pref_horizontal_padding-negative">-16dp</dimen>
-</resources>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        layout="@layout/dot_pref_no_chevron"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</FrameLayout>
