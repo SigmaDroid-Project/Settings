@@ -20,9 +20,19 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="top_level_settings">
 
+   <com.android.settingslib.widget.LayoutPreference
+        android:layout="@layout/top_level_preference_storage"
+        android:key="top_level_homepage_storage"
+        android:order="-175"/>
+
+   <com.android.settingslib.widget.LayoutPreference
+        android:layout="@layout/top_level_preference_battery"
+        android:key="top_level_homepage_battery"
+        android:order="-170"/>
+
     <com.android.settings.widget.HomepagePreference
         android:key="top_level_about_device"
-        android:order="-205"
+        android:order="-165"
         android:icon="@drawable/ic_phone_info"
         android:title="@string/dot_dashboard_device"
         android:summary="@string/summary_placeholder"
@@ -33,7 +43,7 @@
         android:key="top_level_sigma_settings"
         android:title="@string/sigma_settings_title"
         android:summary="@string/sigma_settings_summary"
-        android:order="-204"
+        android:order="-160"
         android:icon="@drawable/ic_settings_sigma"
         android:fragment="com.sigma.settings.SigmaSettings"
         settings:controller="com.sigma.settings.TopLevelSigmaEntryPreferenceController" />
