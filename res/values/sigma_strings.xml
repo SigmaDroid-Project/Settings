@@ -65,4 +65,11 @@
     <!-- Maintainer -->
     <string name="maintainer_title">Maintainer</string>
     <string name="maintainer_summary">Searching for maintainer...</string>
+
+     <!-- Widgets -->
+    <string name="homepage_widget_battery_percent">percent</string>
+    <string name="homepage_widget_battery_charge">Charging</string>
+    <string name="homepage_widget_battery_discharge">Discharging</string>
+    <string name="homepage_widget_battery_title">Battery</string>
+    <string name="homepage_widget_storage_title">Storage</string>
 </resources>
