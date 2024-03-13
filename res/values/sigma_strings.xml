@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <string name="homepage_widget_battery_percent">percent</string>
+    <string name="homepage_widget_battery_charge">Charging</string>
+    <string name="homepage_widget_battery_discharge">Discharging</string>
+    <string name="homepage_widget_battery_title">Battery</string>
+    <string name="homepage_widget_storage_title">Storage</string>
+    
     <!--  Sigma settings -->
     <string name="sigma_settings_title">Sigma Toolbox</string>
     <string name="sigma_settings_summary">Everything, including the kitchen sink!</string>

@@ -18,7 +18,7 @@
     <dimen name="alpha_toolbar_layout_height">20dp</dimen>
     <dimen name="alpha_scrim_visible_height_trigger">20dp</dimen>
     
-     <dimen name="sigma_radius">18dp</dimen>
+     <dimen name="sigma_radius">20dp</dimen>
      <dimen name="sigma_radius_merge">0dp</dimen>
      <dimen name="sigma_pref_horizontal_padding">16dp</dimen>
      <dimen name="sigma_pref_horizontal_padding-negative">-16dp</dimen>
