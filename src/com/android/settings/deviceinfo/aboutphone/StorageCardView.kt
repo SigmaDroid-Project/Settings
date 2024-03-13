@@ -26,7 +26,7 @@ import com.android.settings.Utils
 import java.io.IOException
 import kotlin.math.sin
 
-import com.android.settings.R;
+import com.android.settings.R
 
 object Size {
     const val HUGE = 0
@@ -63,7 +63,8 @@ class StorageCardView(context: Context, attrs: AttributeSet?) : AboutBaseCard(co
         setupStorageInfo(context)
         addView(layout)
         setTouchListener(layout)
-        radius = defaultRadius.toFloat()
+        radius = resources.getDimension(R.dimen.dot_radius)
+        layout.background =  resources.getDrawable(R.drawable.toolbox_preference_background)
         layout.setOnClickListener {
             context.startActivity(Intent(Settings.ACTION_INTERNAL_STORAGE_SETTINGS))
         }
@@ -104,7 +105,7 @@ class StorageCardView(context: Context, attrs: AttributeSet?) : AboutBaseCard(co
     }
 
     private fun manageStorageInfo(storageInfoUsed: TextView, storageInfoTotal: TextView) {
-        val storageManager: StorageManager? = context.getSystemService(StorageManager::class.java)
+        val storageManager: StorageManager = context.getSystemService(StorageManager::class.java)
         if (storageManager != null) {
             val volumes = storageManager.volumes
             for (vol in volumes) {
