@@ -46,6 +46,7 @@
         android:order="-160"
         android:icon="@drawable/ic_settings_sigma"
         android:fragment="com.sigma.settings.SigmaSettings"
+        settings:highlightableMenuKey="@string/menu_key_sigma_toolbox"
         settings:controller="com.sigma.settings.TopLevelSigmaEntryPreferenceController" />
 
 

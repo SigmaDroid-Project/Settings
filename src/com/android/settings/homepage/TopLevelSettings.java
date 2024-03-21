@@ -254,8 +254,14 @@
              // Set default highlight menu key for 1-pane homepage since it will show the placeholder
              // page once changing back to 2-pane.
              Log.i(TAG, "Set default menu key");
-             setHighlightMenuKey(getString(SettingsHomepageActivity.DEFAULT_HIGHLIGHT_MENU_KEY),
-                     /* scrollNeeded= */ false);
+             if (mDashBoardStyle == 2) {
+                 static final int DEFAULT_HIGHLIGHT_MENU_KEY_NAD = R.string.menu_key_sigma_toolbox;
+                 setHighlightMenuKey(getString(SettingsHomepageActivity.DEFAULT_HIGHLIGHT_MENU_KEY_NAD),
+                          /* scrollNeeded= */ false);
+             } else {
+                 setHighlightMenuKey(getString(SettingsHomepageActivity.DEFAULT_HIGHLIGHT_MENU_KEY),
+                          /* scrollNeeded= */ false);
+             }
          }
          super.onStart();
          RecyclerView recyclerView = getListView();
