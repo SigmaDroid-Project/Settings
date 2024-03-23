@@ -58,6 +58,7 @@ class HideDeveloperStatusSettings: Fragment(R.layout.hide_developer_status_layou
     private lateinit var packageList: List<PackageInfo>
     private lateinit var appBarLayout: AppBarLayout
 
+    private var appBarLayout: AppBarLayout? = null
     private var searchText = ""
     private var category: Int = CATEGORY_USER_ONLY
     private var customFilter: ((PackageInfo) -> Boolean)? = null
@@ -70,7 +71,7 @@ class HideDeveloperStatusSettings: Fragment(R.layout.hide_developer_status_layou
         setHasOptionsMenu(true)
         requireActivity().setTitle(getTitle())
         appBarLayout = requireActivity().findViewById(R.id.app_bar)
-        activityManager = requireContext().getSystemService(ActivityManager::class.java)
+        activityManager = requireContext().getSystemService(ActivityManager::class.java) as ActivityManager
         packageManager = requireContext().packageManager
         packageList = packageManager.getInstalledPackages(0)
         hideDeveloperStatusUtils.setApps(requireContext())
