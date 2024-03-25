@@ -209,12 +209,11 @@
                          (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_battery");
         final LayoutPreference storagePreference =
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
-
          if (activity == null) return;
          final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                    "settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
+                    "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
         final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                    "settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
+                    "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
          if (batteryPreference != null && enableBatteryWidget) {
              // widgets
@@ -293,9 +292,9 @@
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
 
         final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                        "settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
+                        "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
         final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                        "settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
+                        "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
          if (!enableStorageWidget) {
             if (storagePreference != null) {
