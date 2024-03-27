@@ -46,6 +46,7 @@
         android:order="-160"
         android:title="@string/sigma_settings_title"
         android:summary="@string/sigma_settings_summary"
+        settings:highlightableMenuKey="@string/menu_key_sigma_toolbox"
         settings:controller="com.crdroid.settings.TopLevelSettingsPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
