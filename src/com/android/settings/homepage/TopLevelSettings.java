@@ -26,6 +26,7 @@
  import android.content.Intent;
  import android.content.res.Configuration;
  import android.content.pm.UserInfo;
+ import android.content.res.Resources;
  import android.graphics.Bitmap;
  import android.graphics.drawable.Drawable;
  import android.os.Bundle;
@@ -35,6 +36,7 @@
  import android.provider.Settings;
  import android.text.TextUtils;
  import android.util.Log;
+ import android.util.DisplayMetrics;
  import android.view.LayoutInflater;
  import android.view.ViewGroup;
  import android.view.View;
@@ -111,17 +113,30 @@
  
      @Override
      protected int getPreferenceScreenResId() {
-        switch (mDashBoardStyle) {
-            case 0:
-                return R.xml.top_level_settings;
-            case 1:
-                return R.xml.top_level_settings_dot;
-            case 2:
-                return R.xml.top_level_settings_nad;
-            default:
-                return R.xml.top_level_settings_nad;
+    final int mDensity = getCurrentSwDp();
+    if ( mDashBoardStyle ==0) {
+            return R.xml.top_level_settings_sigma;
+    } else if (mDashBoardStyle ==1) {
+            return R.xml.top_level_settings_dot;
+    } else if (mDashBoardStyle ==2) {
+        if (mDensity > 450){
+            return R.xml.top_level_settings;
+        }else{
+            return R.xml.top_level_settings_nad;
         }
+     } else if (mDashBoardStyle ==3) {
+            return R.xml.top_level_settings;
      }
+     return R.xml.top_level_settings;
+     }
+
+     private int getCurrentSwDp() {
+        final Resources res = getContext().getResources();
+        final DisplayMetrics metrics = res.getDisplayMetrics();
+        final float density = metrics.density;
+        final int minDimensionPx = Math.min(metrics.widthPixels, metrics.heightPixels);
+        return (int) (minDimensionPx / density);
+    }
 
      @Override
      protected String getLogTag() {
@@ -285,18 +300,16 @@
      @Override
      public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
          super.onCreatePreferences(savedInstanceState, rootKey);
-
-         final LayoutPreference batteryPreference =
-                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_battery");
+        final LayoutPreference batteryPreference =
+                        (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_battery");
         final LayoutPreference storagePreference =
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
-
         final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
                         "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
         final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
                         "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
-         if (!enableStorageWidget) {
+        if (!enableStorageWidget) {
             if (storagePreference != null) {
                getPreferenceScreen().removePreference(storagePreference);
            }
@@ -322,10 +335,10 @@
  
      private void setUpPreferenceLayout(Preference preference) {
          String key = preference.getKey();
- 
-         if (mDashBoardStyle == 2) {
+         final int mDensity = getCurrentSwDp();
+         if (mDashBoardStyle == 2 && mDensity < 450) {
             preference.setLayoutResource(R.layout.nad_dashboard_preference);
-         } else  if (mDashBoardStyle == 1) {
+         } else  if (mDashBoardStyle == 1 ) {
         Set<String> dotTopPreferences = new HashSet<>(Arrays.asList(
                     "top_level_network",
                     "top_level_apps",
@@ -350,13 +363,13 @@
                     "top_level_accessibility",
                     "top_level_emergency"
             ));
-            if ("top_level_about_device".equals(key)) {
+            if ("top_level_about_device".equals(key) && mDashBoardStyle == 1 && mDensity < 450) {
                  preference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
-             } else if (dotTopPreferences.contains(key)) {
+             } else if (dotTopPreferences.contains(key) && mDashBoardStyle == 1 && mDensity < 450) {
                  preference.setLayoutResource(R.layout.dot_dashboard_preference_top);
-             } else if (dotBottomPreferences.contains(key)) {
+             } else if (dotBottomPreferences.contains(key) && mDashBoardStyle == 1 && mDensity < 450) {
                  preference.setLayoutResource(R.layout.dot_dashboard_preference_bottom);
-             } else {
+             } else if(mDashBoardStyle == 1 && mDensity < 450) {
                  preference.setLayoutResource(R.layout.dot_dashboard_preference_middle); 
              }
              } else  if (mDashBoardStyle == 0) {
@@ -384,20 +397,20 @@
                  "top_level_display"
          ));
  
-         if ("top_level_sigma_settings".equals(key)) {
+         if ("top_level_sigma_settings".equals(key) && mDashBoardStyle == 0 && mDensity < 450) {
             preference.setLayoutResource(R.layout.top_level_preference_toolbox_card);
-        } else if ("top_level_wellbeing".equals(key)) {
+        } else if ("top_level_wellbeing".equals(key) && mDashBoardStyle == 0 && mDensity < 450) {
              preference.setLayoutResource(R.layout.top_level_preference_wellbeing_card);
-         } else if ("top_level_google".equals(key)) {
+         } else if ("top_level_google".equals(key)  && mDashBoardStyle == 0 && mDensity < 450) {
              preference.setLayoutResource(R.layout.top_level_preference_google_card);
              googleServicesAvailable = true;
-         } else if (topPreferences.contains(key)) {
+         } else if (topPreferences.contains(key)  && mDashBoardStyle == 0 && mDensity < 450) {
              preference.setLayoutResource(R.layout.top_level_preference_top_card);
-         } else if (key.equals("top_level_accounts") && googleServicesAvailable) {
+         } else if (key.equals("top_level_accounts") && googleServicesAvailable  && mDashBoardStyle == 0 && mDensity < 450) {
              preference.setLayoutResource(R.layout.top_level_preference_middle_card);
-         } else if (bottomPreferences.contains(key)) {
+         } else if (bottomPreferences.contains(key)  && mDashBoardStyle == 0 && mDensity < 450) {
              preference.setLayoutResource(R.layout.top_level_preference_bottom_card);
-         } else {
+         } else if (mDashBoardStyle == 0 && mDensity < 450){
              // highlight injected top level preference e.g OEM parts
              int order = extraPreferenceOrder - 1;
              extraPreferenceOrder = order;
@@ -566,8 +579,14 @@
      }
  
      private void setDashboardStyle(Context context) {
+        final int mDensity = getCurrentSwDp();
+        if ( mDensity < 450) {
         mDashBoardStyle = Settings.System.getIntForUser(context.getContentResolver(),
                 Settings.System.SETTINGS_DASHBOARD_STYLE, 2, UserHandle.USER_CURRENT);
+        } else {
+            mDashBoardStyle = Settings.System.getIntForUser(context.getContentResolver(),
+            Settings.System.SETTINGS_DASHBOARD_STYLE, 3, UserHandle.USER_CURRENT);
+        }
     }
 
      public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
