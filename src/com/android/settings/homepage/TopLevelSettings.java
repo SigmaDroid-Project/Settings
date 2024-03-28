@@ -129,169 +129,168 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         }
     }
 
-    @Override
-    protected String getLogTag() {
-        return TAG;
-    }
+     @Override
+     protected String getLogTag() {
+         return TAG;
+     }
+ 
+     @Override
+     public int getMetricsCategory() {
+         return SettingsEnums.DASHBOARD_SUMMARY;
+     }
+ 
+     @Override
+     public void onAttach(Context context) {
+         super.onAttach(context);
+         HighlightableMenu.fromXml(context, getPreferenceScreenResId());
+         use(SupportPreferenceController.class).setActivity(getActivity());
+         setDashboardStyle(context);
+     }
+ 
+     @Override
+     public int getHelpResource() {
+         // Disable the help icon because this page uses a full search view in actionbar.
+         return 0;
+     }
+ 
+     @Override
+     public Fragment getCallbackFragment() {
+         return this;
+     }
+ 
+     @Override
+     public boolean onPreferenceTreeClick(Preference preference) {
+         if (isDuplicateClick(preference)) {
+             return true;
+         }
+ 
+         // Register SplitPairRule for SubSettings.
+         ActivityEmbeddingRulesController.registerSubSettingsPairRule(getContext(),
+                 true /* clearTop */);
+ 
+         setHighlightPreferenceKey(preference.getKey());
+         return super.onPreferenceTreeClick(preference);
+     }
+ 
+     @Override
+     public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
+         new SubSettingLauncher(getActivity())
+                 .setDestination(pref.getFragment())
+                 .setArguments(pref.getExtras())
+                 .setSourceMetricsCategory(caller instanceof Instrumentable
+                         ? ((Instrumentable) caller).getMetricsCategory()
+                         : Instrumentable.METRICS_CATEGORY_UNKNOWN)
+                 .setTitleRes(-1)
+                 .setIsSecondLayerPage(true)
+                 .launch();
+         return true;
+     }
+ 
+     @Override
+     public void onCreate(Bundle icicle) {
+         super.onCreate(icicle);
+ 
+         mIsEmbeddingActivityEnabled =
+                 ActivityEmbeddingUtils.isEmbeddingActivityEnabled(getContext());
+         if (!mIsEmbeddingActivityEnabled) {
+             return;
+         }
+ 
+         boolean activityEmbedded = isActivityEmbedded();
+         if (icicle != null) {
+             mHighlightMixin = icicle.getParcelable(SAVED_HIGHLIGHT_MIXIN);
+             if (mHighlightMixin != null) {
+                 mScrollNeeded = !mHighlightMixin.isActivityEmbedded() && activityEmbedded;
+                 mHighlightMixin.setActivityEmbedded(activityEmbedded);
+             }
+         }
+         if (mHighlightMixin == null) {
+             mHighlightMixin = new TopLevelHighlightMixin(activityEmbedded);
+         }
+     }
+ 
+     private void initHomepageWidgetsView() {
+         final FragmentActivity activity = getActivity();
+         final LayoutPreference batteryPreference =
+                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_battery");
+        final LayoutPreference storagePreference =
+                        (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
+         if (activity == null) return;
+         final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
+                    "settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
+        final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
+                    "settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
-    @Override
-    public int getMetricsCategory() {
-        return SettingsEnums.DASHBOARD_SUMMARY;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        HighlightableMenu.fromXml(context, getPreferenceScreenResId());
-        use(SupportPreferenceController.class).setActivity(getActivity());
-        setDashboardStyle(context);
-    }
-
-    @Override
-    public int getHelpResource() {
-        // Disable the help icon because this page uses a full search view in actionbar.
-        return 0;
-    }
-
-    @Override
-    public Fragment getCallbackFragment() {
-        return this;
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        if (isDuplicateClick(preference)) {
-            return true;
-        }
-
-        // Register SplitPairRule for SubSettings.
-        ActivityEmbeddingRulesController.registerSubSettingsPairRule(getContext(),
-                true /* clearTop */);
-
-        setHighlightPreferenceKey(preference.getKey());
-        return super.onPreferenceTreeClick(preference);
-    }
-
-    @Override
-    public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
-        new SubSettingLauncher(getActivity())
-                .setDestination(pref.getFragment())
-                .setArguments(pref.getExtras())
-                .setSourceMetricsCategory(caller instanceof Instrumentable
-                        ? ((Instrumentable) caller).getMetricsCategory()
-                        : Instrumentable.METRICS_CATEGORY_UNKNOWN)
-                .setTitleRes(-1)
-                .setIsSecondLayerPage(true)
-                .launch();
-        return true;
-    }
-
-    @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-
-        mIsEmbeddingActivityEnabled =
-                ActivityEmbeddingUtils.isEmbeddingActivityEnabled(getContext());
-        if (!mIsEmbeddingActivityEnabled) {
-            return;
-        }
-
-        boolean activityEmbedded = isActivityEmbedded();
-        if (icicle != null) {
-            mHighlightMixin = icicle.getParcelable(SAVED_HIGHLIGHT_MIXIN);
-            if (mHighlightMixin != null) {
-                mScrollNeeded = !mHighlightMixin.isActivityEmbedded() && activityEmbedded;
-                mHighlightMixin.setActivityEmbedded(activityEmbedded);
+         if (batteryPreference != null && enableBatteryWidget) {
+             // widgets
+             final View batteryView = batteryPreference.findViewById(R.id.battery_widget);
+             batteryView.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     launchComponent("com.android.settings", "com.android.settings.Settings$PowerUsageSummaryActivity");
+                 }
+             });
             }
-        }
-        if (mHighlightMixin == null) {
-            mHighlightMixin = new TopLevelHighlightMixin(activityEmbedded);
-        }
-    }
-
-    private void initHomepageWidgetsView() {
-        final FragmentActivity activity = getActivity();
-        final LayoutPreference batteryPreference =
-                        (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_battery");
-       final LayoutPreference storagePreference =
-                       (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
-
-        if (activity == null) return;
-        final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                   "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
-       final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                   "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
-
-        if (batteryPreference != null && enableBatteryWidget) {
-            // widgets
-            final View batteryView = batteryPreference.findViewById(R.id.battery_widget);
-            batteryView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    launchComponent("com.android.settings", "com.android.settings.Settings$PowerUsageSummaryActivity");
-                }
-            });
-           }
-    }
-
-    private void launchComponent(String packageName, String className) {
-        Intent intent = new Intent();
-        intent.setComponent(new ComponentName(packageName, className));
-        startActivity(intent);
-    }
-
-    /** Wrap ActivityEmbeddingController#isActivityEmbedded for testing. */
-    @VisibleForTesting
-    public boolean isActivityEmbedded() {
-        if (mActivityEmbeddingController == null) {
-            mActivityEmbeddingController = ActivityEmbeddingController.getInstance(getActivity());
-        }
-        return mActivityEmbeddingController.isActivityEmbedded(getActivity());
-    }
-
-    @Override
-    public void onStart() {
-        if (mFirstStarted) {
-            mFirstStarted = false;
-            FeatureFactory.getFactory(getContext()).getSearchFeatureProvider().sendPreIndexIntent(
-                    getContext());
-        } else if (mIsEmbeddingActivityEnabled && isOnlyOneActivityInTask()
-                && !isActivityEmbedded()) {
-            // Set default highlight menu key for 1-pane homepage since it will show the placeholder
-            // page once changing back to 2-pane.
-            Log.i(TAG, "Set default menu key");
-            setHighlightMenuKey(getString(SettingsHomepageActivity.DEFAULT_HIGHLIGHT_MENU_KEY),
-                    /* scrollNeeded= */ false);
-        }
-        super.onStart();
-        RecyclerView recyclerView = getListView();
-        if (recyclerView != null) {
-            recyclerView.post(new Runnable() {
-                @Override
-                public void run() {
-                    initHomepageWidgetsView();
-                }
-            });
-        }
-    }
-
-    private boolean isOnlyOneActivityInTask() {
-        final ActivityManager.RunningTaskInfo taskInfo = getSystemService(ActivityManager.class)
-                .getRunningTasks(1).get(0);
-        return taskInfo.numActivities == 1;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        if (mHighlightMixin != null) {
-            outState.putParcelable(SAVED_HIGHLIGHT_MIXIN, mHighlightMixin);
-        }
-    }
-
-    @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        super.onCreatePreferences(savedInstanceState, rootKey);
+     }
+ 
+     private void launchComponent(String packageName, String className) {
+         Intent intent = new Intent();
+         intent.setComponent(new ComponentName(packageName, className));
+         startActivity(intent);
+     }
+ 
+     /** Wrap ActivityEmbeddingController#isActivityEmbedded for testing. */
+     @VisibleForTesting
+     public boolean isActivityEmbedded() {
+         if (mActivityEmbeddingController == null) {
+             mActivityEmbeddingController = ActivityEmbeddingController.getInstance(getActivity());
+         }
+         return mActivityEmbeddingController.isActivityEmbedded(getActivity());
+     }
+ 
+     @Override
+     public void onStart() {
+         if (mFirstStarted) {
+             mFirstStarted = false;
+             FeatureFactory.getFeatureFactory().getSearchFeatureProvider().sendPreIndexIntent(
+                     getContext());
+         } else if (mIsEmbeddingActivityEnabled && isOnlyOneActivityInTask()
+                 && !isActivityEmbedded()) {
+             // Set default highlight menu key for 1-pane homepage since it will show the placeholder
+             // page once changing back to 2-pane.
+             Log.i(TAG, "Set default menu key");
+             setHighlightMenuKey(getString(SettingsHomepageActivity.DEFAULT_HIGHLIGHT_MENU_KEY),
+                     /* scrollNeeded= */ false);
+         }
+         super.onStart();
+         RecyclerView recyclerView = getListView();
+         if (recyclerView != null) {
+             recyclerView.post(new Runnable() {
+                 @Override
+                 public void run() {
+                     initHomepageWidgetsView();
+                 }
+             });
+         }
+     }
+ 
+     private boolean isOnlyOneActivityInTask() {
+         final ActivityManager.RunningTaskInfo taskInfo = getSystemService(ActivityManager.class)
+                 .getRunningTasks(1).get(0);
+         return taskInfo.numActivities == 1;
+     }
+ 
+     @Override
+     public void onSaveInstanceState(Bundle outState) {
+         super.onSaveInstanceState(outState);
+         if (mHighlightMixin != null) {
+             outState.putParcelable(SAVED_HIGHLIGHT_MIXIN, mHighlightMixin);
+         }
+     }
+ 
+     @Override
+     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+         super.onCreatePreferences(savedInstanceState, rootKey);
 
         final LayoutPreference batteryPreference =
                          (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_battery");
@@ -299,9 +298,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
 
         final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                        "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
+                        "settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
         final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                        "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
+                        "settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
         if (!enableStorageWidget) {
             if (storagePreference != null) {
@@ -312,86 +311,86 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             if (batteryPreference != null) {
                 getPreferenceScreen().removePreference(batteryPreference);
             }
-        }
-        int tintColor = Utils.getHomepageIconColor(getContext());
-        iteratePreferences(preference -> {
-            Drawable icon = preference.getIcon();
-            if (icon != null) {
-                icon.setTint(tintColor);
             }
-            String preferenceKey = preference.getKey();
-            if (preferenceKey != null && !("top_level_homepage_battery".equals(preferenceKey) ||
-                                           "top_level_homepage_storage".equals(preferenceKey))){
-                setUpPreferenceLayout(preference);
-            }
-        });
-    }
-
-    private void setUpPreferenceLayout(Preference preference) {
-        String key = preference.getKey();
-
-        if (mDashBoardStyle == 2) {
-           preference.setLayoutResource(R.layout.nad_dashboard_preference);
-        } else if (mDashBoardStyle == 1) {
-       Set<String> dotTopPreferences = new HashSet<>(Arrays.asList(
-                   "top_level_network",
-                   "top_level_apps",
-                   "top_level_sound",
-                   "top_level_display",
-                   "top_level_security",
-                   "top_level_location",
-                   "top_level_accounts",
-                   "top_level_safety_center",
-                   "top_level_wellbeing",
-                   "dashboard_tile_pref_com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity"
-           ));
-       Set<String> dotBottomPreferences = new HashSet<>(Arrays.asList(
-                   "top_level_notifications",
-                   "top_level_wallpaper",
-                   "top_level_storage",
-                   "top_level_system",
-                   "top_level_battery",
-                   "top_level_connected_devices",
-                   "top_level_crdroid",
-                   "top_level_privacy",
-                   "top_level_accessibility",
-                   "top_level_emergency"
-           ));
-           if ("top_level_about_device".equals(key)) {
-                preference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
-            } else if (dotTopPreferences.contains(key)) {
-                preference.setLayoutResource(R.layout.dot_dashboard_preference_top);
-            } else if (dotBottomPreferences.contains(key)) {
-                preference.setLayoutResource(R.layout.dot_dashboard_preference_bottom);
-            } else {
-                preference.setLayoutResource(R.layout.dot_dashboard_preference_middle); 
-            }
-            } else if (mDashBoardStyle == 0) {
-            Set<String> topPreferences = new HashSet<>(Arrays.asList(
-                    "top_level_network", 
-                    "top_level_system", 
+         int tintColor = Utils.getHomepageIconColor(getContext());
+         iteratePreferences(preference -> {
+             Drawable icon = preference.getIcon();
+             if (icon != null) {
+                 icon.setTint(tintColor);
+             }
+             String preferenceKey = preference.getKey();
+             if (preferenceKey != null && !("top_level_homepage_battery".equals(preferenceKey) ||
+                                            "top_level_homepage_storage".equals(preferenceKey))){
+                 setUpPreferenceLayout(preference);
+             }
+         });
+     }
+ 
+     private void setUpPreferenceLayout(Preference preference) {
+         String key = preference.getKey();
+ 
+         if (mDashBoardStyle == 2) {
+            preference.setLayoutResource(R.layout.nad_dashboard_preference);
+         } else  if (mDashBoardStyle == 1) {
+        Set<String> dotTopPreferences = new HashSet<>(Arrays.asList(
+                    "top_level_network",
                     "top_level_apps",
-                    "top_level_emergency",
-                    "top_level_security",
-                    "top_level_privacy", 
                     "top_level_sound",
-                    "top_level_safety_center",
-                    "top_level_battery", 
-                    "top_level_wallpaper"
-            ));
-
-            Set<String> bottomPreferences = new HashSet<>(Arrays.asList(
-                    "top_level_connected_devices",
+                    "top_level_display",
+                    "top_level_security",
                     "top_level_location",
-                    "top_level_accessibility",
-                    "top_level_accounts", 
-                    "top_level_storage", 
-                    "top_level_about_device",
-                    "top_level_notifications",
-                    "top_level_display"
+                    "top_level_accounts",
+                    "top_level_safety_center",
+                    "top_level_wellbeing",
+                    "dashboard_tile_pref_com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity"
             ));
-
-            if ("top_level_crdroid".equals(key)) {
+        Set<String> dotBottomPreferences = new HashSet<>(Arrays.asList(
+                    "top_level_notifications",
+                    "top_level_wallpaper",
+                    "top_level_storage",
+                    "top_level_system",
+                    "top_level_battery",
+                    "top_level_connected_devices",
+                    "top_level_sigma_settings",
+                    "top_level_privacy",
+                    "top_level_accessibility",
+                    "top_level_emergency"
+            ));
+            if ("top_level_about_device".equals(key)) {
+                 preference.setLayoutResource(R.layout.dot_dashboard_preference_phone);
+             } else if (dotTopPreferences.contains(key)) {
+                 preference.setLayoutResource(R.layout.dot_dashboard_preference_top);
+             } else if (dotBottomPreferences.contains(key)) {
+                 preference.setLayoutResource(R.layout.dot_dashboard_preference_bottom);
+             } else {
+                 preference.setLayoutResource(R.layout.dot_dashboard_preference_middle); 
+             }
+             } else  if (mDashBoardStyle == 0) {
+         Set<String> topPreferences = new HashSet<>(Arrays.asList(
+                 "top_level_network", 
+                 "top_level_system", 
+                 "top_level_apps",
+                 "top_level_emergency",
+                 "top_level_security",
+                 "top_level_privacy", 
+                 "top_level_sound",
+                 "top_level_safety_center",
+                 "top_level_battery", 
+                 "top_level_wallpaper"
+         ));
+ 
+         Set<String> bottomPreferences = new HashSet<>(Arrays.asList(
+                 "top_level_connected_devices",
+                 "top_level_location",
+                 "top_level_accessibility",
+                 "top_level_accounts", 
+                 "top_level_storage", 
+                 "top_level_about_device",
+                 "top_level_notifications",
+                 "top_level_display"
+         ));
+ 
+         if ("top_level_sigma_settings".equals(key)) {
             preference.setLayoutResource(R.layout.top_level_preference_toolbox_card);
         } else if ("top_level_wellbeing".equals(key)) {
                 preference.setLayoutResource(R.layout.top_level_preference_wellbeing_card);
