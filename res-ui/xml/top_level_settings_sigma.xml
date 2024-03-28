@@ -40,14 +40,14 @@
         settings:controller="com.android.settings.deviceinfo.aboutphone.TopLevelAboutDevicePreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
-        android:fragment="com.crdroid.settings.crDroidSettingsLayout"
-        android:icon="@drawable/ic_settings_sigma"
-        android:key="top_level_crdroid"
-        android:order="-160"
+        android:key="top_level_sigma_settings"
         android:title="@string/sigma_settings_title"
         android:summary="@string/sigma_settings_summary"
-        settings:highlightableMenuKey="@string/menu_key_sigma_toolbox"
+        android:order="-160"
+        android:icon="@drawable/ic_settings_sigma"
+        android:fragment="com.crdroid.settings.crDroidSettingsLayout"
         settings:controller="com.crdroid.settings.TopLevelSettingsPreferenceController"/>
+
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.network.NetworkDashboardFragment"
