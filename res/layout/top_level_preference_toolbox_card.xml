@@ -37,20 +37,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/top_level_preference_text_color_primary"
-                style="@style/op_control_text_style_h6" />
+                style="@style/sigmaTextPrimaryWhite" />
 
             <TextView
                 android:id="@android:id/summary"
-                style="@style/sigmaTextSecondary"
+                style="@style/sigmaTextSecondaryWhite"
                 android:layout_width="@dimen/top_level_preference_summary_max_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@android:id/title"
                 android:layout_alignStart="@android:id/title"
                 android:layout_alignLeft="@android:id/title"
                 android:layout_marginTop="2.0dip"
-                android:maxLines="4"
-                android:textColor="@color/top_level_preference_text_color_secondary" />
+                android:maxLines="4"/>
                 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,7 +75,7 @@
                 android:ellipsize="end"
                 android:visibility="gone"
                 android:textAppearance="@*android:style/TextAppearance.DeviceDefault.Body1"
-                android:textColor="?android:attr/textColorSecondary"/>
+                android:textColor="@android:color/white"/>
 
         </LinearLayout>
         </RelativeLayout>
@@ -105,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/toolbox_surface_color"
-                    android:tint="@color/top_level_preference_icon_tint"/>
+                    android:tint="@android:color/white"/>
 
             </LinearLayout>
 
