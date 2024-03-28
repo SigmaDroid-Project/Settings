@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_surface_color"
-                    android:tint="@color/top_level_preference_icon_tint"/>
+                    android:tint="@android:color/white"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
