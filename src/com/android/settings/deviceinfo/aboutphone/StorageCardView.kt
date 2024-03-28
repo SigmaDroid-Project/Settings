@@ -105,7 +105,7 @@ class StorageCardView(context: Context, attrs: AttributeSet?) : AboutBaseCard(co
     }
 
     private fun manageStorageInfo(storageInfoUsed: TextView, storageInfoTotal: TextView) {
-        val storageManager: StorageManager = context.getSystemService(StorageManager::class.java)
+        val storageManager: StorageManager? = context.getSystemService(StorageManager::class.java)
         if (storageManager != null) {
             val volumes = storageManager.volumes
             for (vol in volumes) {
