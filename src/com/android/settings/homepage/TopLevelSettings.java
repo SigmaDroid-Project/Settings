@@ -211,9 +211,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
          if (activity == null) return;
          final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                    "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
+                    "settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
         final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                    "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
+                    "settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
          if (batteryPreference != null && enableBatteryWidget) {
              // widgets
@@ -246,7 +246,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
      public void onStart() {
          if (mFirstStarted) {
              mFirstStarted = false;
-             FeatureFactory.getFactory(getContext()).getSearchFeatureProvider().sendPreIndexIntent(
+             FeatureFactory.getFeatureFactory().getSearchFeatureProvider().sendPreIndexIntent(
                      getContext());
          } else if (mIsEmbeddingActivityEnabled && isOnlyOneActivityInTask()
                  && !isActivityEmbedded()) {
@@ -292,9 +292,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
 
         final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                        "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
+                        "settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
         final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                        "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
+                        "settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
          if (!enableStorageWidget) {
             if (storagePreference != null) {
@@ -345,7 +345,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     "top_level_system",
                     "top_level_battery",
                     "top_level_connected_devices",
-                    "top_level_crdroid",
+                    "top_level_sigma_settings",
                     "top_level_privacy",
                     "top_level_accessibility",
                     "top_level_emergency"
@@ -384,7 +384,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                  "top_level_display"
          ));
  
-         if ("top_level_crdroid".equals(key)) {
+         if ("top_level_sigma_settings".equals(key)) {
             preference.setLayoutResource(R.layout.top_level_preference_toolbox_card);
         } else if ("top_level_wellbeing".equals(key)) {
              preference.setLayoutResource(R.layout.top_level_preference_wellbeing_card);
