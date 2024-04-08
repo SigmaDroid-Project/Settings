@@ -30,13 +30,13 @@
         settings:controller="com.android.settings.deviceinfo.aboutphone.TopLevelAboutDevicePreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
-        android:key="top_level_alpha_settings"
-        android:title="@string/alpha_settings_title"
-        android:summary="@string/alpha_settings_summary"
+        android:fragment="com.crdroid.settings.crDroidSettingsLayout"
+        android:icon="@drawable/ic_settings_cogs"
+        android:key="top_level_crdroid"
         android:order="-204"
-        android:icon="@drawable/ic_settings_alpha"
-        android:fragment="com.alpha.settings.AlphaSettings"
-        settings:controller="com.alpha.settings.TopLevelAlphaEntryPreferenceController" />
+        android:title="@string/crdroid_settings_title"
+        android:summary="@string/crdroid_settings_summary"
+        settings:controller="com.crdroid.settings.TopLevelSettingsPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.network.NetworkDashboardFragment"
