@@ -36,13 +36,6 @@ public class SimpleBuildNumberPreferenceController extends BasePreferenceControl
 
     @Override
     public CharSequence getSummary() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY));
-        String alphaVersion = VersionUtils.getAlphaVersion();
-        if (!alphaVersion.equals("")){
-            sb.append("\n");
-            sb.append(alphaVersion);
-        }
-        return sb.toString();
+        return BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY);
     }
 }
