@@ -483,7 +483,7 @@ public class Settings extends SettingsActivity {
 
     public static class ScreenTimeoutActivity extends SettingsActivity { /* empty */ }
 
-    public static class AlphaSettingsActivity extends SettingsActivity {}
+    public static class crDroidSettingsLayoutActivity extends SettingsActivity {}
 
     public static class DevRunningServicesActivity extends SettingsActivity { /* empty */ }
 
