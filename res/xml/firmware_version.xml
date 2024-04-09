@@ -32,16 +32,14 @@
         android:key="about_device_name"
         android:title="@string/about_device_name"
         android:summary="@string/summary_placeholder"
-        android:icon="@drawable/ic_device"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.AboutDeviceNamePreferenceController"/>
 
-    <!-- SELinux -->
+    <!-- Android version -->
     <Preference
-        android:key="selinux_status"
-        android:title="@string/selinux_status"
+        android:key="os_firmware_version"
+        android:title="@string/firmware_version"
         android:summary="@string/summary_placeholder"
-        android:icon="@drawable/ic_selinux"
         settings:enableCopying="true"
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
@@ -84,7 +82,7 @@
         android:key="base_band"
         android:title="@string/baseband_version"
         android:summary="@string/summary_placeholder"
-        android:icon="@drawable/ic_android"
+        android:selectable="false"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.BasebandVersionPreferenceController"/>
 
@@ -93,8 +91,25 @@
         android:key="kernel_version"
         android:title="@string/kernel_version"
         android:summary="@string/summary_placeholder"
-        android:icon="@drawable/ic_kernel"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.KernelVersionPreferenceController"/>
+
+    <!-- Build date -->
+    <Preference
+        android:key="os_build_date"
+        android:title="@*lineageos.platform:string/build_date"
+        android:summary="@string/summary_placeholder"
+        android:selectable="false"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.LineageBuildDatePreferenceController"/>
+
+    <!-- Build -->
+    <Preference
+        android:key="os_build_number"
+        android:title="@string/build_number"
+        android:summary="@string/summary_placeholder"
+        android:selectable="false"
+        settings:enableCopying="true"
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.SimpleBuildNumberPreferenceController"/>
 
 </PreferenceScreen>
