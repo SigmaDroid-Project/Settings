@@ -36,9 +36,6 @@
     <!-- Refresh rate -->
     <string name="low_power_refresh_rate_title_custom">Low power refresh rate</string>
 
-    <!-- Matrixx maintainer -->
-    <string name="matrixx_maintainer_title">Device maintainer</string>
-
     <!-- Ambient wake toggles -->
     <string name="doze_gesture_ambient_title">Show Ambient</string>
     <string name="doze_gesture_ambient_summary">Show Ambient Display instead of fully waking the screen up</string>
