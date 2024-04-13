@@ -28,6 +28,8 @@ import com.android.settings.core.BasePreferenceController;
 
 public class BasebandVersionPreferenceController extends BasePreferenceController {
 
+    private static final String KEY_PREFERENCE_CATEGORY = "firmware_detail_category";
+
     @VisibleForTesting
     static final String BASEBAND_PROPERTY = "gsm.version.baseband";
 
