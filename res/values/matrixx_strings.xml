@@ -53,4 +53,17 @@
     <string name="night_display_activation_on_custom">Turn on until <xliff:g name="time" example="6 AM">%1$s</xliff:g></string>
     <!-- Display settings screen, deactivation button action for custom schedule [CHAR LIMIT=40] -->
     <string name="night_display_activation_off_custom">Turn off until <xliff:g name="time" example="10 PM">%1$s</xliff:g></string>
+
+    <!--  Alpha settings -->
+    <string name="alpha_settings_title">Sigma Toolbox</string>
+    <string name="alpha_settings_summary">Everything, including the kitchen sink!</string>
+    <string name="sigma_settings_title">Sigma Toolbox</string>
+    <string name="sigma_settings_summary">Everything, including the kitchen sink!</string>
+
+    <!-- UiBench -->
+    <string name="category_uibench">UiBench</string>
+    <string name="jitter_test_title">Jitter</string>
+    <string name="jitter_test_summary">Calculate rendering jitter</string>
+
+    <string name="build_status_unofficial">Unofficial</string>
 </resources>
