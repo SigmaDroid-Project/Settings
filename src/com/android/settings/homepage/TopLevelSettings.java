@@ -246,7 +246,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
      public void onStart() {
          if (mFirstStarted) {
              mFirstStarted = false;
-             FeatureFactory.getFactory(getContext()).getSearchFeatureProvider().sendPreIndexIntent(
+             FeatureFactory.getFeatureFactory().getSearchFeatureProvider().sendPreIndexIntent(
                      getContext());
          } else if (mIsEmbeddingActivityEnabled && isOnlyOneActivityInTask()
                  && !isActivityEmbedded()) {
@@ -345,7 +345,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     "top_level_system",
                     "top_level_battery",
                     "top_level_connected_devices",
-                    "top_level_crdroid",
+                    "top_level_sigma_settings",
                     "top_level_privacy",
                     "top_level_accessibility",
                     "top_level_emergency"
@@ -384,7 +384,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                  "top_level_display"
          ));
  
-         if ("top_level_crdroid".equals(key)) {
+         if ("top_level_sigma_settings".equals(key)) {
             preference.setLayoutResource(R.layout.top_level_preference_toolbox_card);
         } else if ("top_level_wellbeing".equals(key)) {
              preference.setLayoutResource(R.layout.top_level_preference_wellbeing_card);
