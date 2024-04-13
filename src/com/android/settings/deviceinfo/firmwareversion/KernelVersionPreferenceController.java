@@ -33,6 +33,7 @@ public class KernelVersionPreferenceController extends BasePreferenceController 
     private static final String KEY_KERNEL_VERSION = "kernel_version";
     private static final String FILENAME_PROC_VERSION = "/proc/version";
     private static final String LOG_TAG = "KernelVersionPreferenceController";
+    private static final String KEY_PREFERENCE_CATEGORY = "firmware_detail_category";
     private boolean fullKernelVersion = false;
 
     public KernelVersionPreferenceController(Context context, String preferenceKey) {
