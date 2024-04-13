@@ -21,4 +21,6 @@
     <color name="alpha_color_secondary_accent">@android:color/system_accent2_500</color>
     <color name="alpha_color_tertiary_accent">@android:color/system_accent3_600</color>
     <color name="alpha_color_accent_background">@android:color/system_accent2_800</color>
+    <color name="alpha_color_accent">@*android:color/system_accent1_700</color>
+    <color name="alpha_color_accent2">@*android:color/system_accent1_500</color>
 </resources>
