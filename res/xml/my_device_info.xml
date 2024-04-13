@@ -21,19 +21,35 @@
     android:key="my_device_info_pref_screen"
     android:title="@string/about_settings">
 
+    <!-- SigmaDroid info -->
     <com.android.settingslib.widget.LayoutPreference
-        android:key="device_name"
-        android:order="-1"
-        android:selectable="false"
-        android:layout="@layout/device_info_header"
-        settings:controller="com.android.settings.deviceinfo.DeviceNamePreferenceController"
-        settings:isPreferenceVisible="false" />
+            android:key="sigma_info"
+            android:layout="@layout/sigma_info"
+            android:order="-2"
+            android:selectable="false" />
 
     <PreferenceCategory
         android:key="basic_info_category"
-        android:order="0"
+        android:order="-1"
         android:selectable="false"
         android:title="@string/my_device_info_basic_info_category_title">
+
+        <Preference
+            android:key="rom_build_status"
+            android:title="@string/build_status"
+            android:summary="@string/build_status_summary_placeholder"
+            settings:enableCopying="true"
+            android:order="0"
+            android:selectable="true"/>
+
+         <!-- Device name -->
+        <com.android.settings.widget.ValidatedEditTextPreference
+            android:key="device_name"
+            android:order="1"
+            android:title="@string/my_device_info_device_name_preference_title"
+            android:summary="@string/summary_placeholder"
+            settings:controller="com.android.settings.deviceinfo.DeviceNamePreferenceController"
+            settings:enableCopying="true"/>
 
         <!-- Account name -->
         <Preference
@@ -104,15 +120,41 @@
             settings:enableCopying="true"
             settings:isPreferenceVisible="@bool/config_show_sim_info"
             settings:controller="com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="firmware_detail_category"
+        android:selectable="false"
+        android:title="@string/my_device_info_firmware_details_category_title">
 
         <!-- Android version -->
         <Preference
             android:key="firmware_version"
-            android:order="42"
             android:title="@string/firmware_version"
             android:summary="@string/summary_placeholder"
-            android:fragment="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionSettings"
             settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionPreferenceController"/>
+
+            <!-- Security patch -->
+         <Preference
+            android:key="selinux_status"
+            android:title="@string/selinux_status"
+            android:summary="@string/summary_placeholder"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.SELinuxStatusPreferenceController.java."/>
+
+        <!-- Baseband -->
+        <Preference
+            android:key="base_band"
+            android:title="@string/baseband_version"
+            android:summary="@string/summary_placeholder"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.BasebandVersionPreferenceController"/>
+
+        <!-- Kernel -->
+        <Preference
+            android:key="kernel_version"
+            android:title="@string/kernel_version"
+            android:summary="@string/summary_placeholder"
+            settings:controller="com.android.settings.deviceinfo.firmwareversion.KernelVersionPreferenceController"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
