@@ -34,8 +34,8 @@
         android:icon="@drawable/ic_settings_sigma"
         android:key="top_level_crdroid"
         android:order="-204"
-        android:title="@string/crdroid_settings_title"
-        android:summary="@string/crdroid_settings_summary"
+        android:title="@string/sigma_settings_title"
+        android:summary="@string/sigma_settings_summary"
         settings:controller="com.crdroid.settings.TopLevelSettingsPreferenceController"/>
 
     <com.android.settings.widget.HomepagePreference
