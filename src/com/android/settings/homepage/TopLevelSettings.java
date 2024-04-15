@@ -211,9 +211,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
          if (activity == null) return;
          final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                    "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
+                    "settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
         final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                    "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
+                    "settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
          if (batteryPreference != null && enableBatteryWidget) {
              // widgets
@@ -292,9 +292,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                         (LayoutPreference) getPreferenceScreen().findPreference("top_level_homepage_storage");
 
         final boolean enableStorageWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                        "enable_settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
+                        "settings_storage_widget", 0, UserHandle.USER_CURRENT) != 0;
         final boolean enableBatteryWidget = Settings.System.getIntForUser(getContext().getContentResolver(),
-                        "enable_settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
+                        "settings_battery_widget", 0, UserHandle.USER_CURRENT) != 0;
 
          if (!enableStorageWidget) {
             if (storagePreference != null) {

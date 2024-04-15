@@ -32,36 +32,4 @@
      <color name="sigma_background4">@android:color/system_accent3_400</color>
      <color name="xd_background1">@android:color/system_neutral1_50</color>
     <color name="xd_background2">@android:color/system_neutral1_100</color>
-
-     <color name="sigma_text_color_primary">@color/sigma_text_color_primary_inverse</color>
-     <color name="sigma_text_color_primary_inverse">#000000</color>
-     <color name="sigma_text_color_primary_inverse_translucent">#E0ffffff</color>
-     <color name="sigma_text_color_primary_translucent">#E0000000</color>
-     <color name="sigma_text_color_primary_light">#d8000000</color>
-     <color name="sigma_text_color_secondary">@color/sigma_text_color_secondary_light</color>
-     <color name="sigma_text_color_secondary_light">#66000000</color>
-     <color name="oneplus_accent_text_color">#ffc41442</color>
-     <color name="sigma_bg_color_weaken_light">#0a000000</color>
-     <color name="sigma_contextual_card_solid_color">@color/sigma_bg_color_weaken_light</color>
-     <color name="sigma_accent_color_green">@color/sigma_accent_color_green_light</color>
-     <color name="sigma_accent_color_green_light">#ff0bd270</color>
-     <color name="sigma_accent_color_green_dark">#ff06743e</color>
-
-     <color name="user_crd_bg">@android:color/system_neutral1_10</color>
-     <color name="toolbox_surface_color">@*android:color/system_accent2_500</color>
-     <color name="top_level_preference_icon_tint">@*android:color/system_neutral1_1000</color>
-     <color name="top_level_preference_text_color_primary">@color/top_level_preference_icon_tint</color>
-     <color name="top_level_preference_text_color_secondary">@color/op_control_text_color_secondary</color>
-     <color name="op_control_text_color_primary">@color/op_control_text_color_primary_light</color>
-     <color name="op_control_text_color_primary_inverse">#ffffff</color>
-     <color name="op_control_text_color_primary_inverse_translucent">#E0ffffff</color>
-     <color name="op_control_text_color_primary_translucent">#E0000000</color>
-     <color name="op_control_text_color_primary_light">#d8000000</color>
-     <color name="op_control_text_color_secondary">@color/op_control_text_color_secondary_light</color>
-     <color name="op_control_text_color_secondary_light">#66000000</color>
-     <color name="op_control_bg_color_weaken_light">#0a000000</color>
-     <color name="op_control_contextual_card_solid_color">@color/op_control_bg_color_weaken_light</color>
-     <color name="op_control_accent_color_green">@color/op_control_accent_color_green_light</color>
-     <color name="op_control_accent_color_green_light">#ff0bd270</color>
-     <color name="op_control_accent_color_green_dark">#ff06743e</color>
 </resources>

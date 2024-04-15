@@ -30,8 +30,8 @@
      <color name="sigma_background3">@android:color/system_accent1_400</color>
      <color name="sigma_background4">@android:color/system_accent3_400</color>
 
-     <color name="sigma_text_color_primary">@color/sigma_text_color_primary_inverse</color>
-     <color name="sigma_text_color_primary_inverse">#000000</color>
+     <color name="sigma_text_color_primary">@color/sigma_text_color_primary_light</color>
+     <color name="sigma_text_color_primary_inverse">#ffffff</color>
      <color name="sigma_text_color_primary_inverse_translucent">#E0ffffff</color>
      <color name="sigma_text_color_primary_translucent">#E0000000</color>
      <color name="sigma_text_color_primary_light">#d8000000</color>
