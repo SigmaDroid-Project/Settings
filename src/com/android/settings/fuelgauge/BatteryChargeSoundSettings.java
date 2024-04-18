@@ -159,7 +159,7 @@ public class BatteryChargeSoundSettings extends SettingsPreferenceFragment imple
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.CRDROID_SETTINGS;
+        return MetricsProto.MetricsEvent.SIGMA;
     }
 
 }
