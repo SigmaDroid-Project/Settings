@@ -69,7 +69,7 @@ public class IncreasingRingVolumePreference extends Preference
     }
 
     public IncreasingRingVolumePreference(Context context, AttributeSet attrs) {
-        super(context, attrs, TypedArrayUtils.getAttr(context,
+        this(context, attrs, TypedArrayUtils.getAttr(context,
                 androidx.preference.R.attr.preferenceStyle,
                 android.R.attr.preferenceStyle));
     }
