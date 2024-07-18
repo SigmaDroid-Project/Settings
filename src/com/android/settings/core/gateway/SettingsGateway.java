@@ -452,7 +452,5 @@ public class SettingsGateway {
             Settings.crDroidSettingsLayoutActivity.class.getName(),
             Settings.DevRunningServicesActivity.class.getName(),
             Settings.SmartPixelsActivity.class.getName(),
-            Settings.FirmwareVersionActivity.class.getName(),
-            Settings.WallpaperSettingsActivity.class.getName(),
     };
 }
