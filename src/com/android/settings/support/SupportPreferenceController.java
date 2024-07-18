@@ -22,7 +22,6 @@ import android.text.TextUtils;
 
 import androidx.preference.Preference;
 
-import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.overlay.SupportFeatureProvider;
@@ -44,8 +43,7 @@ public class SupportPreferenceController extends BasePreferenceController {
 
     @Override
     public int getAvailabilityStatus() {
-        boolean enabled = mContext.getResources().getBoolean(R.bool.config_support_enabled);
-        return UNSUPPORTED_ON_DEVICE;
+        return mSupportFeatureProvider == null ? UNSUPPORTED_ON_DEVICE : AVAILABLE;
     }
 
     @Override
