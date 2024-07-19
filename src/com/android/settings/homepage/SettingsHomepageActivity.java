@@ -229,38 +229,33 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         updateHomepageAppBar();
         updateHomepageBackground();
         mLoadedListeners = new ArraySet<>();
-        
-        // Homepage redesign start
-        // initSearchBarView();
-        
-        AppBarLayout appBarLayout = findViewById(R.id.app_bar);
-        final ExtendedFloatingActionButton fabSearch = findViewById(R.id.fabSearch);
-        FeatureFactory.getFeatureFactory()
-                .getSearchFeatureProvider()
-                .initSearchToolbar(this /* activity */, (View) fabSearch, null, SettingsEnums.SETTINGS_HOMEPAGE);
 
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+        avatarView = findViewById(R.id.account_avatar);
+
+        if (avatarView != null) {
+          avatarView.setImageDrawable(getCircularUserIcon(getApplicationContext()));
+          avatarView.setVisibility(View.VISIBLE);
+          avatarView.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(Intent.ACTION_MAIN);
+                  intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
+                  startActivity(intent);
+              }
+          });
+        }
+
+        initSearchBarView();
+
+        avatarView = findViewById(R.id.account_avatar);
+        avatarView.setImageDrawable(getCircularUserIcon(context));
+        avatarView.setVisibility(View.VISIBLE);
+        avatarView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                int totalScrollRange = appBarLayout.getTotalScrollRange();
-
-                if (Math.abs(verticalOffset) == totalScrollRange) {
-                    fabSearch.show();
-                    fabSearch.postOnAnimationDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            fabSearch.extend();
-                        }
-                    }, 100);
-                } else {
-                    fabSearch.shrink();
-                    fabSearch.postOnAnimationDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            fabSearch.hide();
-                        }
-                    }, 100);
-                }
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
+                startActivity(intent);
             }
         });
 
