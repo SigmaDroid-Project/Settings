@@ -83,6 +83,9 @@ import com.android.settingslib.core.lifecycle.HideNonSystemOverlayMixin;
 import com.android.settingslib.drawable.CircleFramedDrawable;
 
 import com.google.android.setupcompat.util.WizardManagerHelper;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -123,7 +126,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
     private SplitControllerCallbackAdapter mSplitControllerAdapter;
     private SplitInfoCallback mCallback;
-    private boolean mAllowUpdateSuggestion = true;
 
     /** A listener receiving homepage loaded events. */
     public interface HomepageLoadedListener {
@@ -160,18 +162,15 @@ public class SettingsHomepageActivity extends FragmentActivity implements
      * to avoid the flicker caused by the suggestion suddenly appearing/disappearing.
      */
     public void showHomepageWithSuggestion(boolean showSuggestion) {
-        if (mAllowUpdateSuggestion) {
-            Log.i(TAG, "showHomepageWithSuggestion: " + showSuggestion);
-            mAllowUpdateSuggestion = false;
-            mSuggestionView.setVisibility(showSuggestion ? View.VISIBLE : View.GONE);
-            mTwoPaneSuggestionView.setVisibility(showSuggestion ? View.VISIBLE : View.GONE);
-        }
-
         if (mHomepageView == null) {
             return;
         }
+        Log.i(TAG, "showHomepageWithSuggestion: " + showSuggestion);
         final View homepageView = mHomepageView;
+        mSuggestionView.setVisibility(showSuggestion ? View.VISIBLE : View.GONE);
+        mTwoPaneSuggestionView.setVisibility(showSuggestion ? View.VISIBLE : View.GONE);
         mHomepageView = null;
+
         mLoadedListeners.forEach(listener -> listener.onHomepageLoaded());
         mLoadedListeners.clear();
         homepageView.setVisibility(View.VISIBLE);
@@ -229,38 +228,34 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         updateHomepageAppBar();
         updateHomepageBackground();
         mLoadedListeners = new ArraySet<>();
-        
-        // Homepage redesign start
-        // initSearchBarView();
-        
-        AppBarLayout appBarLayout = findViewById(R.id.app_bar);
-        final ExtendedFloatingActionButton fabSearch = findViewById(R.id.fabSearch);
-        FeatureFactory.getFeatureFactory()
-                .getSearchFeatureProvider()
-                .initSearchToolbar(this /* activity */, (View) fabSearch, null, SettingsEnums.SETTINGS_HOMEPAGE);
+        //initSearchBarView();
 
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+        avatarView = findViewById(R.id.account_avatar);
+
+        if (avatarView != null) {
+          avatarView.setImageDrawable(getCircularUserIcon(getApplicationContext()));
+          avatarView.setVisibility(View.VISIBLE);
+          avatarView.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(Intent.ACTION_MAIN);
+                  intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
+                  startActivity(intent);
+              }
+          });
+        }
+
+        initSearchBarView();
+
+        avatarView = findViewById(R.id.account_avatar);
+        avatarView.setImageDrawable(getCircularUserIcon(context));
+        avatarView.setVisibility(View.VISIBLE);
+        avatarView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                int totalScrollRange = appBarLayout.getTotalScrollRange();
-
-                if (Math.abs(verticalOffset) == totalScrollRange) {
-                    fabSearch.show();
-                    fabSearch.postOnAnimationDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            fabSearch.extend();
-                        }
-                    }, 100);
-                } else {
-                    fabSearch.shrink();
-                    fabSearch.postOnAnimationDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            fabSearch.hide();
-                        }
-                    }, 100);
-                }
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
+                startActivity(intent);
             }
         });
 
@@ -325,7 +320,6 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     @Override
     protected void onStop() {
         super.onStop();
-        mAllowUpdateSuggestion = true;
         if (mSplitControllerAdapter != null && mCallback != null) {
             mSplitControllerAdapter.removeSplitListener(mCallback);
             mCallback = null;
