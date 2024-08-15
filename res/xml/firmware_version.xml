@@ -35,13 +35,13 @@
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmware_version.BuildStatusPreferenceController"/>
 
-    <Preference
+    <!-- <Preference
         android:key="rom_maintainer"
         android:icon="@drawable/ic_maintainer"
         android:title="@string/maintainer_title"
         android:summary="@string/maintainer_summary"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmware_version.MaintainerPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmware_version.MaintainerPreferenceController"/> -->
 
     <!-- Device name -->
     <Preference
@@ -61,12 +61,12 @@
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
     <!-- Alpha version -->
-    <Preference
+    <!-- <Preference
         android:key="alpha_version"
         android:title="@*lineageos.platform:string/lineage_version"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.AlphaVersionPreferenceController"/>
+        settings:controller="com.android.settings.deviceinfo.firmwareversion.AlphaVersionPreferenceController"/> -->
 
     <!-- Security patch -->
     <Preference

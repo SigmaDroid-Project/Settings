@@ -95,9 +95,7 @@
     <!-- Display settings screen, deactivation button action for custom schedule [CHAR LIMIT=40] -->
     <string name="night_display_activation_off_custom">Turn off until <xliff:g name="time" example="10 PM">%1$s</xliff:g></string>
 
-    <!--  Alpha settings -->
-    <string name="alpha_settings_title">Sigma Toolbox</string>
-    <string name="alpha_settings_summary">Everything, including the kitchen sink!</string>
+    <!--  Sigma settings -->
     <string name="sigma_settings_title">Sigma Toolbox</string>
     <string name="sigma_settings_summary">Everything, including the kitchen sink!</string>
 

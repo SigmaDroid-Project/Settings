@@ -45,7 +45,7 @@ public class FirmwareVersionSettings extends DashboardFragment {
             Context context, FirmwareVersionSettings fragment, Lifecycle lifecycle) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new BuildStatusPreferenceController(context));
-        controllers.add(new MaintainerPreferenceController(context));
+        // controllers.add(new MaintainerPreferenceController(context));
         controllers.add(new SELinuxStatusPreferenceController(context));
         return controllers;
     }
