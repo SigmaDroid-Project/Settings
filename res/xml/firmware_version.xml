@@ -21,36 +21,6 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
-    <!-- crDroid logo -->
-    <com.android.settingslib.widget.LayoutPreference
-        android:layout="@layout/crdroid_logo"
-        android:key="crdroid_logo"
-        android:selectable="false" />
-
-    <Preference
-        android:key="rom_build_status"
-        android:icon="@drawable/ic_build_status"
-        android:title="@string/build_status_title"
-        android:summary="@string/build_status_summary"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmware_version.BuildStatusPreferenceController"/>
-
-    <Preference
-        android:key="rom_maintainer"
-        android:icon="@drawable/ic_maintainer"
-        android:title="@string/maintainer_title"
-        android:summary="@string/maintainer_summary"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmware_version.MaintainerPreferenceController"/>
-
-    <!-- Device name -->
-    <Preference
-        android:key="about_device_name"
-        android:title="@string/about_device_name"
-        android:summary="@string/summary_placeholder"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.AboutDeviceNamePreferenceController"/>
-
     <!-- Android version -->
     <Preference
         android:key="os_firmware_version"
@@ -59,14 +29,6 @@
         settings:enableCopying="true"
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
-
-    <!-- Alpha version -->
-    <Preference
-        android:key="alpha_version"
-        android:title="@*lineageos.platform:string/lineage_version"
-        android:summary="@string/summary_placeholder"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.AlphaVersionPreferenceController"/>
 
     <!-- Security patch -->
     <Preference
@@ -82,16 +44,6 @@
         android:selectable="false"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.LineageVendorSecurityPatchLevelPreferenceController"/>
-
-    <!-- Mainline module version -->
-    <!--
-    <Preference
-        android:key="module_version"
-        android:title="@string/module_version"
-        android:summary="@string/summary_placeholder"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.MainlineModuleVersionPreferenceController"/>
-    -->
 
     <!-- Baseband -->
     <Preference
