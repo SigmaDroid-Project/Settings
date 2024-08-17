@@ -52,7 +52,6 @@ import com.android.settings.deviceinfo.imei.ImeiInfoPreferenceController;
 import com.android.settings.deviceinfo.simstatus.EidStatus;
 import com.android.settings.deviceinfo.simstatus.SimEidPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SimStatusPreferenceController;
-import com.android.settings.deviceinfo.firmwareversion.BuildStatusPreferenceController;
 import com.android.settings.deviceinfo.firmwareversion.SELinuxStatusPreferenceController;
 import com.android.settings.deviceinfo.firmwareversion.SigmaInfoPreferenceController;
 import com.android.settings.deviceinfo.simstatus.SlotSimStatus;
