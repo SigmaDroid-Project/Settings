@@ -144,11 +144,10 @@
     <Preference
         android:key="vendor_security_key"
         android:title="@*lineageos.platform:string/lineage_vendor_security_patch"
-        android:selectable="false"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.LineageVendorSecurityPatchLevelPreferenceController"/>
 
-            <!-- Security patch -->
+            <!-- SELinux -->
          <Preference
             android:key="selinux_status"
             android:title="@string/selinux_status"
