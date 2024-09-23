@@ -37,12 +37,19 @@ import com.android.settings.core.BasePreferenceController;
 import com.android.settingslib.RestrictedLockUtilsInternal;
 import com.android.settingslib.RestrictedTopLevelPreference;
 
+import com.android.internal.util.crdroid.Utils;
+
 import java.util.List;
 
 /** This controller manages the wallpaper preference of the top level page. */
 public class TopLevelWallpaperPreferenceController extends BasePreferenceController {
     private static final String TAG = "TopLevelWallpaperPreferenceController";
     private static final String LAUNCHED_SETTINGS = "app_launched_settings";
+    private static final String DEFAULT_WP_CLASS = "com.android.settings.Settings$WallpaperSettingsActivity";
+    private static final String DEFAULT_WP_PKG = "com.android.wallpaper";
+    private static final String DEFAULT_SWP_CLASS = "com.android.customization.picker.CustomizationPickerActivity";
+    private static final String GOOGLE_WP_CLASS = "com.google.android.apps.wallpaper.picker.CategoryPickerActivity";
+    private static final String GOOGLE_WP_PKG = "com.google.android.apps.wallpaper";
 
     private final String mWallpaperPackage;
     private final String mWallpaperClass;
@@ -51,10 +58,11 @@ public class TopLevelWallpaperPreferenceController extends BasePreferenceControl
 
     public TopLevelWallpaperPreferenceController(Context context, String key) {
         super(context, key);
-        mWallpaperPackage = mContext.getString(R.string.config_wallpaper_picker_package);
-        mWallpaperClass = mContext.getString(R.string.config_wallpaper_picker_class);
-        mStylesAndWallpaperClass =
-                mContext.getString(R.string.config_styles_and_wallpaper_picker_class);
+        final boolean isGoogleWpInstalled = Utils.isPackageInstalled(context, GOOGLE_WP_PKG);
+        mWallpaperPackage = isGoogleWpInstalled ? GOOGLE_WP_PKG : DEFAULT_WP_PKG;
+        mWallpaperClass = isGoogleWpInstalled ? GOOGLE_WP_CLASS : DEFAULT_WP_CLASS;
+        mStylesAndWallpaperClass = isGoogleWpInstalled ?
+                mContext.getString(R.string.config_styles_and_wallpaper_picker_class) : DEFAULT_SWP_CLASS;
         mWallpaperLaunchExtra = mContext.getString(R.string.config_wallpaper_picker_launch_extra);
     }
 
@@ -102,8 +110,9 @@ public class TopLevelWallpaperPreferenceController extends BasePreferenceControl
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
         if (getPreferenceKey().equals(preference.getKey())) {
-            final Intent intent = new Intent().setComponent(
-                    getComponentName()).putExtra(mWallpaperLaunchExtra, LAUNCHED_SETTINGS);
+            final Intent intent = new Intent();
+            intent.setComponent(getComponentName());
+            intent.putExtra(mWallpaperLaunchExtra, LAUNCHED_SETTINGS);
             if (areStylesAvailable() && !ActivityEmbeddingUtils.isEmbeddingActivityEnabled(
                     mContext)) {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -116,8 +125,7 @@ public class TopLevelWallpaperPreferenceController extends BasePreferenceControl
 
     /** Returns whether Styles & Wallpaper is enabled and available. */
     public boolean areStylesAvailable() {
-        return !TextUtils.isEmpty(mStylesAndWallpaperClass)
-                && canResolveWallpaperComponent(mStylesAndWallpaperClass);
+        return canResolveWallpaperComponent(mStylesAndWallpaperClass);
     }
 
     private boolean canResolveWallpaperComponent(String className) {
