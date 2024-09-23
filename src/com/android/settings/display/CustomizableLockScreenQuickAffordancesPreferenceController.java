@@ -28,11 +28,16 @@ import com.android.settings.core.BasePreferenceController;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.utils.ThreadUtils;
 
+import com.android.internal.util.crdroid.Utils;
+
 /**
  * Preference for accessing an experience to customize lock screen quick affordances.
  */
 public class CustomizableLockScreenQuickAffordancesPreferenceController extends
         BasePreferenceController implements PreferenceControllerMixin {
+
+    private static final String DEFAULT_WP_PKG = "com.android.wallpaper";
+    private static final String GOOGLE_WP_PKG = "com.google.android.apps.wallpaper";
 
     public CustomizableLockScreenQuickAffordancesPreferenceController(Context context, String key) {
         super(context, key);
@@ -52,8 +57,11 @@ public class CustomizableLockScreenQuickAffordancesPreferenceController extends
         if (preference != null) {
             preference.setOnPreferenceClickListener(preference1 -> {
                 final Intent intent = CustomizableLockScreenUtils.newIntent();
-                final String packageName =
-                        mContext.getString(R.string.config_wallpaper_picker_package);
+
+                // Check if Google Wallpaper package is installed
+                final boolean isGoogleWpInstalled = Utils.isPackageInstalled(mContext, GOOGLE_WP_PKG);
+                final String packageName = isGoogleWpInstalled ? GOOGLE_WP_PKG : DEFAULT_WP_PKG;
+
                 if (!TextUtils.isEmpty(packageName)) {
                     intent.setPackage(packageName);
                 }
