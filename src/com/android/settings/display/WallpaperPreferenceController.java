@@ -41,6 +41,7 @@ public class WallpaperPreferenceController extends BasePreferenceController {
     private static final String LAUNCHED_SETTINGS = "app_launched_settings";
     private static final String DEFAULT_WP_CLASS = "com.android.settings.Settings$WallpaperSettingsActivity";
     private static final String DEFAULT_WP_PKG = "com.android.wallpaper";
+    private static final String DEFAULT_SWP_CLASS = "com.android.customization.picker.CustomizationPickerActivity";
     private static final String GOOGLE_WP_CLASS = "com.google.android.apps.wallpaper.picker.CategoryPickerActivity";
     private static final String GOOGLE_WP_PKG = "com.google.android.apps.wallpaper";
 
@@ -57,7 +58,7 @@ public class WallpaperPreferenceController extends BasePreferenceController {
         mWallpaperPackage = isGoogleWpInstalled ? GOOGLE_WP_PKG : DEFAULT_WP_PKG;
         mWallpaperClass = isGoogleWpInstalled ? GOOGLE_WP_CLASS : DEFAULT_WP_CLASS;
         mStylesAndWallpaperClass = isGoogleWpInstalled ?
-                mContext.getString(R.string.config_styles_and_wallpaper_picker_class) : "";
+                mContext.getString(R.string.config_styles_and_wallpaper_picker_class) : DEFAULT_SWP_CLASS;
         mWallpaperActionName = isGoogleWpInstalled ? mContext.getString(R.string.config_wallpaper_picker_action) : "";
         mStylesAndWallpaperActionName = isGoogleWpInstalled ?
                 mContext.getString(R.string.config_styles_and_wallpaper_picker_action) : "";
@@ -115,8 +116,12 @@ public class WallpaperPreferenceController extends BasePreferenceController {
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
         if (getPreferenceKey().equals(preference.getKey())) {
-            final Intent intent = new Intent().setComponent(
-                getComponentName()).putExtra(mWallpaperLaunchExtra, LAUNCHED_SETTINGS);
+            final Intent intent = new Intent();
+            intent.setComponent(getComponentName());
+            if (!TextUtils.isEmpty(getComponentActionName())) {
+                intent.setAction(getComponentActionName());
+            }
+            intent.putExtra(mWallpaperLaunchExtra, LAUNCHED_SETTINGS);
             if (areStylesAvailable()) {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
@@ -128,8 +133,7 @@ public class WallpaperPreferenceController extends BasePreferenceController {
 
     /** Returns whether Styles & Wallpaper is enabled and available. */
     public boolean areStylesAvailable() {
-        return !TextUtils.isEmpty(mStylesAndWallpaperClass)
-                && canResolveWallpaperComponent(mStylesAndWallpaperClass);
+        return canResolveWallpaperComponent(mStylesAndWallpaperClass);
     }
 
     private boolean canResolveWallpaperComponent(String className) {
