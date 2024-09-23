@@ -40,7 +40,7 @@ public class WallpaperPreferenceController extends BasePreferenceController {
     private static final String TAG = "WallpaperPrefController";
     private static final String LAUNCHED_SETTINGS = "app_launched_settings";
     private static final String DEFAULT_WP_CLASS = "com.android.settings.Settings$WallpaperSettingsActivity";
-    private static final String DEFAULT_WP_PKG = "com.android.settings";
+    private static final String DEFAULT_WP_PKG = "com.android.wallpaper";
     private static final String GOOGLE_WP_CLASS = "com.google.android.apps.wallpaper.picker.CategoryPickerActivity";
     private static final String GOOGLE_WP_PKG = "com.google.android.apps.wallpaper";
 
