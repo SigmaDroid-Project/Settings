@@ -61,4 +61,10 @@
     <string name="homepage_widget_battery_discharge">Discharging</string>
     <string name="homepage_widget_battery_title">Battery</string>
     <string name="homepage_widget_storage_title">Storage</string>
+
+    <!-- SELinux status -->
+    <string name="selinux_status">SELinux status</string>
+    <string name="selinux_status_disabled">Disabled</string>
+    <string name="selinux_status_permissive">Permissive</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
 </resources>
