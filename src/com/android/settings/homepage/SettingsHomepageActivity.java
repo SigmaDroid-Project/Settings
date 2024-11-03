@@ -91,6 +91,9 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Set;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+
 /** Settings homepage activity */
 public class SettingsHomepageActivity extends FragmentActivity implements
         CategoryMixin.CategoryHandler {
@@ -454,6 +457,24 @@ public class SettingsHomepageActivity extends FragmentActivity implements
             FeatureFactory.getFeatureFactory().getSearchFeatureProvider()
                     .initSearchToolbar(this /* activity */, toolbarTwoPaneVersion,
                             SettingsEnums.SETTINGS_HOMEPAGE);
+        }
+    }
+
+    private void initAvatarView() {
+        if (Flags.homepageRevamp()) {
+            return;
+        }
+
+        final ImageView avatarView = findViewById(R.id.account_avatar);
+        final ImageView avatarTwoPaneView = findViewById(R.id.account_avatar_two_pane_version);
+        if (AvatarViewMixin.isAvatarSupported(this)) {
+            avatarView.setVisibility(View.VISIBLE);
+            getLifecycle().addObserver(new AvatarViewMixin(this, avatarView));
+
+            if (mIsEmbeddingActivityEnabled) {
+                avatarTwoPaneView.setVisibility(View.VISIBLE);
+                getLifecycle().addObserver(new AvatarViewMixin(this, avatarTwoPaneView));
+            }
         }
     }
 
