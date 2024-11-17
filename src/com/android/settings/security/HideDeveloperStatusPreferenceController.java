@@ -14,28 +14,38 @@
  * limitations under the License.
  */
 
-package com.android.settings.security;
+ package com.android.settings.security;
 
-import android.content.Context;
-import android.provider.Settings;
-import android.os.UserHandle;
-
-import com.android.settings.core.BasePreferenceController;
-
-import com.android.internal.util.crdroid.HideDeveloperStatusUtils;
-
-public class HideDeveloperStatusPreferenceController extends BasePreferenceController {
-
-    private static final String PREF_KEY = "hide_developer_status_settings";
-    private static HideDeveloperStatusUtils hideDeveloperStatusUtils = new HideDeveloperStatusUtils();
-
-    public HideDeveloperStatusPreferenceController(Context context) {
-        super(context, PREF_KEY);
-        hideDeveloperStatusUtils.setApps(context);
-    }
-
-    @Override
-    public int getAvailabilityStatus() {
-        return AVAILABLE;
-    }
-}
+ import android.content.Context;
+ import android.content.pm.UserInfo;
+ import android.provider.Settings;
+ import android.os.UserManager;
+ 
+ import com.android.settings.core.BasePreferenceController;
+ 
+ import com.android.internal.util.crdroid.HideDeveloperStatusUtils;
+ 
+ import java.util.List;
+ 
+ public class HideDeveloperStatusPreferenceController extends BasePreferenceController {
+ 
+     private static final String PREF_KEY = "hide_developer_status_settings";
+     private static HideDeveloperStatusUtils hideDeveloperStatusUtils = new HideDeveloperStatusUtils();
+ 
+     private UserManager userManager;
+     private List<UserInfo> userInfos;
+ 
+     public HideDeveloperStatusPreferenceController(Context context) {
+         super(context, PREF_KEY);
+         userManager = UserManager.get(context);
+         userInfos = userManager.getUsers();
+         for (UserInfo info: userInfos) {
+             hideDeveloperStatusUtils.setApps(context, info.id);
+         }
+     }
+ 
+     @Override
+     public int getAvailabilityStatus() {
+         return AVAILABLE;
+     }
+ }
